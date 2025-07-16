@@ -1,45 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Zap, Clock, DollarSign, Shield, AlertTriangle, TrendingUp } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz0Mv4JlI4bHjIkPgqOOYPqHALiJxkdGkjP71yH6uxrLQf3HvaYmSrfR4EfCeZswdRPmw/exec';
-
 const FinalCTA = () => {
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [email, setEmail] = useState('');
+  const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    if (!nombre.trim() || !apellido.trim()) {
-      setError('Por favor, completa tu nombre y apellido.');
-      return;
-    }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      setError('Ingresa un email válido.');
-      return;
-    }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final de la página y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto para asegurar mi cupo?");
+    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
     setSubmitted(true);
-    try {
-      await emailjs.send(
-        'service_ftj2umo',
-        'template_ord7fi7',
-        { nombre, apellido, email },
-        'urW_9W9UQMNBK8-Sz'
-      );
-      setNombre('');
-      setApellido('');
-      setEmail('');
-    } catch (err: any) {
-      setError('Error al enviar el email: ' + (err?.text || err?.message || JSON.stringify(err)));
-      setSubmitted(false);
-      return;
-    }
-    setTimeout(() => setSubmitted(false), 3500);
   };
 
   return (

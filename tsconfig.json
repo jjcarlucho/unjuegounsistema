@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "types": ["@testing-library/jest-dom"]
+  }
+}

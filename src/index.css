@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-gradient-to-br from-[#181A20] via-[#23262F] to-[#101014] min-h-screen text-white;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif !important;
+  letter-spacing: -0.01em;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  background: #181A20;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInDelay 1s ease-out 0.3s both;
+}
+
+/* Custom gradient backgrounds */
+.bg-luxury-gradient {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+}
+
+/* Selection colors */
+::selection {
+  background-color: #D4AF37;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #D4AF37;
+  color: #000000;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #23262F;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2f36;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8941F;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Hover effects */
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Custom button styles */
+.btn-luxury {
+  background: linear-gradient(45deg, #D4AF37, #B8941F);
+  color: #000000;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+/* Focus states for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Eliminar cualquier fondo repetido de secciones */
+section {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+/* Botón premium glass */
+.premium-glass {
+  background: linear-gradient(135deg, rgba(24,26,32,0.85) 60%, rgba(212,175,55,0.08) 100%);
+  backdrop-filter: blur(16px) saturate(120%);
+  box-shadow: 0 8px 40px 0 #D4AF3722, 0 1.5px 8px 0 #0008;
+  border-radius: 1.25rem;
+  border: 1.5px solid rgba(212,175,55,0.10);
+}
+
+@keyframes gold-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 #D4AF37); }
+  50% { filter: drop-shadow(0 0 16px #D4AF37cc); }
+}
+.group-hover\:animate-gold-glow:hover {
+  animation: gold-glow 1.2s infinite;
+}
+@keyframes green-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 #3be13b); }
+  50% { filter: drop-shadow(0 0 16px #3be13bcc); }
+}
+.group-hover\:animate-green-glow:hover {
+  animation: green-glow 1.2s infinite;
+}
+@keyframes red-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 #e13b3b); }
+  50% { filter: drop-shadow(0 0 16px #e13b3bcc); }
+}
+.group-hover\:animate-red-glow:hover {
+  animation: red-glow 1.2s infinite;
+}

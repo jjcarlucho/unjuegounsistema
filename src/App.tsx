@@ -1,44 +1,44 @@
 import React from 'react';
-import UltraHero from './components/UltraHero';
+import Hero from './components/Hero';
+import WhatIs from './components/WhatIs';
+import Storytelling from './components/Storytelling';
 import Benefits from './components/Benefits';
-import PremiumComparison from './components/PremiumComparison';
+import Comparison from './components/Comparison';
 import Testimonials from './components/Testimonials';
-import UltraFAQ from './components/UltraFAQ';
-import UltraFinalCTA from './components/UltraFinalCTA';
-import UltraStickyCTA from './components/UltraStickyCTA';
+import FinalCTA from './components/FinalCTA';
+import Countdown from './components/Countdown';
+import StickyCTA from './components/StickyCTA';
 import Footer from './components/Footer';
-import ExitIntentPopup from './components/ExitIntentPopup';
-import { useExitIntent } from './hooks/useExitIntent';
+import Bonuses from './components/Bonuses';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {
-  const { showExitIntent, closeExitIntent } = useExitIntent();
 
   return (
     <HelmetProvider>
       <Helmet>
-        <title>UN JUEGO. UN SISTEMA. — Método Matemático Exclusivo con 98% de Efectividad</title>
-        <meta name="description" content="🔥 ÚLTIMO DÍA: El método matemático SECRETO con 98% de efectividad. Usado en más de 500,000 shoes. Genera $25,000+ USD. Solo 7 cupos restantes." />
-        <meta name="keywords" content="sistema matemático, método exclusivo, ganar dinero, estrategia, precisión, 98% efectividad, $25000 USD" />
-        <meta property="og:title" content="🚨 UN JUEGO. UN SISTEMA. — Método Matemático SECRETO (98% Efectividad)" />
-        <meta property="og:description" content="🔥 ÚLTIMO DÍA: Genera $25,000+ USD con el método matemático más efectivo jamás revelado. Solo 7 cupos restantes." />
+        <title>UN JUEGO. UN SISTEMA. — Método Matemático Exclusivo</title>
+        <meta name="description" content="El método matemático secreto con 98% de efectividad. Usado en más de 500,000 shoes. Nunca antes revelado públicamente." />
+        <meta name="keywords" content="sistema matemático, método exclusivo, inversión, estrategia, precisión" />
+        <meta property="og:title" content="UN JUEGO. UN SISTEMA. — Método Matemático Exclusivo" />
+        <meta property="og:description" content="El método matemático secreto con 98% de efectividad. Usado en más de 500,000 shoes." />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-cover.jpg" />
-        <meta property="og:image:alt" content="Portada del libro Un Juego Un Sistema - Método Matemático Secreto" />
+        <meta property="og:image:alt" content="Portada del libro Un Juego Un Sistema" />
         <meta property="og:url" content="https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🚨 UN JUEGO. UN SISTEMA. — Método Matemático SECRETO" />
-        <meta name="twitter:description" content="🔥 Genera $25,000+ USD con 98% de precisión. Solo 7 cupos restantes." />
+        <meta name="twitter:title" content="UN JUEGO. UN SISTEMA." />
+        <meta name="twitter:description" content="Método matemático exclusivo con 98% de precisión" />
         <meta name="twitter:image" content="/og-cover.jpg" />
-        <meta name="twitter:image:alt" content="Método matemático secreto con 98% de efectividad" />
+        <meta name="twitter:image:alt" content="Portada del libro Un Juego Un Sistema" />
 
         {/* Schema.org mejorado */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "UN JUEGO. UN SISTEMA. - Método Matemático Exclusivo",
-            "description": "El método matemático secreto con 98% de efectividad. Usado en más de 500,000 shoes. Genera ganancias de $25,000+ USD. Nunca antes revelado públicamente.",
+            "name": "UN JUEGO. UN SISTEMA.",
+            "description": "El método matemático secreto con 98% de efectividad. Usado en más de 500,000 shoes. Nunca antes revelado públicamente.",
             "image": "https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app/og-cover.jpg",
             "brand": {
               "@type": "Brand",
@@ -79,29 +79,18 @@ function App() {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black text-white">
-        {/* Línea superior sutil */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-purple-500"></div>
-        {/* Exit Intent Popup */}
-        <ExitIntentPopup isOpen={showExitIntent} onClose={closeExitIntent} />
-
-        {/* Secciones ULTRA-OPTIMIZADAS para máxima conversión y velocidad */}
-        <UltraHero />
+      <div className="min-h-screen bg-gradient-to-br from-[#181A20] via-[#23262F] to-[#101014] text-white">
+        <Hero />
+        <WhatIs />
+        <Storytelling />
         <Benefits />
-        <PremiumComparison />
+        <Comparison />
         <Testimonials />
-<<<<<<< HEAD
         <Countdown />
         <Bonuses />
         <StickyCTA />
         <FinalCTA />
         <Footer />
-=======
-        <UltraFAQ />
-        <UltraFinalCTA />
-        <Footer />
-        <UltraStickyCTA />
->>>>>>> 49ae83ac8d84d0b216d773e81515cd02fa479e59
       </div>
     </HelmetProvider>
   );

@@ -79,7 +79,11 @@ function App() {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-[#181A20] via-[#23262F] to-[#101014] text-white">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
+        <div className="p-8 text-center">
+          <h1 className="text-4xl text-yellow-400 mb-4">UN JUEGO. UN SISTEMA.</h1>
+          <p className="text-white">Página de prueba - si ves esto, el problema está en los componentes</p>
+        </div>
         <Hero />
         <WhatIs />
         <Storytelling />

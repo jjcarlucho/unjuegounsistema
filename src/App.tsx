@@ -43,7 +43,7 @@ function App() {
             },
             "offers": {
               "@type": "Offer",
-              "price": "25000.00",
+              "price": "17.00",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock"
             }
@@ -59,9 +59,9 @@ function App() {
         <Testimonials />
         <Countdown />
         <Bonuses />
+        <StickyCTA />
         <FinalCTA />
         <Footer />
-        <StickyCTA />
       </div>
     </HelmetProvider>
   );

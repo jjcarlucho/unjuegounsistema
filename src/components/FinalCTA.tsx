@@ -43,13 +43,20 @@ const FinalCTA = () => {
   };
 
   return (
-    <section id="final-cta" className="py-24 flex justify-center items-center bg-transparent">
+    <section id="contact-form" className="py-24 flex justify-center items-center bg-transparent">
       <div className="premium-glass max-w-xl w-full mx-auto p-12 rounded-2xl border border-yellow-500/10 shadow-2xl text-center">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-yellow-400 mb-6">
           ¡Asegura tu lugar antes que nadie!
         </h2>
+        <div className="mb-6">
+          <div className="text-2xl font-bold text-white mb-2">
+            <span className="line-through text-gray-400">$47</span> →
+            <span className="text-yellow-400 ml-2">$17 USD</span>
+          </div>
+          <p className="text-sm text-gray-300">Precio de preventa por tiempo limitado</p>
+        </div>
         <p className="text-lg text-yellow-400 mb-8 font-semibold">
-          Solo los primeros tendrán acceso anticipado y bonos exclusivos. ¡No te quedes fuera!
+          Solo los primeros tendrán acceso anticipado y bonos exclusivos valorados en $797. ¡No te quedes fuera!
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center justify-center">
           <input

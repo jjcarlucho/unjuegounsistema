@@ -12,11 +12,11 @@ const StickyCTA = () => (
     <button
       className="premium-glass flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold text-yellow-200 shadow-xl border border-yellow-500/20 backdrop-blur hover:scale-105 transition-all bg-gradient-to-r from-yellow-500/30 to-yellow-400/20"
       onClick={() => {
-        const el = document.getElementById('final-cta');
+        const el = document.getElementById('contact-form');
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }}
     >
-      ¡Reserva tu acceso ahora!
+      ¡Solo $17 - Reserva ahora!
       <ChevronRight className="w-5 h-5 ml-1" />
     </button>
   </motion.div>

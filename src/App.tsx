@@ -1,19 +1,13 @@
 import React from 'react';
-import PremiumHero from './components/PremiumHero';
-import WhatIs from './components/WhatIs';
-import Storytelling from './components/Storytelling';
+import UltraHero from './components/UltraHero';
 import Benefits from './components/Benefits';
 import PremiumComparison from './components/PremiumComparison';
 import Testimonials from './components/Testimonials';
-import FinalCTA from './components/FinalCTA';
-import Countdown from './components/Countdown';
-import PremiumStickyCTA from './components/PremiumStickyCTA';
+import UltraFAQ from './components/UltraFAQ';
+import UltraFinalCTA from './components/UltraFinalCTA';
+import UltraStickyCTA from './components/UltraStickyCTA';
 import Footer from './components/Footer';
-import Bonuses from './components/Bonuses';
 import ExitIntentPopup from './components/ExitIntentPopup';
-import GuaranteeBadges from './components/GuaranteeBadges';
-import ScarcitySection from './components/ScarcitySection';
-import FAQDemolisher from './components/FAQDemolisher';
 import { useExitIntent } from './hooks/useExitIntent';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -85,28 +79,21 @@ function App() {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black text-white relative overflow-hidden">
-        {/* Efectos de fondo premium */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-cyan-500/3 to-purple-500/5 animate-pulse"></div>
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-cyan-500 to-purple-500 animate-pulse"></div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black text-white">
+        {/* Línea superior sutil */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-purple-500"></div>
         {/* Exit Intent Popup */}
         <ExitIntentPopup isOpen={showExitIntent} onClose={closeExitIntent} />
 
-        {/* Secciones principales */}
-        <PremiumHero />
-        <WhatIs />
-        <Storytelling />
+        {/* Secciones ULTRA-OPTIMIZADAS para máxima conversión y velocidad */}
+        <UltraHero />
         <Benefits />
-        <GuaranteeBadges />
         <PremiumComparison />
-        <ScarcitySection />
         <Testimonials />
-        <Countdown />
-        <Bonuses />
-        <FAQDemolisher />
-        <FinalCTA />
+        <UltraFAQ />
+        <UltraFinalCTA />
         <Footer />
-        <PremiumStickyCTA />
+        <UltraStickyCTA />
       </div>
     </HelmetProvider>
   );

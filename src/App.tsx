@@ -91,8 +91,8 @@ function App() {
         <PremiumComparison onCTAClick={() => setShowLeadPopup(true)} />
         <Testimonials />
         <UltraFAQ onCTAClick={() => setShowLeadPopup(true)} />
-        <PremiumStickyCTA onCTAClick={() => setShowLeadPopup(true)} />
         <ScarcitySection />
+        <PremiumStickyCTA onCTAClick={() => setShowLeadPopup(true)} />
         <UltraFinalCTA onCTAClick={() => setShowLeadPopup(true)} />
         <Footer />
         <ExitIntentPopup

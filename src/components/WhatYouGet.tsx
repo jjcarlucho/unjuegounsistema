@@ -6,9 +6,9 @@ const WhatYouGet = () => {
   const items = [
     {
       icon: <BookOpen className="w-8 h-8 text-yellow-400" />,
-      title: "Ebook Completo del Sistema",
+      title: "Sistema Matemático Completo",
       description: "El método matemático completo explicado paso a paso",
-      value: "Principal"
+      value: "$47 USD"
     },
     {
       icon: <Gift className="w-8 h-8 text-green-400" />,
@@ -54,7 +54,7 @@ const WhatYouGet = () => {
     }
   ];
 
-  const totalValue = 500 + 297 + 47; // Bonos + libro original
+  const totalValue = 841; // Valor total de todo el paquete
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
@@ -119,7 +119,7 @@ const WhatYouGet = () => {
             🎯 VALOR TOTAL: ${totalValue} USD
           </h3>
           <p className="text-xl text-green-100 font-bold mb-6">
-            Hoy en preventa por solo <span className="text-4xl text-yellow-300">$17 USD</span>
+            Solo por hoy: <span className="text-4xl text-yellow-300">$17 USD</span>
           </p>
           <div className="flex items-center justify-center gap-2 text-green-200">
             <CheckCircle className="w-5 h-5" />

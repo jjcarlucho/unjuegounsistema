@@ -89,68 +89,104 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
           </button>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-              {/* Estadísticas en tiempo real */}
-              <div className="flex items-center justify-center md:justify-start gap-4">
-                <div className="text-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Users className="text-emerald-400" size={16} />
-                    <span className="text-emerald-400 font-bold text-sm">{currentViewers}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+
+              {/* Sección izquierda - Lo que obtienes */}
+              <div className="bg-gray-800/50 rounded-2xl p-4 border border-gray-600">
+                <h3 className="text-emerald-400 font-black text-lg mb-3 flex items-center gap-2">
+                  🎯 LO QUE OBTIENES HOY
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-400">💰</span>
+                    <span className="text-white text-sm">Sistema Matemático Completo</span>
+                    <span className="text-gray-400 text-xs ml-auto">Valor: $47 USD</span>
                   </div>
-                  <p className="text-gray-300 text-xs">viendo ahora</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <TrendingUp className="text-red-400" size={16} />
-                    <span className="text-red-400 font-bold text-sm">{spotsLeft}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-400">🎁</span>
+                    <span className="text-white text-sm">Garantía Blindada 30 Días</span>
+                    <span className="text-gray-400 text-xs ml-auto">+ $500 USD si no funciona</span>
                   </div>
-                  <p className="text-gray-300 text-xs">cupos restantes</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-purple-400">⚡</span>
+                    <span className="text-white text-sm">Soporte VIP 24/7</span>
+                    <span className="text-gray-400 text-xs ml-auto">Acceso directo al creador</span>
+                  </div>
+                </div>
+                <div className="mt-3 pt-3 border-t border-gray-600">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400 text-sm line-through">Valor Total: $841 USD</span>
+                  </div>
+                  <div className="text-center mt-2">
+                    <span className="text-green-400 font-black text-xl">Tu Precio: $17 USD</span>
+                    <p className="text-yellow-400 text-sm font-bold">¡Ahorras $824 USD!</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Contador de tiempo */}
+              {/* Sección central - CTA principal */}
               <div className="text-center">
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Clock className="text-cyan-400 animate-pulse" size={16} />
-                  <span className="text-cyan-400 font-black text-lg">{formatTime(timeLeft)}</span>
-                </div>
-                <p className="text-gray-300 text-xs font-bold">para cierre definitivo</p>
-              </div>
-
-              {/* Precio */}
-              <div className="text-center">
-                <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg px-4 py-2 inline-block">
-                  <p className="text-white text-xs line-through opacity-75">$47</p>
-                  <p className="text-white font-black text-xl">$17</p>
-                  <p className="text-pink-200 text-xs font-bold">PREVENTA</p>
-                </div>
-              </div>
-
-              {/* CTA principal */}
-              <div className="text-center md:text-right">
                 <motion.button
                   onClick={handleCTAClick}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto md:mx-0 relative overflow-hidden group"
+                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto relative overflow-hidden group w-full max-w-sm"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Crown className="relative z-10 animate-pulse" size={20} />
-                  <span className="relative z-10">ASEGURAR MI CUPO</span>
-                  <Zap className="relative z-10 animate-bounce" size={20} />
+                  <Zap className="relative z-10 animate-pulse" size={24} />
+                  <span className="relative z-10">QUIERO MI CUPO AHORA</span>
+                  <Zap className="relative z-10 animate-pulse" size={24} />
                 </motion.button>
+
+                <div className="mt-3 space-y-1">
+                  <p className="text-yellow-400 font-bold text-sm flex items-center justify-center gap-1">
+                    ⚡ Respuesta inmediata garantizada
+                  </p>
+                  <p className="text-green-400 text-xs flex items-center justify-center gap-1">
+                    ✅ Al hacer clic, te conectas directamente por WhatsApp
+                  </p>
+                  <p className="text-green-400 text-xs flex items-center justify-center gap-1">
+                    ✅ Recibes el acceso en menos de 5 minutos
+                  </p>
+                  <p className="text-green-400 text-xs flex items-center justify-center gap-1">
+                    ✅ Empiezas a generar resultados HOY mismo
+                  </p>
+                </div>
+              </div>
+
+              {/* Sección derecha - Advertencia */}
+              <div className="bg-red-900/30 rounded-2xl p-4 border-2 border-red-500">
+                <h3 className="text-red-400 font-black text-lg mb-3 flex items-center gap-2">
+                  ⚠️ ADVERTENCIA FINAL
+                </h3>
+                <p className="text-white text-sm mb-4">
+                  Si sales de esta página sin actuar, perderás esta oportunidad PARA SIEMPRE.
+                </p>
+
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Clock className="text-cyan-400 animate-pulse" size={20} />
+                    <span className="text-cyan-400 font-black text-2xl">{formatTime(timeLeft)}</span>
+                  </div>
+                  <p className="text-gray-300 text-sm font-bold">para cierre definitivo</p>
+
+                  <div className="mt-3 bg-red-600 rounded-lg px-3 py-2">
+                    <p className="text-white text-sm font-bold">$47</p>
+                    <p className="text-white font-black text-lg">$17</p>
+                    <p className="text-red-200 text-xs font-bold">PREVENTA</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Mensaje de urgencia */}
+            {/* Mensaje de urgencia final */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-center mt-3"
+              className="text-center mt-4 bg-yellow-600/20 rounded-lg py-2 px-4 border border-yellow-500/30"
             >
-              <p className="text-red-400 text-sm font-bold animate-pulse">
+              <p className="text-yellow-400 font-bold text-sm animate-pulse">
                 ⚠️ Una vez agotados los cupos, el acceso se cierra PARA SIEMPRE ⚠️
               </p>
             </motion.div>

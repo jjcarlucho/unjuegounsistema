@@ -4,15 +4,17 @@ import UltraHero from './components/UltraHero';
 import WhatIs from './components/WhatIs';
 import Benefits from './components/Benefits';
 import WhatYouGet from './components/WhatYouGet';
+import StrategicBonuses from './components/StrategicBonuses';
 import PremiumComparison from './components/PremiumComparison';
 import Testimonials from './components/Testimonials';
 import UltraFAQ from './components/UltraFAQ';
 import ScarcitySection from './components/ScarcitySection';
 import UltraFinalCTA from './components/UltraFinalCTA';
-import PremiumStickyCTA from './components/PremiumStickyCTA';
+
 import Footer from './components/Footer';
 import ExitIntentPopup from './components/ExitIntentPopup';
 import LeadCapturePopup from './components/LeadCapturePopup';
+import TimedNotificationPopup from './components/TimedNotificationPopup';
 
 function App() {
   const [showExitPopup, setShowExitPopup] = useState(false);
@@ -87,12 +89,12 @@ function App() {
         <UltraHero onCTAClick={() => setShowLeadPopup(true)} />
         <WhatIs />
         <Benefits />
+        <StrategicBonuses />
         <WhatYouGet />
         <PremiumComparison onCTAClick={() => setShowLeadPopup(true)} />
         <Testimonials />
         <UltraFAQ onCTAClick={() => setShowLeadPopup(true)} />
         <ScarcitySection />
-        <PremiumStickyCTA onCTAClick={() => setShowLeadPopup(true)} />
         <UltraFinalCTA onCTAClick={() => setShowLeadPopup(true)} />
         <Footer />
         <ExitIntentPopup
@@ -102,6 +104,9 @@ function App() {
         <LeadCapturePopup
           isOpen={showLeadPopup}
           onClose={() => setShowLeadPopup(false)}
+        />
+        <TimedNotificationPopup
+          onCTAClick={() => setShowLeadPopup(true)}
         />
       </div>
     </HelmetProvider>

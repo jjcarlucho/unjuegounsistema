@@ -54,7 +54,7 @@ const WhatYouGet = () => {
     }
   ];
 
-  const totalValue = 841; // Valor total de todo el paquete
+  const totalValue = 844; // Sistema ($47) + Bonos ($797) = $844
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">

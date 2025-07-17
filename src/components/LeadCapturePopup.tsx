@@ -154,7 +154,7 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
                     🔒 Pago 100% seguro con Hotmart
                   </p>
                   <p className="text-yellow-400 text-xs mt-2 font-bold">
-                    Valor total: $841 USD - Solo hoy: $17 USD
+                    Valor total: $844 USD - Solo hoy: $17 USD
                   </p>
                 </div>
               </>

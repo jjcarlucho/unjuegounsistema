@@ -9,7 +9,7 @@ const StrategicBonuses = () => {
       name: 'Su Deseo Es Su Mandato',
       originalPrice: 500,
       description: 'Acceso exclusivo al legendario entrenamiento "Your Wish Is Your Command". Descubre el secreto mejor guardado de la élite mundial para manifestar deseos, riqueza y éxito. Este audio-seminario, grabado en un retiro privado en los Alpes suizos, revela cómo activar la frecuencia cerebral THETA ("la onda de los millonarios") para atraer dinero, salud, amor y poder simplemente con tus pensamientos.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&crop=center',
       highlights: [
         'Técnicas de manifestación de la élite mundial',
         'Activación de frecuencia cerebral THETA',

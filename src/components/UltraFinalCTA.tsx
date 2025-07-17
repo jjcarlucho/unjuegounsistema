@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Clock, Shield, DollarSign, AlertTriangle } from 'lucide-react';
+import { Zap, Clock, Shield, DollarSign, AlertTriangle, Gift } from 'lucide-react';
 
 interface UltraFinalCTAProps {
   onCTAClick?: () => void;
@@ -97,18 +97,26 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                   <DollarSign className="text-emerald-400" size={24} />
                   <div>
                     <p className="text-white font-bold">Sistema Matemático Completo</p>
-                    <p className="text-emerald-300 text-sm">Valor: $25,000 USD</p>
+                    <p className="text-emerald-300 text-sm">Valor: $47 USD</p>
                   </div>
                 </div>
-                
+
+                <div className="flex items-center gap-4 bg-yellow-600/20 rounded-xl p-4">
+                  <Gift className="text-yellow-400" size={24} />
+                  <div>
+                    <p className="text-white font-bold">Bonos Exclusivos Incluidos</p>
+                    <p className="text-yellow-300 text-sm">Valor: $797 USD</p>
+                  </div>
+                </div>
+
                 <div className="flex items-center gap-4 bg-cyan-600/20 rounded-xl p-4">
                   <Shield className="text-cyan-400" size={24} />
                   <div>
                     <p className="text-white font-bold">Garantía Blindada 30 Días</p>
-                    <p className="text-cyan-300 text-sm">+ $500 USD si no funciona</p>
+                    <p className="text-cyan-300 text-sm">Devolución completa garantizada</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 bg-purple-600/20 rounded-xl p-4">
                   <Zap className="text-purple-400" size={24} />
                   <div>
@@ -119,9 +127,9 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
               </div>
               
               <div className="mt-6 text-center bg-green-600/20 rounded-xl p-4">
-                <p className="text-gray-400 text-lg line-through">Valor Total: $30,000 USD</p>
-                <p className="text-3xl font-black text-green-400">Tu Precio: $2,500 USD</p>
-                <p className="text-green-300 font-bold">¡Ahorras $27,500 USD!</p>
+                <p className="text-gray-400 text-lg line-through">Valor Total: $844 USD</p>
+                <p className="text-3xl font-black text-green-400">Tu Precio: $17 USD</p>
+                <p className="text-green-300 font-bold">¡Ahorras $827 USD!</p>
               </div>
             </div>
           </motion.div>

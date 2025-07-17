@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Clock, Users, TrendingUp, X, Crown } from 'lucide-react';
 
-const PremiumStickyCTA = () => {
+interface PremiumStickyCTAProps {
+  onCTAClick?: () => void;
+}
+
+const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [spotsLeft, setSpotsLeft] = useState(7);
   const [currentViewers, setCurrentViewers] = useState(247);
@@ -49,9 +53,14 @@ const PremiumStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleCTAClick = () => {
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   const handleClose = () => {
@@ -112,16 +121,16 @@ const PremiumStickyCTA = () => {
               {/* Precio */}
               <div className="text-center">
                 <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg px-4 py-2 inline-block">
-                  <p className="text-white text-xs line-through opacity-75">$25,000</p>
-                  <p className="text-white font-black text-xl">$2,500</p>
-                  <p className="text-pink-200 text-xs font-bold">90% OFF</p>
+                  <p className="text-white text-xs line-through opacity-75">$47</p>
+                  <p className="text-white font-black text-xl">$17</p>
+                  <p className="text-pink-200 text-xs font-bold">PREVENTA</p>
                 </div>
               </div>
 
               {/* CTA principal */}
               <div className="text-center md:text-right">
                 <motion.button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleCTAClick}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto md:mx-0 relative overflow-hidden group"

@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, Crown, Zap, Shield, TrendingUp, Target, Award, Star, Clock } from 'lucide-react';
 
-const PremiumComparison = () => {
+interface PremiumComparisonProps {
+  onCTAClick?: () => void;
+}
+
+const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => {
   const comparisons = [
     {
       category: "Efectividad",
@@ -13,13 +17,13 @@ const PremiumComparison = () => {
     {
       category: "Tiempo para ver resultados",
       others: "6-12 meses (tal vez)",
-      ours: "24-48 horas garantizado",
+      ours: "Menos de 1 semana (depende del caso)",
       icon: Clock
     },
     {
       category: "Inversión inicial",
       others: "$50,000 - $100,000+",
-      ours: "Solo $2,500 (90% descuento)",
+      ours: "Desde $100 USD (depende de cada persona)",
       icon: TrendingUp
     },
     {
@@ -31,7 +35,7 @@ const PremiumComparison = () => {
     {
       category: "Garantía",
       others: "Sin garantía o muy limitada",
-      ours: "30 días + $500 si no funciona",
+      ours: "30 días de garantía completa",
       icon: Award
     },
     {
@@ -55,9 +59,14 @@ const PremiumComparison = () => {
     "Bonos valorados en $5,000 USD incluidos"
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("💎 He visto la comparación y está claro que su sistema es SUPERIOR. Quiero acceder al método matemático con 98.7% de efectividad AHORA. ¿Cuál es el proceso exacto?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleCTAClick = () => {
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("💎 He visto la comparación y está claro que su sistema es SUPERIOR. Quiero acceder al método matemático con 98.7% de efectividad AHORA. ¿Cuál es el proceso exacto?");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   return (
@@ -192,7 +201,7 @@ const PremiumComparison = () => {
             </p>
             
             <motion.button
-              onClick={handleWhatsAppClick}
+              onClick={handleCTAClick}
               whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(16, 185, 129, 0.4)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-emerald-700 font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-white flex items-center justify-center gap-3 mx-auto"

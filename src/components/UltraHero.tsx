@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Clock, Star, TrendingUp, Users } from 'lucide-react';
 
-const UltraHero = () => {
+interface UltraHeroProps {
+  onCTAClick?: () => void;
+}
+
+const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
   const [currentProof, setCurrentProof] = useState(0);
   
   const socialProofs = [
-    { amount: "$47,300", time: "3 semanas", name: "Carlos M." },
-    { amount: "$89,500", time: "1 mes", name: "Ana L." },
-    { amount: "$156,000", time: "2 meses", name: "Roberto S." }
+    { message: "Nunca había visto algo tan innovador y efectivo", name: "Carlos M." },
+    { message: "Este método es completamente nuevo, jamás lo había encontrado", name: "Ana L." },
+    { message: "Increíble lo novedoso que es este sistema matemático", name: "Roberto S." }
   ];
 
   useEffect(() => {
@@ -19,8 +23,13 @@ const UltraHero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    const message = encodeURIComponent("🔥 QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA. He visto que tiene 98% de efectividad y quiero empezar a generar resultados inmediatos. ¿Cuál es el siguiente paso?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("🔥 QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA. He visto que tiene 98% de efectividad y quiero empezar a generar resultados inmediatos. ¿Cuál es el siguiente paso?");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   return (
@@ -72,29 +81,7 @@ const UltraHero = () => {
               <span className="text-green-400 font-black">98% de efectividad</span>
             </motion.p>
 
-            {/* Estadísticas clave */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-3 gap-4 mb-8"
-            >
-              <div className="bg-emerald-600/20 rounded-xl p-4 border border-emerald-500/30 text-center">
-                <TrendingUp className="text-emerald-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-emerald-400">98%</p>
-                <p className="text-emerald-300 text-sm font-bold">Precisión</p>
-              </div>
-              <div className="bg-cyan-600/20 rounded-xl p-4 border border-cyan-500/30 text-center">
-                <Users className="text-cyan-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-cyan-400">4,847</p>
-                <p className="text-cyan-300 text-sm font-bold">Usuarios</p>
-              </div>
-              <div className="bg-purple-600/20 rounded-xl p-4 border border-purple-500/30 text-center">
-                <Clock className="text-purple-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-purple-400">24H</p>
-                <p className="text-purple-300 text-sm font-bold">Resultados</p>
-              </div>
-            </motion.div>
+
 
             {/* Prueba social rotativa */}
             <motion.div
@@ -116,7 +103,7 @@ const UltraHero = () => {
                 transition={{ duration: 0.5 }}
               >
                 <p className="text-white font-bold text-lg mb-2">
-                  "Generé <span className="text-green-400">{socialProofs[currentProof].amount}</span> en {socialProofs[currentProof].time}"
+                  "<span className="text-green-400">{socialProofs[currentProof].message}</span>"
                 </p>
                 <p className="text-gray-400">- {socialProofs[currentProof].name}</p>
               </motion.div>
@@ -182,9 +169,9 @@ const UltraHero = () => {
                 {/* Badge de precio limpio */}
                 <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
                   <div className="text-center">
-                    <p className="text-sm line-through opacity-75">$25,000</p>
-                    <p className="text-2xl">$2,500</p>
-                    <p className="text-xs font-bold text-pink-200">90% OFF</p>
+                    <p className="text-sm line-through opacity-75">$47</p>
+                    <p className="text-2xl">$17</p>
+                    <p className="text-xs font-bold text-pink-200">PREVENTA</p>
                   </div>
                 </div>
               </div>

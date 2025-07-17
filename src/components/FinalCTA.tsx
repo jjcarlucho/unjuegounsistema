@@ -6,6 +6,10 @@ import emailjs from '@emailjs/browser';
 const FinalCTA = () => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
   const [submitted, setSubmitted] = useState(false);
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -26,6 +30,33 @@ const FinalCTA = () => {
     const mins = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!nombre || !apellido || !email) {
+      setError('Por favor completa todos los campos');
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        'service_id', // Reemplazar con tu service ID
+        'template_id', // Reemplazar con tu template ID
+        {
+          nombre,
+          apellido,
+          email,
+          mensaje: 'Solicitud de acceso al sistema matemático'
+        },
+        'public_key' // Reemplazar con tu public key
+      );
+      setSubmitted(true);
+    } catch (error) {
+      setError('Error al enviar. Intenta nuevamente.');
+    }
   };
 
   const handleWhatsAppClick = () => {

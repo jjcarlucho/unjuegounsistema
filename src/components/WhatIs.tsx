@@ -10,7 +10,7 @@ const features = [
   },
   {
     icon: <Shield className="w-6 h-6 text-yellow-400" />,
-    title: "Resultados en 1 semana (depende del caso)",
+    title: "Resultados en menos de 1 semana (depende del caso)",
     description: "Tiempo promedio para ver primeros resultados"
   },
   {

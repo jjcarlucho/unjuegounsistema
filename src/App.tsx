@@ -1,18 +1,22 @@
-import React from 'react';
-import Hero from './components/Hero';
-import WhatIs from './components/WhatIs';
-import Storytelling from './components/Storytelling';
-import Benefits from './components/Benefits';
-import Comparison from './components/Comparison';
-import Testimonials from './components/Testimonials';
-import FinalCTA from './components/FinalCTA';
-import Countdown from './components/Countdown';
-import StickyCTA from './components/StickyCTA';
-import Footer from './components/Footer';
-import Bonuses from './components/Bonuses';
+import React, { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import UltraHero from './components/UltraHero';
+import WhatIs from './components/WhatIs';
+import Benefits from './components/Benefits';
+import WhatYouGet from './components/WhatYouGet';
+import PremiumComparison from './components/PremiumComparison';
+import Testimonials from './components/Testimonials';
+import UltraFAQ from './components/UltraFAQ';
+import ScarcitySection from './components/ScarcitySection';
+import UltraFinalCTA from './components/UltraFinalCTA';
+import PremiumStickyCTA from './components/PremiumStickyCTA';
+import Footer from './components/Footer';
+import ExitIntentPopup from './components/ExitIntentPopup';
+import LeadCapturePopup from './components/LeadCapturePopup';
 
 function App() {
+  const [showExitPopup, setShowExitPopup] = useState(false);
+  const [showLeadPopup, setShowLeadPopup] = useState(false);
 
   return (
     <HelmetProvider>
@@ -25,7 +29,7 @@ function App() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-cover.jpg" />
         <meta property="og:image:alt" content="Portada del libro Un Juego Un Sistema" />
-        <meta property="og:url" content="https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app" />
+        <meta property="og:url" content="https://project55-irg46102s-jonathans-projects-53172663.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="UN JUEGO. UN SISTEMA." />
         <meta name="twitter:description" content="Método matemático exclusivo con 98% de precisión" />
@@ -39,7 +43,7 @@ function App() {
             "@type": "Product",
             "name": "UN JUEGO. UN SISTEMA.",
             "description": "El método matemático secreto con 98% de efectividad. Usado en más de 500,000 shoes. Nunca antes revelado públicamente.",
-            "image": "https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app/og-cover.jpg",
+            "image": "https://project55-irg46102s-jonathans-projects-53172663.vercel.app/og-cover.jpg",
             "brand": {
               "@type": "Brand",
               "name": "UN JUEGO. UN SISTEMA."
@@ -79,22 +83,26 @@ function App() {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
-        <div className="p-8 text-center">
-          <h1 className="text-4xl text-yellow-400 mb-4">UN JUEGO. UN SISTEMA.</h1>
-          <p className="text-white">Página de prueba - si ves esto, el problema está en los componentes</p>
-        </div>
-        <Hero />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white">
+        <UltraHero onCTAClick={() => setShowLeadPopup(true)} />
         <WhatIs />
-        <Storytelling />
         <Benefits />
-        <Comparison />
+        <WhatYouGet />
+        <PremiumComparison onCTAClick={() => setShowLeadPopup(true)} />
         <Testimonials />
-        <Countdown />
-        <Bonuses />
-        <StickyCTA />
-        <FinalCTA />
+        <UltraFAQ onCTAClick={() => setShowLeadPopup(true)} />
+        <PremiumStickyCTA onCTAClick={() => setShowLeadPopup(true)} />
+        <ScarcitySection />
+        <UltraFinalCTA onCTAClick={() => setShowLeadPopup(true)} />
         <Footer />
+        <ExitIntentPopup
+          isOpen={showExitPopup}
+          onClose={() => setShowExitPopup(false)}
+        />
+        <LeadCapturePopup
+          isOpen={showLeadPopup}
+          onClose={() => setShowLeadPopup(false)}
+        />
       </div>
     </HelmetProvider>
   );

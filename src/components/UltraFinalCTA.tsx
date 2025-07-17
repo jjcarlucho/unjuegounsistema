@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Clock, Shield, DollarSign, AlertTriangle } from 'lucide-react';
 
-const UltraFinalCTA = () => {
+interface UltraFinalCTAProps {
+  onCTAClick?: () => void;
+}
+
+const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
   const [submitted, setSubmitted] = useState(false);
 
@@ -24,10 +28,16 @@ const UltraFinalCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
-    setSubmitted(true);
+  const handleCTAClick = () => {
+    if (onCTAClick) {
+      onCTAClick();
+      setSubmitted(true);
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto?");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -134,7 +144,7 @@ const UltraFinalCTA = () => {
               </p>
               
               <button
-                onClick={handleWhatsAppClick}
+                onClick={handleCTAClick}
                 disabled={submitted}
                 className={`w-full text-white font-black text-2xl py-8 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 mb-6 ${
                   submitted 

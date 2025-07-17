@@ -8,7 +8,7 @@ const GuaranteeBadges: React.FC = () => {
       icon: Shield,
       title: "GARANTÍA BLINDADA",
       subtitle: "100% Satisfacción",
-      description: "Si no obtienes resultados en 30 días, te devolvemos TODO tu dinero + $500 USD por las molestias",
+      description: "Si no obtienes resultados en 30 días, te devolvemos TODO tu dinero",
       color: "from-green-500 to-emerald-600",
       borderColor: "border-green-400",
       bgColor: "bg-green-500/10"
@@ -166,7 +166,7 @@ const GuaranteeBadges: React.FC = () => {
               💎 GARANTÍA TOTAL DE SATISFACCIÓN 💎
             </p>
             <p className="text-green-100 text-lg">
-              Tu éxito está garantizado o te devolvemos tu dinero + $500 USD extra
+              Tu éxito está garantizado o te devolvemos tu dinero completo
             </p>
           </div>
         </motion.div>

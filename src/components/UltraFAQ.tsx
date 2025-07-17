@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, DollarSign, Clock, Shield, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const UltraFAQ = () => {
+interface UltraFAQProps {
+  onCTAClick?: () => void;
+}
+
+const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
   const faqs = [
@@ -28,9 +32,14 @@ const UltraFAQ = () => {
     }
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleCTAClick = () => {
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   return (
@@ -123,7 +132,7 @@ const UltraFAQ = () => {
             </p>
             
             <button
-              onClick={handleWhatsAppClick}
+              onClick={handleCTAClick}
               className="bg-white hover:bg-gray-100 text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
             >
               💰 SÍ, QUIERO CAMBIAR MI VIDA AHORA

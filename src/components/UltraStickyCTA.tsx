@@ -89,7 +89,7 @@ const UltraStickyCTA = () => {
                 className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-3 px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
                 <Zap size={20} />
-                ASEGURAR MI CUPO
+                ACCEDE A LA PREVENTA HOY
               </button>
             </div>
 

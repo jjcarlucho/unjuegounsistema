@@ -23,12 +23,12 @@ const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
     {
       icon: Shield,
       question: "¿Qué pasa si no funciona para mí?",
-      answer: "IMPOSIBLE que no funcione si sigues las instrucciones. Pero si por alguna razón no obtienes resultados en 30 días, te devolvemos tu dinero completo + $500 USD adicionales por las molestias.",
+      answer: "Si sigues las instrucciones correctamente, deberías ver resultados. Si por alguna razón no obtienes resultados en 30 días, te devolvemos tu dinero completo.",
     },
     {
       icon: Zap,
       question: "¿Cuándo veré mis primeros resultados?",
-      answer: "Los primeros resultados los verás en las primeras 24-48 horas. El 89% de nuestros usuarios recupera su inversión en la primera semana. El sistema está diseñado para generar resultados INMEDIATOS.",
+      answer: "Los primeros resultados típicamente se ven en la primera semana si aplicas el método correctamente. El tiempo puede variar según cada caso y la dedicación que le pongas.",
     }
   ];
 
@@ -135,7 +135,7 @@ const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
               onClick={handleCTAClick}
               className="bg-white hover:bg-gray-100 text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
             >
-              💰 SÍ, QUIERO CAMBIAR MI VIDA AHORA
+              💰 ACCEDE A LA PREVENTA HOY
             </button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

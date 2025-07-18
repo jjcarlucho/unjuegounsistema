@@ -207,7 +207,7 @@ const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => 
               className="bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-emerald-700 font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-white flex items-center justify-center gap-3 mx-auto"
             >
               <Zap size={28} />
-              SÍ, QUIERO EL SISTEMA SUPERIOR
+              ACCEDE A LA PREVENTA HOY
             </motion.button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

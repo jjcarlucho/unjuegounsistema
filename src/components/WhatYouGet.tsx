@@ -14,13 +14,13 @@ const WhatYouGet = () => {
       icon: <Gift className="w-8 h-8 text-green-400" />,
       title: "Bono: Su Deseo Es Su Mandato",
       description: "Entrenamiento exclusivo para manifestar riqueza y éxito",
-      value: "$500 USD"
+      value: "$297 USD"
     },
     {
       icon: <Gift className="w-8 h-8 text-blue-400" />,
       title: "Bono: Tapping (TFT)",
       description: "Técnica de liberación emocional y reprogramación mental",
-      value: "$297 USD"
+      value: "$200 USD"
     },
     {
       icon: <Shield className="w-8 h-8 text-purple-400" />,
@@ -37,8 +37,8 @@ const WhatYouGet = () => {
     {
       icon: <Zap className="w-8 h-8 text-red-400" />,
       title: "Resultados en Primera Semana",
-      description: "Si aplicas y lees el libro correctamente",
-      value: "Garantizado"
+      description: "Si aplicas el método correctamente (depende del caso)",
+      value: "Promedio"
     },
     {
       icon: <Globe className="w-8 h-8 text-cyan-400" />,
@@ -54,7 +54,7 @@ const WhatYouGet = () => {
     }
   ];
 
-  const totalValue = 844; // Sistema ($47) + Bonos ($797) = $844
+  const totalValue = 544; // Sistema ($47) + Bonos ($497) = $544
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">

@@ -105,7 +105,7 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                   <Gift className="text-yellow-400" size={24} />
                   <div>
                     <p className="text-white font-bold">Bonos Exclusivos Incluidos</p>
-                    <p className="text-yellow-300 text-sm">Valor: $797 USD</p>
+                    <p className="text-yellow-300 text-sm">Valor: $497 USD</p>
                   </div>
                 </div>
 
@@ -168,7 +168,7 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                 ) : (
                   <div className="flex items-center justify-center gap-3">
                     <Zap size={28} />
-                    🚨 QUIERO MI CUPO AHORA 🚨
+                    🚨 ACCEDE A LA PREVENTA HOY 🚨
                   </div>
                 )}
               </button>

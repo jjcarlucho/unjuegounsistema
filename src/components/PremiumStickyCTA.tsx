@@ -105,7 +105,7 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   <div className="flex items-center gap-2">
                     <span className="text-blue-400">🎁</span>
                     <span className="text-white text-sm">Bonos Exclusivos Incluidos</span>
-                    <span className="text-gray-400 text-xs ml-auto">Valor: $797 USD</span>
+                    <span className="text-gray-400 text-xs ml-auto">Valor: $497 USD</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-purple-400">⚡</span>
@@ -134,7 +134,7 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Zap className="relative z-10 animate-pulse" size={24} />
-                  <span className="relative z-10">QUIERO MI CUPO AHORA</span>
+                  <span className="relative z-10">ACCEDE A LA PREVENTA HOY</span>
                   <Zap className="relative z-10 animate-pulse" size={24} />
                 </motion.button>
 

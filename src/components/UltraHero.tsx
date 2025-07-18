@@ -121,7 +121,7 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
                 className="w-full lg:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 group"
               >
                 <Zap size={28} className="group-hover:animate-pulse" />
-                ACCEDER AL MÉTODO AHORA
+                ACCEDE A LA PREVENTA HOY
               </button>
             </motion.div>
 

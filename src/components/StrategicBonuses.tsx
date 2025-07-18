@@ -7,7 +7,7 @@ const StrategicBonuses = () => {
     {
       id: 1,
       name: 'Su Deseo Es Su Mandato',
-      originalPrice: 500,
+      originalPrice: 297,
       description: 'Acceso exclusivo al legendario entrenamiento "Your Wish Is Your Command". Descubre el secreto mejor guardado de la élite mundial para manifestar deseos, riqueza y éxito. Este audio-seminario, grabado en un retiro privado en los Alpes suizos, revela cómo activar la frecuencia cerebral THETA ("la onda de los millonarios") para atraer dinero, salud, amor y poder simplemente con tus pensamientos.',
       image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&crop=center',
       highlights: [
@@ -22,7 +22,7 @@ const StrategicBonuses = () => {
     {
       id: 2,
       name: 'Tapping (TFT/EFT)',
-      originalPrice: 297,
+      originalPrice: 200,
       description: 'El método Tapping (TFT/EFT): Libera tu potencial y elimina bloqueos en minutos. Accede a la técnica de liberación emocional y reprogramación mental utilizada por atletas de élite, empresarios y terapeutas de todo el mundo. El Tapping combina acupresión y psicología energética para ayudarte a superar miedos, estrés, ansiedad, creencias limitantes y traumas… en minutos.',
       image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center',
       highlights: [
@@ -152,14 +152,14 @@ const StrategicBonuses = () => {
           className="mt-16 bg-gradient-to-r from-yellow-600 to-orange-700 rounded-3xl p-8 border-2 border-yellow-400 text-center"
         >
           <h3 className="text-3xl font-black text-white mb-4">
-            🎁 VALOR TOTAL DE LOS BONOS: $797 USD
+            🎁 VALOR TOTAL DE LOS BONOS: $497 USD
           </h3>
           <p className="text-xl text-yellow-100 font-bold mb-6">
             Pero hoy los recibes <span className="text-4xl text-white">COMPLETAMENTE GRATIS</span>
           </p>
           <div className="bg-white/20 rounded-2xl p-4 inline-block">
             <p className="text-white font-bold text-lg">
-              Sistema ($47) + Bonos ($797) = <span className="line-through">$844 USD</span>
+              Sistema ($47) + Bonos ($497) = <span className="line-through">$544 USD</span>
             </p>
             <p className="text-yellow-300 font-black text-2xl mt-2">
               Tu precio hoy: $17 USD

@@ -16,18 +16,20 @@ const ScarcitySection: React.FC = () => {
   // Simulación de compras en tiempo real
   useEffect(() => {
     const interval = setInterval(() => {
-      const names = ["Diego", "Carmen", "Luis", "Patricia", "Fernando", "Sofía", "Miguel", "Valentina"];
-      const lastNames = ["R.", "M.", "G.", "L.", "S.", "P.", "C.", "V."];
-      const countries = ["México", "Colombia", "España", "Argentina", "Chile", "Perú", "Venezuela", "Ecuador"];
-      
+      const names = ["Diego", "Carmen", "Luis", "Patricia", "Fernando", "Sofía", "Miguel", "Valentina", "Carlos", "Ana", "Roberto", "María", "José", "Isabella", "Alejandro", "Camila"];
+      const lastNames = ["R.", "M.", "G.", "L.", "S.", "P.", "C.", "V.", "H.", "T.", "F.", "D.", "B.", "N.", "Q.", "Z."];
+      const countries = ["México", "Colombia", "España", "Argentina", "Chile", "Perú", "Venezuela", "Ecuador", "Uruguay", "Costa Rica", "Guatemala", "Honduras"];
+      const timeOptions = ["hace 1 min", "hace 2 min", "hace 3 min", "hace 4 min", "hace 5 min", "hace 7 min", "hace 8 min", "hace 12 min", "hace 15 min"];
+
       const randomName = names[Math.floor(Math.random() * names.length)];
       const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
       const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-      
+      const randomTime = timeOptions[Math.floor(Math.random() * timeOptions.length)];
+
       const newPurchase = {
         name: `${randomName} ${randomLastName}`,
         location: randomCountry,
-        time: "hace 1 min"
+        time: randomTime
       };
 
       setRecentPurchases(prev => {
@@ -217,7 +219,7 @@ const ScarcitySection: React.FC = () => {
               onClick={handleWhatsAppClick}
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400"
             >
-              🚨 ASEGURAR MI CUPO AHORA 🚨
+              🚨 ACCEDE A LA PREVENTA HOY 🚨
             </button>
             
             <p className="text-yellow-400 text-sm font-bold mt-4">

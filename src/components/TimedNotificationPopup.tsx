@@ -10,6 +10,16 @@ const TimedNotificationPopup: React.FC<TimedNotificationPopupProps> = ({ onCTACl
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutos
   const [currentViewers, setCurrentViewers] = useState(247);
+  const [timeOnPage, setTimeOnPage] = useState(0);
+
+  // Contador de tiempo en página
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeOnPage(prev => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Mostrar popup después de 1 minuto
   useEffect(() => {
@@ -112,7 +122,7 @@ const TimedNotificationPopup: React.FC<TimedNotificationPopupProps> = ({ onCTACl
                   🚨 ¡Estás a punto de perder esta oportunidad!
                 </h3>
                 <p className="text-red-200">
-                  Has estado {Math.floor(Math.random() * 5) + 3} minutos en esta página...
+                  Has estado {Math.floor(timeOnPage / 60)} minutos y {timeOnPage % 60} segundos en esta página...
                 </p>
               </div>
 

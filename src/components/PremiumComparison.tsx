@@ -163,7 +163,7 @@ const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => 
               LO QUE OBTIENES CON NUESTRO SISTEMA
             </h3>
             <p className="text-emerald-300 text-xl font-bold">
-              Valor total: $30,000 USD - Tu precio: $2,500 USD
+              Valor total: $844 USD - Tu precio: $17 USD
             </p>
           </div>
 

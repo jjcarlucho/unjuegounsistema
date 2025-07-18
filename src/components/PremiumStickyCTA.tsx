@@ -104,8 +104,8 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-blue-400">🎁</span>
-                    <span className="text-white text-sm">Garantía Blindada 30 Días</span>
-                    <span className="text-gray-400 text-xs ml-auto">+ $500 USD si no funciona</span>
+                    <span className="text-white text-sm">Bonos Exclusivos Incluidos</span>
+                    <span className="text-gray-400 text-xs ml-auto">Valor: $797 USD</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-purple-400">⚡</span>
@@ -115,11 +115,11 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                 </div>
                 <div className="mt-3 pt-3 border-t border-gray-600">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400 text-sm line-through">Valor Total: $841 USD</span>
+                    <span className="text-gray-400 text-sm line-through">Valor Total: $844 USD</span>
                   </div>
                   <div className="text-center mt-2">
                     <span className="text-green-400 font-black text-xl">Tu Precio: $17 USD</span>
-                    <p className="text-yellow-400 text-sm font-bold">¡Ahorras $824 USD!</p>
+                    <p className="text-yellow-400 text-sm font-bold">¡Ahorras $827 USD!</p>
                   </div>
                 </div>
               </div>

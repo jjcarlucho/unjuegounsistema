@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Clock, Shield, DollarSign, AlertTriangle, Gift } from 'lucide-react';
+import StripePaymentButton, { PaymentSecurityBadges } from './StripePaymentButton';
 
 interface UltraFinalCTAProps {
   onCTAClick?: () => void;
@@ -151,38 +152,35 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                 Solo tienes que hacer UNA cosa para cambiar tu vida financiera:
               </p>
               
-              <button
-                onClick={handleCTAClick}
-                disabled={submitted}
-                className={`w-full text-white font-black text-2xl py-8 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 mb-6 ${
-                  submitted 
-                    ? 'bg-green-600 border-green-400 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 border-emerald-400 hover:scale-105'
-                }`}
-              >
-                {submitted ? (
-                  <div className="flex items-center justify-center gap-3">
-                    <Zap size={28} />
-                    ¡MENSAJE ENVIADO!
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center gap-3">
-                    <Zap size={28} />
-                    🚨 ACCEDE A LA PREVENTA HOY 🚨
-                  </div>
-                )}
-              </button>
-              
-              <p className="text-emerald-200 text-lg font-bold mb-4">
-                ⚡ Respuesta inmediata garantizada
-              </p>
-              
-              <div className="bg-emerald-700/30 rounded-xl p-4">
-                <p className="text-emerald-100 text-sm font-bold">
-                  ✅ Al hacer clic, te conectas directamente por WhatsApp<br/>
-                  ✅ Recibes el acceso en menos de 5 minutos<br/>
-                  ✅ Empiezas a generar resultados HOY mismo
+              <StripePaymentButton
+                className="w-full mb-6"
+                size="lg"
+                onPaymentStart={() => setSubmitted(true)}
+                onPaymentError={(error) => {
+                  console.error('Payment error:', error);
+                  setSubmitted(false);
+                }}
+              />
+
+              <PaymentSecurityBadges />
+
+              <div className="mt-6 bg-blue-600/20 rounded-xl p-4 border border-blue-500/30">
+                <p className="text-blue-300 text-sm font-bold text-center">
+                  💳 Pago 100% seguro con Stripe<br/>
+                  ✅ Acceso inmediato después del pago<br/>
+                  ✅ Recibes todo por email en menos de 2 minutos
                 </p>
+              </div>
+
+              {/* Botón alternativo de WhatsApp */}
+              <div className="mt-4 text-center">
+                <p className="text-gray-400 text-sm mb-2">¿Prefieres pagar por WhatsApp?</p>
+                <button
+                  onClick={handleCTAClick}
+                  className="text-green-400 hover:text-green-300 font-bold text-sm underline transition-colors"
+                >
+                  💬 Contactar por WhatsApp
+                </button>
               </div>
             </div>
 

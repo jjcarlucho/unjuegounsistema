@@ -130,12 +130,15 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   onClick={handleCTAClick}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto relative overflow-hidden group w-full max-w-sm"
+                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg md:text-xl py-4 px-6 md:py-6 md:px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-2 md:gap-3 mx-auto relative overflow-hidden group w-full max-w-sm"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Zap className="relative z-10 animate-pulse" size={24} />
-                  <span className="relative z-10">ACCEDE A LA PREVENTA HOY</span>
-                  <Zap className="relative z-10 animate-pulse" size={24} />
+                  <Zap className="relative z-10 animate-pulse" size={20} />
+                  <span className="relative z-10 text-center">
+                    <span className="hidden sm:inline">ACCEDE A LA PREVENTA HOY</span>
+                    <span className="sm:hidden">PREVENTA HOY</span>
+                  </span>
+                  <Zap className="relative z-10 animate-pulse" size={20} />
                 </motion.button>
 
                 <div className="mt-3 space-y-1">
@@ -170,9 +173,9 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   </div>
                   <p className="text-gray-300 text-sm font-bold">para cierre definitivo</p>
 
-                  <div className="mt-3 bg-red-600 rounded-lg px-3 py-2">
-                    <p className="text-white text-sm font-bold">$47</p>
-                    <p className="text-white font-black text-lg">$17</p>
+                  <div className="mt-3 bg-red-600 rounded-lg px-2 py-1 md:px-3 md:py-2">
+                    <p className="text-white text-xs md:text-sm line-through opacity-75">$47</p>
+                    <p className="text-white font-black text-base md:text-lg">$17</p>
                     <p className="text-red-200 text-xs font-bold">PREVENTA</p>
                   </div>
                 </div>

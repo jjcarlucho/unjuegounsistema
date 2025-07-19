@@ -12,13 +12,20 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
   const socialProofs = [
     { message: "Nunca había visto algo tan innovador y efectivo", name: "Carlos M." },
     { message: "Este método es completamente nuevo, jamás lo había encontrado", name: "Ana L." },
-    { message: "Increíble lo novedoso que es este sistema matemático", name: "Roberto S." }
+    { message: "Increíble lo novedoso que es este sistema matemático", name: "Roberto S." },
+    { message: "Llevo 2 semanas aplicándolo y ya veo resultados consistentes", name: "María F." },
+    { message: "El enfoque matemático me convenció, no es suerte sino ciencia", name: "Diego P." },
+    { message: "Finalmente algo que funciona de verdad, no promesas vacías", name: "Sofía R." },
+    { message: "La precisión del sistema me sorprendió desde el primer día", name: "Alejandro T." },
+    { message: "Después de probar tantos métodos, este realmente es diferente", name: "Valentina C." },
+    { message: "Los resultados hablan por sí solos, matemática pura", name: "Fernando L." },
+    { message: "Por fin un sistema que se basa en datos reales, no en emociones", name: "Isabella G." }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentProof((prev) => (prev + 1) % socialProofs.length);
-    }, 3000);
+    }, 4000); // Cambiado a 4 segundos para dar más tiempo a leer
     return () => clearInterval(interval);
   }, []);
 
@@ -166,11 +173,11 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
                   className="w-full max-w-sm mx-auto rounded-2xl shadow-2xl"
                 />
                 
-                {/* Badge de precio limpio */}
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
+                {/* Badge de precio limpio - responsive */}
+                <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-3 py-2 md:px-6 md:py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
                   <div className="text-center">
-                    <p className="text-sm line-through opacity-75">$47</p>
-                    <p className="text-2xl">$17</p>
+                    <p className="text-xs md:text-sm line-through opacity-75">$47</p>
+                    <p className="text-lg md:text-2xl">$17</p>
                     <p className="text-xs font-bold text-pink-200">PREVENTA</p>
                   </div>
                 </div>

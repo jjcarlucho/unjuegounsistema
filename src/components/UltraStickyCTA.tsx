@@ -66,30 +66,31 @@ const UltraStickyCTA = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               
               {/* Contador de tiempo */}
-              <div className="flex items-center gap-3">
-                <Clock className="text-red-400" size={20} />
+              <div className="flex items-center gap-2 md:gap-3">
+                <Clock className="text-red-400" size={16} />
                 <div className="text-center">
-                  <p className="text-red-400 font-black text-lg">{formatTime(timeLeft)}</p>
+                  <p className="text-red-400 font-black text-sm md:text-lg">{formatTime(timeLeft)}</p>
                   <p className="text-gray-300 text-xs">para cierre definitivo</p>
                 </div>
               </div>
 
               {/* Precio */}
               <div className="text-center">
-                <div className="bg-red-600 rounded-lg px-4 py-2">
-                  <p className="text-white text-sm line-through opacity-75">$844</p>
-                  <p className="text-white font-black text-xl">$17</p>
-                  <p className="text-red-200 text-xs font-bold">98% OFF</p>
+                <div className="bg-red-600 rounded-lg px-3 py-1 md:px-4 md:py-2">
+                  <p className="text-white text-xs md:text-sm line-through opacity-75">$544</p>
+                  <p className="text-white font-black text-lg md:text-xl">$17</p>
+                  <p className="text-red-200 text-xs font-bold">97% OFF</p>
                 </div>
               </div>
 
               {/* CTA principal */}
               <button
                 onClick={handleWhatsAppClick}
-                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-3 px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-sm md:text-lg py-2 px-4 md:py-3 md:px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
-                <Zap size={20} />
-                ACCEDE A LA PREVENTA HOY
+                <Zap size={16} />
+                <span className="hidden sm:inline">ACCEDE A LA PREVENTA HOY</span>
+                <span className="sm:hidden">PREVENTA HOY</span>
               </button>
             </div>
 

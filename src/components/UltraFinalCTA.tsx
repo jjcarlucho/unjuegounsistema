@@ -105,7 +105,7 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                   <Gift className="text-yellow-400" size={24} />
                   <div>
                     <p className="text-white font-bold">Bonos Exclusivos Incluidos</p>
-                    <p className="text-yellow-300 text-sm">Valor: $497 USD</p>
+                    <p className="text-yellow-300 text-sm">Valor: $797 USD</p>
                   </div>
                 </div>
 
@@ -127,9 +127,9 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
               </div>
               
               <div className="mt-6 text-center bg-green-600/20 rounded-xl p-4">
-                <p className="text-gray-400 text-lg line-through">Valor Total: $544 USD</p>
+                <p className="text-gray-400 text-lg line-through">Valor Total: $844 USD</p>
                 <p className="text-3xl font-black text-green-400">Tu Precio: $17 USD</p>
-                <p className="text-green-300 font-bold">¡Ahorras $527 USD!</p>
+                <p className="text-green-300 font-bold">¡Ahorras $827 USD!</p>
               </div>
             </div>
           </motion.div>

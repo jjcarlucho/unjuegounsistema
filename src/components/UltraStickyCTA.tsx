@@ -77,9 +77,9 @@ const UltraStickyCTA = () => {
               {/* Precio */}
               <div className="text-center">
                 <div className="bg-red-600 rounded-lg px-3 py-1 md:px-4 md:py-2">
-                  <p className="text-white text-xs md:text-sm line-through opacity-75">$544</p>
+                  <p className="text-white text-xs md:text-sm line-through opacity-75">$844</p>
                   <p className="text-white font-black text-lg md:text-xl">$17</p>
-                  <p className="text-red-200 text-xs font-bold">97% OFF</p>
+                  <p className="text-red-200 text-xs font-bold">98% OFF</p>
                 </div>
               </div>
 

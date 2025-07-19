@@ -105,7 +105,7 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   <div className="flex items-center gap-2">
                     <span className="text-blue-400">🎁</span>
                     <span className="text-white text-sm">Bonos Exclusivos Incluidos</span>
-                    <span className="text-gray-400 text-xs ml-auto">Valor: $497 USD</span>
+                    <span className="text-gray-400 text-xs ml-auto">Valor: $797 USD</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-purple-400">⚡</span>

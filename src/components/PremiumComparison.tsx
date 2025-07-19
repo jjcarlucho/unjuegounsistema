@@ -54,9 +54,9 @@ const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => 
     "Resultados desde el primer día",
     "Acceso de por vida sin pagos adicionales",
     "Soporte VIP 24/7 directo con el creador",
-    "Garantía blindada de 30 días + $500 USD",
+    "Garantía blindada de 30 días",
     "Comunidad exclusiva de usuarios exitosos",
-    "Bonos valorados en $5,000 USD incluidos"
+    "Bonos valorados en $797 USD incluidos"
   ];
 
   const handleCTAClick = () => {
@@ -163,7 +163,7 @@ const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => 
               LO QUE OBTIENES CON NUESTRO SISTEMA
             </h3>
             <p className="text-emerald-300 text-xl font-bold">
-              Valor total: $544 USD - Tu precio: $17 USD
+              Valor total: $844 USD - Tu precio: $17 USD
             </p>
           </div>
 

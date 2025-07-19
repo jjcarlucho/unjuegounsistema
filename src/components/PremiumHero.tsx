@@ -345,9 +345,9 @@ const PremiumHero = () => {
                   className="absolute -top-8 -right-8 bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white px-8 py-6 rounded-2xl font-black text-xl border-3 border-pink-400 shadow-2xl shadow-pink-500/50 transform rotate-12"
                 >
                   <div className="text-center">
-                    <p className="text-sm line-through opacity-75">$544</p>
+                    <p className="text-sm line-through opacity-75">$844</p>
                     <p className="text-3xl animate-pulse">$17</p>
-                    <p className="text-sm font-bold text-pink-200 animate-bounce">97% OFF</p>
+                    <p className="text-sm font-bold text-pink-200 animate-bounce">98% OFF</p>
                   </div>
                   <div className="absolute -top-2 -left-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full animate-spin">
                     HOT

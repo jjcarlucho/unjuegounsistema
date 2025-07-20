@@ -9,9 +9,9 @@ interface LeadCapturePopupProps {
 
 const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    email: ''
+    nombreCompleto: '',
+    email: '',
+    telefono: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -33,17 +33,25 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
     setSubmitted(true);
     setIsSubmitting(false);
 
-    // Redirigir a Hotmart después de 2 segundos
+    // Redirigir a WhatsApp después de 2 segundos con los datos del formulario
     setTimeout(() => {
-      // TODO: Reemplazar con el link real de Hotmart
-      window.open('https://pay.hotmart.com/P95043748Y', '_blank');
+      const message = encodeURIComponent(`🚨 ¡QUIERO ACCEDER AL SISTEMA MATEMÁTICO!
+
+📋 Mis datos:
+• Nombre: ${formData.nombreCompleto}
+• Email: ${formData.email}
+• Teléfono: ${formData.telefono}
+
+He completado el formulario y estoy listo para asegurar mi cupo. ¿Cuál es el siguiente paso?`);
+
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
       onClose();
       setSubmitted(false);
-      setFormData({ nombre: '', apellido: '', email: '' });
+      setFormData({ nombreCompleto: '', email: '', telefono: '' });
     }, 2000);
   };
 
-  const isFormValid = formData.nombre && formData.apellido && formData.email;
+  const isFormValid = formData.nombreCompleto && formData.email && formData.telefono;
 
   return (
     <AnimatePresence>
@@ -81,10 +89,10 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
                   </div>
                   
                   <h3 className="text-2xl font-bold text-white mb-2">
-                    ¡Último paso para acceder!
+                    🚨 ¡Asegura tu cupo AHORA!
                   </h3>
                   <p className="text-gray-300">
-                    Completa tus datos para proceder al pago seguro
+                    Completa tus datos para contactarte inmediatamente
                   </p>
                 </div>
 
@@ -93,22 +101,22 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
                   <div>
                     <input
                       type="text"
-                      name="nombre"
-                      value={formData.nombre}
+                      name="nombreCompleto"
+                      value={formData.nombreCompleto}
                       onChange={handleInputChange}
-                      placeholder="Tu nombre"
+                      placeholder="Tu nombre completo *"
                       className="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-yellow-400 transition-all"
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <input
-                      type="text"
-                      name="apellido"
-                      value={formData.apellido}
+                      type="tel"
+                      name="telefono"
+                      value={formData.telefono}
                       onChange={handleInputChange}
-                      placeholder="Tu apellido"
+                      placeholder="Tu teléfono (con código de país) *"
                       className="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-yellow-400 transition-all"
                       required
                     />
@@ -120,10 +128,17 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="Tu email"
+                      placeholder="Tu email *"
                       className="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-yellow-400 transition-all"
                       required
                     />
+                  </div>
+
+                  {/* Nota sobre campos obligatorios */}
+                  <div className="text-center">
+                    <p className="text-gray-400 text-sm">
+                      * Todos los campos son obligatorios
+                    </p>
                   </div>
 
                   <motion.button

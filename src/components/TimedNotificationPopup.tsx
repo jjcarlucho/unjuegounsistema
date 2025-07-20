@@ -21,11 +21,11 @@ const TimedNotificationPopup: React.FC<TimedNotificationPopupProps> = ({ onCTACl
     return () => clearInterval(timer);
   }, []);
 
-  // Mostrar popup después de 1 minuto
+  // Mostrar popup después de 2.5 minutos
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 60000); // 60 segundos
+    }, 150000); // 150 segundos = 2.5 minutos
 
     return () => clearTimeout(timer);
   }, []);

@@ -1,7 +1,12 @@
 import { loadStripe } from '@stripe/stripe-js';
 
 // Configuración de Stripe
-const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51QKrOhP8nKjGzQhOYourKeyHere';
+const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+
+if (!stripePublishableKey) {
+  console.error('❌ VITE_STRIPE_PUBLISHABLE_KEY no está configurada');
+  console.log('📋 Agrega tu clave pública de Stripe en las variables de entorno');
+}
 
 export const stripePromise = loadStripe(stripePublishableKey);
 

@@ -27,11 +27,20 @@ const StripePaymentButton: React.FC<StripePaymentButtonProps> = ({
       setIsLoading(true);
       onPaymentStart?.();
 
+      // Verificar que Stripe esté configurado
+      if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
+        throw new Error('Stripe no está configurado correctamente');
+      }
+
       await redirectToCheckout(customerEmail);
     } catch (error) {
       console.error('Payment error:', error);
-      onPaymentError?.(error instanceof Error ? error.message : 'Error procesando el pago');
+      const errorMessage = error instanceof Error ? error.message : 'Error procesando el pago';
+      onPaymentError?.(errorMessage);
       setIsLoading(false);
+
+      // Mostrar alerta al usuario
+      alert(`Error: ${errorMessage}\n\nPor favor, intenta de nuevo o contacta soporte.`);
     }
   };
 

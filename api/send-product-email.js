@@ -1,5 +1,5 @@
 // Sistema de emails automáticos post-compra
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     res.status(405).end('Method Not Allowed');
@@ -132,4 +132,4 @@ function generateProductEmail(customerName, sessionId) {
     </body>
     </html>
   `;
-}
+};

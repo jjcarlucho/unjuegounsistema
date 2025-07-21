@@ -1,6 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     res.status(405).end('Method Not Allowed');
@@ -44,4 +44,4 @@ export default async function handler(req, res) {
       message: error.message 
     });
   }
-}
+};

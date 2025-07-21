@@ -1,0 +1,27 @@
+{
+  "functions": {
+    "api/create-checkout-session.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/verify-session.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/stripe-webhook.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/send-product-email.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "env": {
+    "VITE_STRIPE_PUBLISHABLE_KEY": "@vite_stripe_publishable_key",
+    "STRIPE_SECRET_KEY": "@stripe_secret_key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret"
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star, TrendingUp, Shield, Clock } from 'lucide-react';
+import DirectStripeButton from './DirectStripeButton';
 
 const Hero = () => {
   const scrollToForm = () => {
@@ -70,17 +71,19 @@ const Hero = () => {
         </motion.div>
 
         {/* CTA Button */}
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={scrollToForm}
-          className="bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-400 hover:to-red-400 text-black font-bold text-xl px-12 py-6 rounded-full shadow-2xl transform transition-all duration-300 hover:shadow-yellow-500/25"
         >
-          ACCEDER AL MÉTODO AHORA - $17
-        </motion.button>
+          <DirectStripeButton
+            variant="success"
+            size="lg"
+            className="px-12 py-6 text-xl rounded-full shadow-2xl"
+          >
+            ACCEDER AL MÉTODO AHORA - $17
+          </DirectStripeButton>
+        </motion.div>
 
         {/* Price Info */}
         <motion.p

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Clock, Star, TrendingUp, Users } from 'lucide-react';
+import DirectStripeButton from './DirectStripeButton';
 
 interface UltraHeroProps {
   onCTAClick?: () => void;
@@ -123,13 +124,13 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
               transition={{ duration: 0.6, delay: 1 }}
               className="mb-6"
             >
-              <button
-                onClick={handleCTAClick}
-                className="w-full lg:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 group"
+              <DirectStripeButton
+                variant="primary"
+                size="lg"
+                className="w-full lg:w-auto text-2xl py-6 px-12"
               >
-                <Zap size={28} className="group-hover:animate-pulse" />
                 ACCEDE A LA PREVENTA HOY
-              </button>
+              </DirectStripeButton>
             </motion.div>
 
             {/* Garantías simples */}

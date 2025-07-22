@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Zap, CheckCircle } from 'lucide-react';
+import { redirectToCheckout } from '../lib/stripe';
 
 interface LeadCapturePopupProps {
   isOpen: boolean;
@@ -27,28 +28,31 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({ isOpen, onClose }) 
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envío (aquí puedes integrar con tu servicio de email)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      // Verificar que Stripe esté configurado
+      if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
+        throw new Error('Stripe no está configurado correctamente');
+      }
 
-    // Redirigir a WhatsApp después de 2 segundos con los datos del formulario
-    setTimeout(() => {
-      const message = encodeURIComponent(`🚨 ¡QUIERO ACCEDER AL SISTEMA MATEMÁTICO!
+      setSubmitted(true);
 
-📋 Mis datos:
-• Nombre: ${formData.nombreCompleto}
-• Email: ${formData.email}
-• Teléfono: ${formData.telefono}
+      // Redirigir a Stripe Checkout después de 1 segundo
+      setTimeout(async () => {
+        try {
+          await redirectToCheckout(formData.email);
+        } catch (error) {
+          console.error('Error redirecting to checkout:', error);
+          alert('Error procesando el pago. Por favor, intenta de nuevo.');
+          setSubmitted(false);
+          setIsSubmitting(false);
+        }
+      }, 1000);
 
-He completado el formulario y estoy listo para asegurar mi cupo. ¿Cuál es el siguiente paso?`);
-
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
-      onClose();
-      setSubmitted(false);
-      setFormData({ nombreCompleto: '', email: '', telefono: '' });
-    }, 2000);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error procesando la solicitud. Por favor, intenta de nuevo.');
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.nombreCompleto && formData.email && formData.telefono;
@@ -166,7 +170,7 @@ He completado el formulario y estoy listo para asegurar mi cupo. ¿Cuál es el s
                 {/* Footer */}
                 <div className="text-center mt-6">
                   <p className="text-gray-400 text-sm">
-                    🔒 Pago 100% seguro con Hotmart
+                    🔒 Pago 100% seguro con Stripe
                   </p>
                   <p className="text-yellow-400 text-xs mt-2 font-bold">
                     Valor total: $844 USD - Solo hoy: $17 USD
@@ -187,7 +191,7 @@ He completado el formulario y estoy listo para asegurar mi cupo. ¿Cuál es el s
                     ¡Datos registrados!
                   </h3>
                   <p className="text-gray-300">
-                    Redirigiendo al pago seguro...
+                    Redirigiendo a Stripe Checkout...
                   </p>
                 </motion.div>
                 

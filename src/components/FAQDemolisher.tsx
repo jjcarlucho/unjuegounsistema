@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Zap, Shield, DollarSign, Clock, Target, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { redirectToCheckout } from '../lib/stripe';
 
 const FAQDemolisher: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
@@ -44,9 +45,13 @@ const FAQDemolisher: React.FC = () => {
     }
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleStripeClick = async () => {
+    try {
+      await redirectToCheckout();
+    } catch (error) {
+      console.error('Error redirecting to checkout:', error);
+      alert('Error procesando el pago. Por favor, intenta de nuevo.');
+    }
   };
 
   return (
@@ -140,14 +145,14 @@ const FAQDemolisher: React.FC = () => {
             </p>
             
             <button
-              onClick={handleWhatsAppClick}
+              onClick={handleStripeClick}
               className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-yellow-400 mb-4"
             >
-              💰 SÍ, QUIERO CAMBIAR MI VIDA AHORA 💰
+              💳 PAGAR CON TARJETA - $17
             </button>
-            
+
             <p className="text-green-200 text-sm font-bold">
-              ⚡ Sin más excusas, sin más dudas, solo RESULTADOS ⚡
+              ⚡ Pago seguro y acceso inmediato ⚡
             </p>
           </div>
         </motion.div>

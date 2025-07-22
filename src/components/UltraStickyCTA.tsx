@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Clock, X } from 'lucide-react';
+import { redirectToCheckout } from '../lib/stripe';
 
 const UltraStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,9 +36,13 @@ const UltraStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleStripeClick = async () => {
+    try {
+      await redirectToCheckout();
+    } catch (error) {
+      console.error('Error redirecting to checkout:', error);
+      alert('Error procesando el pago. Por favor, intenta de nuevo.');
+    }
   };
 
   const handleClose = () => {
@@ -85,12 +90,12 @@ const UltraStickyCTA = () => {
 
               {/* CTA principal */}
               <button
-                onClick={handleWhatsAppClick}
+                onClick={handleStripeClick}
                 className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-sm md:text-lg py-2 px-4 md:py-3 md:px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
                 <Zap size={16} />
-                <span className="hidden sm:inline">ACCEDE A LA PREVENTA HOY</span>
-                <span className="sm:hidden">PREVENTA HOY</span>
+                <span className="hidden sm:inline">PAGAR CON TARJETA</span>
+                <span className="sm:hidden">PAGAR</span>
               </button>
             </div>
 

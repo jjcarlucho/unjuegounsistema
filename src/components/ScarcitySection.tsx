@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Clock, Zap, AlertTriangle, TrendingUp, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { redirectToCheckout } from '../lib/stripe';
 
 const ScarcitySection: React.FC = () => {
   const [spotsLeft, setSpotsLeft] = useState(7);
@@ -59,9 +60,13 @@ const ScarcitySection: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(`🚨 ¡QUIERO UNO DE LOS ÚLTIMOS ${spotsLeft} CUPOS! He visto que quedan muy pocos y no quiero perder esta oportunidad única de acceder al sistema matemático.`);
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleStripeClick = async () => {
+    try {
+      await redirectToCheckout();
+    } catch (error) {
+      console.error('Error redirecting to checkout:', error);
+      alert('Error procesando el pago. Por favor, intenta de nuevo.');
+    }
   };
 
   return (
@@ -216,14 +221,14 @@ const ScarcitySection: React.FC = () => {
             </p>
             
             <button
-              onClick={handleWhatsAppClick}
+              onClick={handleStripeClick}
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400"
             >
-              🚨 ACCEDE A LA PREVENTA HOY 🚨
+              💳 PAGAR CON TARJETA - $17
             </button>
-            
+
             <p className="text-yellow-400 text-sm font-bold mt-4">
-              ⚡ Respuesta inmediata garantizada ⚡
+              ⚡ Pago seguro con Stripe ⚡
             </p>
           </div>
         </motion.div>

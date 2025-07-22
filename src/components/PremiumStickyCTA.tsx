@@ -56,10 +56,6 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
   const handleCTAClick = () => {
     if (onCTAClick) {
       onCTAClick();
-    } else {
-      // Fallback a WhatsApp si no se proporciona onCTAClick
-      const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
     }
   };
 
@@ -146,10 +142,10 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                     ⚡ Respuesta inmediata garantizada
                   </p>
                   <p className="text-green-400 text-xs flex items-center justify-center gap-1">
-                    ✅ Al hacer clic, te conectas directamente por WhatsApp
+                    ✅ Al hacer clic, vas directo al pago seguro
                   </p>
                   <p className="text-green-400 text-xs flex items-center justify-center gap-1">
-                    ✅ Recibes el acceso en menos de 5 minutos
+                    ✅ Recibes el acceso inmediatamente
                   </p>
                   <p className="text-green-400 text-xs flex items-center justify-center gap-1">
                     ✅ Empiezas a generar resultados HOY mismo

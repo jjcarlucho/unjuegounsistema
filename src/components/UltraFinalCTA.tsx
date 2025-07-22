@@ -33,11 +33,6 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
     if (onCTAClick) {
       onCTAClick();
       setSubmitted(true);
-    } else {
-      // Fallback a WhatsApp si no se proporciona onCTAClick
-      const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto?");
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
-      setSubmitted(true);
     }
   };
 
@@ -172,16 +167,7 @@ const UltraFinalCTA: React.FC<UltraFinalCTAProps> = ({ onCTAClick }) => {
                 </p>
               </div>
 
-              {/* Botón alternativo de WhatsApp */}
-              <div className="mt-4 text-center">
-                <p className="text-gray-400 text-sm mb-2">¿Prefieres pagar por WhatsApp?</p>
-                <button
-                  onClick={handleCTAClick}
-                  className="text-green-400 hover:text-green-300 font-bold text-sm underline transition-colors"
-                >
-                  💬 Contactar por WhatsApp
-                </button>
-              </div>
+
             </div>
 
             {/* Mensaje de urgencia final */}

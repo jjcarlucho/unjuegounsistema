@@ -33,10 +33,6 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
   const handleCTAClick = () => {
     if (onCTAClick) {
       onCTAClick();
-    } else {
-      // Fallback a WhatsApp si no se proporciona onCTAClick
-      const message = encodeURIComponent("🔥 QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA. He visto que tiene 98% de efectividad y quiero empezar a generar resultados inmediatos. ¿Cuál es el siguiente paso?");
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
     }
   };
 

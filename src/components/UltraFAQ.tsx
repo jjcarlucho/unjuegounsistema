@@ -35,10 +35,6 @@ const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
   const handleCTAClick = () => {
     if (onCTAClick) {
       onCTAClick();
-    } else {
-      // Fallback a WhatsApp si no se proporciona onCTAClick
-      const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
     }
   };
 

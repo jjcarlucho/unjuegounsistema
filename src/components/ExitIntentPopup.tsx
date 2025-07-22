@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Clock, Zap, Shield, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { redirectToCheckout } from '../lib/stripe';
 
 interface ExitIntentPopupProps {
   isOpen: boolean;
@@ -33,9 +34,13 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🔥 ¡QUIERO MI DESCUENTO DEL 90%! Vengo del popup de salida y quiero acceder al sistema por solo $2,500 antes de que se acabe esta oferta especial.");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleStripeClick = async () => {
+    try {
+      await redirectToCheckout();
+    } catch (error) {
+      console.error('Error redirecting to checkout:', error);
+      alert('Error procesando el pago. Por favor, intenta de nuevo.');
+    }
   };
 
   return (
@@ -156,16 +161,16 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                 transition={{ delay: 1, type: "spring" }}
               >
                 <button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleStripeClick}
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400 mb-4"
                 >
-                  🔥 SÍ, QUIERO MI 90% DE DESCUENTO 🔥
+                  💳 PAGAR CON TARJETA - $17
                 </button>
                 <p className="text-yellow-400 text-sm font-bold">
-                  ⚡ Respuesta inmediata por WhatsApp ⚡
+                  ⚡ Pago seguro con Stripe ⚡
                 </p>
                 <p className="text-red-400 text-xs mt-2 font-bold animate-pulse">
-                  ⚠️ Solo para los primeros 10 que respondan ⚠️
+                  ⚠️ Oferta por tiempo limitado ⚠️
                 </p>
               </motion.div>
             </div>

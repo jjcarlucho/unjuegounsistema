@@ -62,10 +62,6 @@ const PremiumComparison: React.FC<PremiumComparisonProps> = ({ onCTAClick }) => 
   const handleCTAClick = () => {
     if (onCTAClick) {
       onCTAClick();
-    } else {
-      // Fallback a WhatsApp si no se proporciona onCTAClick
-      const message = encodeURIComponent("💎 He visto la comparación y está claro que su sistema es SUPERIOR. Quiero acceder al método matemático con 98.7% de efectividad AHORA. ¿Cuál es el proceso exacto?");
-      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
     }
   };
 

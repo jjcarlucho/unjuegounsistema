@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Shield, DollarSign, AlertTriangle, CreditCard } from 'lucide-react';
+import { Zap, DollarSign, AlertTriangle, CreditCard } from 'lucide-react';
 import { useStripe } from '../hooks/useStripe';
 
 const UltraFinalCTA = () => {
@@ -92,13 +92,7 @@ const UltraFinalCTA = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-4 bg-cyan-600/20 rounded-xl p-4">
-                  <Shield className="text-cyan-400" size={24} />
-                  <div>
-                    <p className="text-white font-bold">Garantía Blindada 30 Días</p>
-                    <p className="text-cyan-300 text-sm">+ $500 USD si no funciona</p>
-                  </div>
-                </div>
+
                 
                 <div className="flex items-center gap-4 bg-purple-600/20 rounded-xl p-4">
                   <Zap className="text-purple-400" size={24} />
@@ -167,16 +161,14 @@ const UltraFinalCTA = () => {
                 <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
               )}
 
-              <p className="text-emerald-200 text-lg font-bold mb-4">
-                🔒 GARANTÍA BLINDADA: Si no generas dinero, te devolvemos TODO + $500 USD
-              </p>
+
 
               <div className="bg-emerald-700/30 rounded-xl p-4">
                 <p className="text-emerald-100 text-sm font-bold">
                   ✅ Pago 100% seguro con Stripe<br/>
                   ✅ Acceso INMEDIATO después del pago<br/>
                   ✅ Empiezas a generar $$$$ HOY mismo<br/>
-                  ✅ Garantía de 30 días + $500 USD si no funciona
+                  ✅ Soporte técnico incluido
                 </p>
               </div>
             </div>

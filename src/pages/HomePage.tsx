@@ -6,7 +6,7 @@ import Storytelling from '../components/Storytelling';
 import WhatIs from '../components/WhatIs';
 import ImprovedTestimonials from '../components/ImprovedTestimonials';
 import CaseStudies from '../components/CaseStudies';
-import EnhancedGuarantee from '../components/EnhancedGuarantee';
+
 import Comparison from '../components/Comparison';
 import Bonuses from '../components/Bonuses';
 import UltraFAQ from '../components/UltraFAQ';
@@ -122,9 +122,6 @@ const HomePage: React.FC = () => {
 
         {/* Nuevos casos de estudio */}
         <CaseStudies />
-
-        {/* Garantía mejorada */}
-        <EnhancedGuarantee />
 
         <Comparison />
         <Bonuses />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Gift, Globe, Clock, Users, Zap, Shield, Star } from 'lucide-react';
+import { BookOpen, Gift, Globe, Clock, Users, Zap, Star } from 'lucide-react';
 
 const bonuses = [
   {
@@ -27,14 +27,7 @@ const bonuses = [
     status: 'bonus',
     color: 'from-blue-400 to-cyan-500'
   },
-  {
-    icon: Shield,
-    title: 'Garantía de 30 días',
-    description: 'Si no funciona, te devolvemos tu dinero completo',
-    price: 'Incluido',
-    status: 'guarantee',
-    color: 'from-purple-400 to-violet-500'
-  },
+
   {
     icon: Users,
     title: 'Soporte Exclusivo',

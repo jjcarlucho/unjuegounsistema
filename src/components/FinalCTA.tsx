@@ -93,13 +93,7 @@ const FinalCTA = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 bg-blue-600/20 rounded-xl p-4 border border-blue-500/30">
-                  <Shield className="text-blue-400" size={24} />
-                  <div>
-                    <p className="text-white font-bold">Garantía Blindada 30 Días</p>
-                    <p className="text-blue-300 text-sm">+ $500 USD si no funciona</p>
-                  </div>
-                </div>
+
 
                 <div className="flex items-center gap-4 bg-purple-600/20 rounded-xl p-4 border border-purple-500/30">
                   <TrendingUp className="text-purple-400" size={24} />

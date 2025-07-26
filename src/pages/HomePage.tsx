@@ -10,8 +10,7 @@ import CaseStudies from '../components/CaseStudies';
 import Comparison from '../components/Comparison';
 import Bonuses from '../components/Bonuses';
 import UltraFAQ from '../components/UltraFAQ';
-import ScarcitySection from '../components/ScarcitySection';
-import UltraFinalCTA from '../components/UltraFinalCTA';
+
 import Footer from '../components/Footer';
 import UltraStickyCTA from '../components/UltraStickyCTA';
 import StickyNavigation from '../components/StickyNavigation';
@@ -128,12 +127,6 @@ const HomePage: React.FC = () => {
 
         <div id="faq">
           <UltraFAQ />
-        </div>
-
-        <ScarcitySection />
-
-        <div id="cta">
-          <UltraFinalCTA />
         </div>
 
         <Footer />

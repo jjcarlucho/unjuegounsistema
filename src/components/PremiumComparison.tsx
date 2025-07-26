@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, Crown, Zap, Shield, TrendingUp, Target, Award, Star, Clock } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const PremiumComparison = () => {
   const comparisons = [
@@ -55,9 +56,10 @@ const PremiumComparison = () => {
     "Bonos valorados en $5,000 USD incluidos"
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("💎 He visto la comparación y está claro que su sistema es SUPERIOR. Quiero acceder al método matemático con 98.7% de efectividad AHORA. ¿Cuál es el proceso exacto?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   return (
@@ -192,13 +194,23 @@ const PremiumComparison = () => {
             </p>
             
             <motion.button
-              onClick={handleWhatsAppClick}
+              onClick={handlePurchaseClick}
+              disabled={loading}
               whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(16, 185, 129, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-emerald-700 font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-white flex items-center justify-center gap-3 mx-auto"
+              className="bg-gradient-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white disabled:opacity-50 disabled:cursor-not-allowed text-emerald-700 font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-white flex items-center justify-center gap-3 mx-auto"
             >
-              <Zap size={28} />
-              SÍ, QUIERO EL SISTEMA SUPERIOR
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-700"></div>
+                  PROCESANDO...
+                </>
+              ) : (
+                <>
+                  <Zap size={28} />
+                  COMPRAR POR $17 USD
+                </>
+              )}
             </motion.button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

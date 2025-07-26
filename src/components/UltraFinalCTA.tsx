@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Clock, Shield, DollarSign, AlertTriangle } from 'lucide-react';
+import { Zap, Shield, DollarSign, AlertTriangle, CreditCard } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const UltraFinalCTA = () => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
   const [submitted, setSubmitted] = useState(false);
+  const { redirectToCheckout, loading, error } = useStripe();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,9 +26,8 @@ const UltraFinalCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handlePurchaseClick = () => {
+    redirectToCheckout();
     setSubmitted(true);
   };
 
@@ -87,7 +88,7 @@ const UltraFinalCTA = () => {
                   <DollarSign className="text-emerald-400" size={24} />
                   <div>
                     <p className="text-white font-bold">Sistema Matemático Completo</p>
-                    <p className="text-emerald-300 text-sm">Valor: $25,000 USD</p>
+                    <p className="text-emerald-300 text-sm">Sistema completo incluido</p>
                   </div>
                 </div>
                 
@@ -109,9 +110,8 @@ const UltraFinalCTA = () => {
               </div>
               
               <div className="mt-6 text-center bg-green-600/20 rounded-xl p-4">
-                <p className="text-gray-400 text-lg line-through">Valor Total: $30,000 USD</p>
-                <p className="text-3xl font-black text-green-400">Tu Precio: $2,500 USD</p>
-                <p className="text-green-300 font-bold">¡Ahorras $27,500 USD!</p>
+                <p className="text-3xl font-black text-green-400">Tu Precio: $17 USD</p>
+                <p className="text-green-300 font-bold">¡Acceso completo al sistema!</p>
               </div>
             </div>
           </motion.div>
@@ -130,40 +130,53 @@ const UltraFinalCTA = () => {
               </h3>
               
               <p className="text-xl text-emerald-100 font-bold mb-8">
-                Solo tienes que hacer UNA cosa para cambiar tu vida financiera:
+                🎯 ESTA ES TU ÚLTIMA OPORTUNIDAD DE ESCAPAR DE LA POBREZA:
+              </p>
+              <p className="text-lg text-emerald-200 font-bold mb-6">
+                ⚡ Solo $17 te separan de una vida de abundancia financiera ⚡
               </p>
               
               <button
-                onClick={handleWhatsAppClick}
-                disabled={submitted}
+                onClick={handlePurchaseClick}
+                disabled={submitted || loading}
                 className={`w-full text-white font-black text-2xl py-8 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 mb-6 ${
                   submitted 
                     ? 'bg-green-600 border-green-400 cursor-not-allowed' 
                     : 'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 border-emerald-400 hover:scale-105'
                 }`}
               >
-                {submitted ? (
+                {loading ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                    PROCESANDO...
+                  </div>
+                ) : submitted ? (
                   <div className="flex items-center justify-center gap-3">
                     <Zap size={28} />
-                    ¡MENSAJE ENVIADO!
+                    ✅ REDIRIGIENDO A PAGO
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-3">
-                    <Zap size={28} />
-                    🚨 QUIERO MI CUPO AHORA 🚨
+                    <CreditCard size={28} />
+                    � ¡SÍ! QUIERO SER RICO POR SOLO $17 �
                   </div>
                 )}
               </button>
-              
+
+              {error && (
+                <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
+              )}
+
               <p className="text-emerald-200 text-lg font-bold mb-4">
-                ⚡ Respuesta inmediata garantizada
+                🔒 GARANTÍA BLINDADA: Si no generas dinero, te devolvemos TODO + $500 USD
               </p>
-              
+
               <div className="bg-emerald-700/30 rounded-xl p-4">
                 <p className="text-emerald-100 text-sm font-bold">
-                  ✅ Al hacer clic, te conectas directamente por WhatsApp<br/>
-                  ✅ Recibes el acceso en menos de 5 minutos<br/>
-                  ✅ Empiezas a generar resultados HOY mismo
+                  ✅ Pago 100% seguro con Stripe<br/>
+                  ✅ Acceso INMEDIATO después del pago<br/>
+                  ✅ Empiezas a generar $$$$ HOY mismo<br/>
+                  ✅ Garantía de 30 días + $500 USD si no funciona
                 </p>
               </div>
             </div>

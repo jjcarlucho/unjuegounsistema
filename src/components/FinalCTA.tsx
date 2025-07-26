@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Zap, Clock, DollarSign, Shield, AlertTriangle, TrendingUp } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { useStripe } from '../hooks/useStripe';
 
 const FinalCTA = () => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
@@ -28,10 +28,10 @@ const FinalCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡ESTA ES MI ÚLTIMA OPORTUNIDAD! He llegado hasta el final de la página y estoy 100% convencido. Quiero acceder al sistema matemático AHORA antes de que se acabe el tiempo. ¿Cuál es el proceso exacto para asegurar mi cupo?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
-    setSubmitted(true);
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   return (
@@ -144,21 +144,21 @@ const FinalCTA = () => {
               </p>
 
               <motion.button
-                onClick={handleWhatsAppClick}
+                onClick={handlePurchaseClick}
+                disabled={loading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-2xl py-8 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-green-400 mb-6"
-                disabled={submitted}
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-2xl py-8 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-green-400 mb-6"
               >
-                {submitted ? (
+                {loading ? (
                   <div className="flex items-center justify-center gap-3">
-                    <CheckCircle2 size={28} />
-                    ¡MENSAJE ENVIADO!
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                    PROCESANDO...
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-3">
                     <Zap size={28} />
-                    🚨 QUIERO MI CUPO AHORA 🚨
+                    🚨 COMPRAR POR $17 USD 🚨
                   </div>
                 )}
               </motion.button>
@@ -169,8 +169,8 @@ const FinalCTA = () => {
 
               <div className="bg-green-700/50 rounded-xl p-4">
                 <p className="text-green-100 text-sm font-bold">
-                  ✅ Al hacer clic, te conectas directamente por WhatsApp<br/>
-                  ✅ Recibes el acceso en menos de 5 minutos<br/>
+                  ✅ Pago 100% seguro con Stripe<br/>
+                  ✅ Acceso inmediato al sistema<br/>
                   ✅ Empiezas a generar resultados HOY mismo
                 </p>
               </div>

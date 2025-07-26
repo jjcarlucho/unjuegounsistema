@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/create-checkout-session.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/get-session.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/webhook.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "env": {
+    "STRIPE_SECRET_KEY": "@stripe-secret-key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe-webhook-secret"
+  }
+}

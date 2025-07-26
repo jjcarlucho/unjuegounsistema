@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Clock, Zap, AlertTriangle, TrendingUp, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useStripe } from '../hooks/useStripe';
 
 const ScarcitySection: React.FC = () => {
   const [spotsLeft, setSpotsLeft] = useState(7);
@@ -57,9 +58,10 @@ const ScarcitySection: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(`🚨 ¡QUIERO UNO DE LOS ÚLTIMOS ${spotsLeft} CUPOS! He visto que quedan muy pocos y no quiero perder esta oportunidad única de acceder al sistema matemático.`);
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   return (
@@ -214,10 +216,18 @@ const ScarcitySection: React.FC = () => {
             </p>
             
             <button
-              onClick={handleWhatsAppClick}
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400"
+              onClick={handlePurchaseClick}
+              disabled={loading}
+              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400"
             >
-              🚨 ASEGURAR MI CUPO AHORA 🚨
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  PROCESANDO...
+                </div>
+              ) : (
+                "🚨 COMPRAR POR $17 USD 🚨"
+              )}
             </button>
             
             <p className="text-yellow-400 text-sm font-bold mt-4">

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Shield, Clock, Star, TrendingUp, Users } from 'lucide-react';
+import { Zap, Shield, Clock, Star, TrendingUp, Users, CreditCard } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const UltraHero = () => {
   const [currentProof, setCurrentProof] = useState(0);
-  
+  const { redirectToCheckout, loading, error } = useStripe();
+
   const socialProofs = [
     { amount: "$47,300", time: "3 semanas", name: "Carlos M." },
     { amount: "$89,500", time: "1 mes", name: "Ana L." },
@@ -19,8 +21,7 @@ const UltraHero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    const message = encodeURIComponent("🔥 QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA. He visto que tiene 98% de efectividad y quiero empezar a generar resultados inmediatos. ¿Cuál es el siguiente paso?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    redirectToCheckout();
   };
 
   return (
@@ -42,7 +43,7 @@ const UltraHero = () => {
               className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full font-bold text-sm mb-8 border border-red-400"
             >
               <Zap size={16} />
-              🔥 ÚLTIMOS 7 CUPOS DISPONIBLES
+              🚨 ÚLTIMAS HORAS: SOLO 3 CUPOS RESTANTES 🚨
             </motion.div>
 
             {/* Título principal */}
@@ -68,8 +69,10 @@ const UltraHero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-2xl md:text-3xl text-white font-bold mb-8"
             >
-              El método matemático <span className="text-emerald-400">SECRETO</span> con{' '}
-              <span className="text-green-400 font-black">98% de efectividad</span>
+              El método matemático <span className="text-emerald-400">SECRETO</span> que está{' '}
+              <span className="text-green-400 font-black">CREANDO MILLONARIOS</span> cada día
+              <br />
+              <span className="text-yellow-400 font-black">¡Solo por $17 en PREVENTA!</span>
             </motion.p>
 
             {/* Estadísticas clave */}
@@ -131,11 +134,24 @@ const UltraHero = () => {
             >
               <button
                 onClick={handleCTAClick}
-                className="w-full lg:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 group"
+                disabled={loading}
+                className="w-full lg:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 group"
               >
-                <Zap size={28} className="group-hover:animate-pulse" />
-                ACCEDER AL MÉTODO AHORA
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                    PROCESANDO...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard size={28} className="group-hover:animate-pulse" />
+                    🔥 ¡QUIERO CAMBIAR MI VIDA POR $17! 🔥
+                  </>
+                )}
               </button>
+              {error && (
+                <p className="text-red-400 text-sm mt-2 text-center">{error}</p>
+              )}
             </motion.div>
 
             {/* Garantías simples */}
@@ -182,9 +198,8 @@ const UltraHero = () => {
                 {/* Badge de precio limpio */}
                 <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
                   <div className="text-center">
-                    <p className="text-sm line-through opacity-75">$25,000</p>
-                    <p className="text-2xl">$2,500</p>
-                    <p className="text-xs font-bold text-pink-200">90% OFF</p>
+                    <p className="text-3xl font-black">$17</p>
+                    <p className="text-xs font-bold text-pink-200">PREVENTA</p>
                   </div>
                 </div>
               </div>

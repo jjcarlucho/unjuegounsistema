@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Clock, X } from 'lucide-react';
+import { Zap, Clock, X, CreditCard } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
+import { useCTATracking } from '../hooks/useAnalytics';
 
 const UltraStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
+  const { redirectToCheckout, loading, error } = useStripe();
+  const { trackCTAClick } = useCTATracking();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      const threshold = window.innerHeight * 0.3; // Aparece después del 30% de scroll
+      const threshold = window.innerHeight * 0.3; // Aparece después del 70% de scroll
       setIsVisible(scrolled > threshold);
     };
 
@@ -35,9 +39,9 @@ const UltraStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handlePurchaseClick = () => {
+    trackCTAClick('sticky_bottom', 'COMPRAR POR $17');
+    redirectToCheckout();
   };
 
   const handleClose = () => {
@@ -77,19 +81,28 @@ const UltraStickyCTA = () => {
               {/* Precio */}
               <div className="text-center">
                 <div className="bg-red-600 rounded-lg px-4 py-2">
-                  <p className="text-white text-sm line-through opacity-75">$25,000</p>
-                  <p className="text-white font-black text-xl">$2,500</p>
-                  <p className="text-red-200 text-xs font-bold">90% OFF</p>
+                  <p className="text-white font-black text-2xl">$17</p>
+                  <p className="text-red-200 text-xs font-bold">PRECIO ESPECIAL</p>
                 </div>
               </div>
 
               {/* CTA principal */}
               <button
-                onClick={handleWhatsAppClick}
-                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-3 px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
+                onClick={handlePurchaseClick}
+                disabled={loading}
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-lg py-3 px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
-                <Zap size={20} />
-                ASEGURAR MI CUPO
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    PROCESANDO...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard size={20} />
+                    💎 COMPRAR POR $17 💎
+                  </>
+                )}
               </button>
             </div>
 

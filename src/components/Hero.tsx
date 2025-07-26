@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star, Zap, TrendingUp, Shield, Clock, DollarSign, Users } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const Hero = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
-    { text: "Gané $18,500 en mi primera semana", author: "Carlos M." },
-    { text: "Increíble, $32,000 en 21 días", author: "Ana L." },
-    { text: "El sistema funciona, $25,000 en un mes", author: "Roberto S." }
+    { text: "El método es increíblemente preciso", author: "Carlos M." },
+    { text: "Cambió completamente mi perspectiva", author: "Ana L." },
+    { text: "Simple, elegante y efectivo", author: "Roberto S." }
   ];
 
   useEffect(() => {
@@ -18,9 +19,10 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🔥 ¡QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA! He visto la página y estoy listo para cambiar mi vida financiera. ¿Cuál es el siguiente paso?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   const handleVideoClick = () => {
@@ -178,14 +180,24 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.button
-                onClick={handleWhatsAppClick}
+                onClick={handlePurchaseClick}
+                disabled={loading}
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(16, 185, 129, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-600 hover:via-green-600 hover:to-emerald-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-emerald-400 flex items-center justify-center gap-3 relative overflow-hidden group"
+                className="bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-600 hover:via-green-600 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-2xl border-2 border-emerald-400 flex items-center justify-center gap-3 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Zap size={24} className="relative z-10" />
-                <span className="relative z-10">ACCEDER AL MÉTODO AHORA</span>
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span className="relative z-10">PROCESANDO...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap size={24} className="relative z-10" />
+                    <span className="relative z-10">COMPRAR POR $17</span>
+                  </>
+                )}
               </motion.button>
 
               <motion.button

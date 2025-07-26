@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Clock, Users, TrendingUp, X, Crown } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const PremiumStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -49,9 +50,10 @@ const PremiumStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   const handleClose = () => {
@@ -121,15 +123,25 @@ const PremiumStickyCTA = () => {
               {/* CTA principal */}
               <div className="text-center md:text-right">
                 <motion.button
-                  onClick={handleWhatsAppClick}
+                  onClick={handlePurchaseClick}
+                  disabled={loading}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-lg py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto md:mx-0 relative overflow-hidden group"
+                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-lg py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 mx-auto md:mx-0 relative overflow-hidden group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Crown className="relative z-10 animate-pulse" size={20} />
-                  <span className="relative z-10">ASEGURAR MI CUPO</span>
-                  <Zap className="relative z-10 animate-bounce" size={20} />
+                  {loading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span className="relative z-10">PROCESANDO...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Crown className="relative z-10 animate-pulse" size={20} />
+                      <span className="relative z-10">COMPRAR POR $17</span>
+                      <Zap className="relative z-10 animate-bounce" size={20} />
+                    </>
+                  )}
                 </motion.button>
               </div>
             </div>

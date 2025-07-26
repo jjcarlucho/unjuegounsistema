@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, DollarSign, Clock, Shield, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useStripe } from '../hooks/useStripe';
 
 const UltraFAQ = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
@@ -28,9 +29,10 @@ const UltraFAQ = () => {
     }
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   return (
@@ -123,10 +125,18 @@ const UltraFAQ = () => {
             </p>
             
             <button
-              onClick={handleWhatsAppClick}
-              className="bg-white hover:bg-gray-100 text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
+              onClick={handlePurchaseClick}
+              disabled={loading}
+              className="bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
             >
-              💰 SÍ, QUIERO CAMBIAR MI VIDA AHORA
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-emerald-700"></div>
+                  PROCESANDO...
+                </div>
+              ) : (
+                "💰 COMPRAR POR $17 USD"
+              )}
             </button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

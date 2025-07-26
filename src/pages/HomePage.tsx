@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
         {/* Línea superior sutil */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-purple-500"></div>
 
-        {/* Deployment trigger comment */}
+        {/* Force deployment - timestamp: 2025-07-26-19:55 */}
 
         {/* Exit Intent Popup */}
         <ExitIntentPopup isOpen={showExitIntent} onClose={closeExitIntent} />

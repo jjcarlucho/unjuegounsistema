@@ -172,12 +172,126 @@ const Bonuses = () => {
           })}
         </motion.div>
 
-        {/* Bono especial Tapping */}
+        {/* Valor total destacado */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-6 md:p-8 text-center mb-12 border-2 border-green-400/50 relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-transparent to-emerald-500/20"></div>
+          <div className="relative z-10">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold">🎯</span>
+              </div>
+              <span className="text-white/90 font-bold text-lg">VALOR TOTAL: $844 USD</span>
+            </div>
+
+            <div className="text-center">
+              <p className="text-white/90 text-xl mb-2">Solo por hoy: <span className="text-yellow-300 font-black text-3xl">$17 USD</span></p>
+              <div className="flex items-center justify-center gap-2 text-white/80">
+                <div className="w-4 h-4 bg-green-300 rounded-full flex items-center justify-center">
+                  <span className="text-green-800 text-xs">✓</span>
+                </div>
+                <span>Acceso inmediato después del pago</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Bono especial Su Deseo Es Su Mandato */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          className="bg-gradient-to-br from-purple-900/30 to-violet-900/30 rounded-3xl p-8 md:p-12 border-2 border-purple-500/50 relative overflow-hidden mb-12"
+        >
+          {/* Background pattern */}
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-violet-500/10"></div>
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-600 rounded-lg">
+                <Gift size={24} className="text-white" />
+              </div>
+              <span className="text-purple-400 font-bold text-lg">BONO #1</span>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div className="relative">
+                <div className="bg-gradient-to-br from-purple-500/20 to-violet-600/20 rounded-2xl p-8 border border-purple-500/30">
+                  <img
+                    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&crop=center"
+                    alt="Su Deseo Es Su Mandato"
+                    className="w-full h-64 object-cover rounded-xl"
+                  />
+                  <div className="absolute top-4 right-4 bg-purple-500 text-white p-3 rounded-full">
+                    <Star size={24} />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                  Su Deseo Es Su Mandato
+                </h3>
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="bg-purple-600 text-white px-4 py-2 rounded-lg font-bold">
+                    $500 USD
+                  </div>
+                  <div className="bg-green-500 text-white px-4 py-2 rounded-lg font-bold">
+                    GRATIS HOY
+                  </div>
+                </div>
+
+                <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                  Acceso exclusivo al legendario entrenamiento "Your Wish Is Your Command".
+                  Descubre el secreto mejor guardado de la élite mundial para manifestar deseos,
+                  riqueza y éxito. Este audio-seminario, grabado en un retiro privado en los Alpes
+                  suizos, revela cómo activar la frecuencia cerebral THETA ("la onda de los millonarios")
+                  para atraer dinero, salud, amor y poder simplemente con tus pensamientos.
+                </p>
+
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-purple-400">
+                    <Star size={16} className="text-yellow-400" />
+                    <span className="font-semibold">Lo que incluye:</span>
+                  </div>
+
+                  <div className="space-y-2 text-gray-300">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                      <span>Técnicas de manifestación de la élite mundial</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                      <span>Activación de frecuencia cerebral THETA</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                      <span>Grabado en retiro privado en los Alpes suizos</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                      <span>Validado por neurociencia moderna</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Bono especial Tapping */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-gradient-to-br from-emerald-900/30 to-green-900/30 rounded-3xl p-8 md:p-12 border-2 border-emerald-500/50 relative overflow-hidden"
         >
           {/* Background pattern */}

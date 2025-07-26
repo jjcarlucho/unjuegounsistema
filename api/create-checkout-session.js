@@ -1,32 +1,42 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-module.exports = async (req, res) => {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    res.status(405).end('Method Not Allowed');
     return;
   }
 
-  if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+  // Verificar que Stripe esté configurado
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.error('❌ STRIPE_SECRET_KEY no está configurada');
+    return res.status(500).json({
+      error: 'Stripe no está configurado correctamente',
+      message: 'STRIPE_SECRET_KEY no encontrada en variables de entorno'
+    });
   }
 
   try {
     const {
-      priceAmount = 1700,
-      currency = 'usd',
-      productName = 'Sistema Matemático Premium',
-      productDescription = 'Acceso completo al sistema matemático de alta conversión',
-      successUrl,
-      cancelUrl,
+      name,
+      description,
+      price,
+      currency,
+      images,
+      metadata,
+      customer_email,
+      success_url,
+      cancel_url
     } = req.body;
 
-    // Create Stripe checkout session
+    console.log('🚀 Creando sesión de checkout:', {
+      name,
+      price,
+      currency,
+      customer_email: customer_email || 'No proporcionado'
+    });
+
+    // Crear sesión de checkout
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -34,40 +44,47 @@ module.exports = async (req, res) => {
           price_data: {
             currency: currency,
             product_data: {
-              name: productName,
-              description: productDescription,
-              images: ['https://your-domain.com/product-image.jpg'], // Add your product image URL
+              name: name,
+              description: description,
+              images: images,
+              metadata: metadata,
             },
-            unit_amount: priceAmount,
+            unit_amount: price,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: successUrl,
-      cancel_url: cancelUrl,
-      billing_address_collection: 'required',
-      customer_creation: 'always',
+      success_url: success_url,
+      cancel_url: cancel_url,
+      customer_email: customer_email,
       metadata: {
-        product: 'sistema-matematico-premium',
-        version: '1.0',
+        ...metadata,
+        customer_email: customer_email || '',
+        purchase_timestamp: new Date().toISOString(),
       },
-      // Add automatic tax calculation if needed
-      automatic_tax: {
-        enabled: false,
+      // Configuración adicional
+      payment_intent_data: {
+        metadata: {
+          ...metadata,
+          customer_email: customer_email || '',
+        },
       },
-      // Add shipping if needed
-      shipping_address_collection: {
-        allowed_countries: ['US', 'CA', 'MX', 'AR', 'BR', 'CL', 'CO', 'PE', 'UY', 'VE', 'EC', 'BO', 'PY', 'GY', 'SR', 'FK'],
+      // Configurar emails automáticos de Stripe
+      customer_creation: 'always',
+      invoice_creation: {
+        enabled: true,
       },
     });
 
-    res.status(200).json({ sessionId: session.id });
+    console.log('✅ Sesión creada exitosamente:', session.id);
+    res.status(200).json({ id: session.id, url: session.url });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    res.status(500).json({ 
+    console.error('❌ Error creating checkout session:', error);
+    res.status(500).json({
       error: 'Error creating checkout session',
-      details: error.message 
+      message: error.message,
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 };

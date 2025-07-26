@@ -47,7 +47,7 @@ const Countdown = () => {
           <span>{time.s}</span>
         </div>
       )}
-      <div className="text-yellow-400 text-xs mt-2 font-semibold">Después vuelve a $47. Acceso anticipado solo para los primeros.</div>
+      <div className="text-yellow-400 text-xs mt-2 font-semibold">Acceso anticipado solo para los primeros. No garantizado para todos.</div>
     </div>
   );
 };

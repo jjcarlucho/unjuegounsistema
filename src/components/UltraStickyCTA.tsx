@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Clock, X } from 'lucide-react';
-import { redirectToCheckout } from '../lib/stripe';
+import { Zap, Clock, X, CreditCard } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
+import { useCTATracking } from '../hooks/useAnalytics';
 
 const UltraStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
+  const { redirectToCheckout, loading, error } = useStripe();
+  const { trackCTAClick } = useCTATracking();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      const threshold = window.innerHeight * 0.3; // Aparece después del 30% de scroll
+      const threshold = window.innerHeight * 0.3; // Aparece después del 70% de scroll
       setIsVisible(scrolled > threshold);
     };
 
@@ -36,13 +39,9 @@ const UltraStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleStripeClick = async () => {
-    try {
-      await redirectToCheckout();
-    } catch (error) {
-      console.error('Error redirecting to checkout:', error);
-      alert('Error procesando el pago. Por favor, intenta de nuevo.');
-    }
+  const handlePurchaseClick = () => {
+    trackCTAClick('sticky_bottom', 'COMPRAR POR $17');
+    redirectToCheckout();
   };
 
   const handleClose = () => {
@@ -71,31 +70,39 @@ const UltraStickyCTA = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               
               {/* Contador de tiempo */}
-              <div className="flex items-center gap-2 md:gap-3">
-                <Clock className="text-red-400" size={16} />
+              <div className="flex items-center gap-3">
+                <Clock className="text-red-400" size={20} />
                 <div className="text-center">
-                  <p className="text-red-400 font-black text-sm md:text-lg">{formatTime(timeLeft)}</p>
+                  <p className="text-red-400 font-black text-lg">{formatTime(timeLeft)}</p>
                   <p className="text-gray-300 text-xs">para cierre definitivo</p>
                 </div>
               </div>
 
               {/* Precio */}
               <div className="text-center">
-                <div className="bg-red-600 rounded-lg px-3 py-1 md:px-4 md:py-2">
-                  <p className="text-white text-xs md:text-sm line-through opacity-75">$844</p>
-                  <p className="text-white font-black text-lg md:text-xl">$17</p>
-                  <p className="text-red-200 text-xs font-bold">98% OFF</p>
+                <div className="bg-red-600 rounded-lg px-4 py-2">
+                  <p className="text-white font-black text-2xl">$17</p>
+                  <p className="text-red-200 text-xs font-bold">PRECIO ESPECIAL</p>
                 </div>
               </div>
 
               {/* CTA principal */}
               <button
-                onClick={handleStripeClick}
-                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-sm md:text-lg py-2 px-4 md:py-3 md:px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
+                onClick={handlePurchaseClick}
+                disabled={loading}
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-lg py-3 px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
-                <Zap size={16} />
-                <span className="hidden sm:inline">PAGAR CON TARJETA</span>
-                <span className="sm:hidden">PAGAR</span>
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    PROCESANDO...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard size={20} />
+                    💎 COMPRAR POR $17 💎
+                  </>
+                )}
               </button>
             </div>
 

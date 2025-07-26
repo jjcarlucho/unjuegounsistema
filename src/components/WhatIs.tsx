@@ -10,8 +10,8 @@ const features = [
   },
   {
     icon: <Shield className="w-6 h-6 text-yellow-400" />,
-    title: "Resultados en menos de 1 semana (depende del caso)",
-    description: "Tiempo promedio para ver primeros resultados"
+    title: "Ganancias sostenibles y controladas",
+    description: "Metodología de riesgo calculado"
   },
   {
     icon: <Brain className="w-6 h-6 text-yellow-400" />,
@@ -20,8 +20,8 @@ const features = [
   },
   {
     icon: <Target className="w-6 h-6 text-yellow-400" />,
-    title: "Inversión mínima desde $100 USD",
-    description: "Puedes empezar con el monto que desees (depende del caso)"
+    title: "Usado por inversores y jugadores elite",
+    description: "Método exclusivo para profesionales"
   }
 ];
 
@@ -38,22 +38,8 @@ const WhatIs = () => {
             ¿Por qué esta <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">oportunidad única</span> es tan exclusiva?
           </h2>
           <p className="text-xl text-yellow-400 max-w-2xl mx-auto font-semibold">
-            Solo los primeros en acceder a la preventa podrán descubrir el método matemático que ha sido ocultado durante décadas. Precio normal $47, pero en preventa solo $17. Esta es tu oportunidad de entrar antes que el resto del mundo, con acceso anticipado y bonos irrepetibles.
+            Solo los primeros en acceder a la preventa podrán descubrir el método matemático que ha sido ocultado durante décadas. Esta es tu oportunidad de entrar antes que el resto del mundo, con acceso anticipado y bonos irrepetibles.
           </p>
-
-          <div className="grid md:grid-cols-2 gap-6 mt-12">
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-4 p-6 bg-black/20 rounded-xl border border-yellow-500/10">
-                <div className="flex-shrink-0 w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-gray-300">{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

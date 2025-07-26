@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Clock, Zap, Shield, Star } from 'lucide-react';
+import { X, Clock, Zap, Shield, Star, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { redirectToCheckout } from '../lib/stripe';
+import { useStripe } from '../hooks/useStripe';
 
 interface ExitIntentPopupProps {
   isOpen: boolean;
@@ -10,6 +10,7 @@ interface ExitIntentPopupProps {
 
 const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) => {
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutos
+  const { redirectToCheckout, loading, error } = useStripe();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -34,13 +35,9 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleStripeClick = async () => {
-    try {
-      await redirectToCheckout();
-    } catch (error) {
-      console.error('Error redirecting to checkout:', error);
-      alert('Error procesando el pago. Por favor, intenta de nuevo.');
-    }
+  const handlePurchaseClick = () => {
+    redirectToCheckout();
+    onClose();
   };
 
   return (
@@ -108,7 +105,7 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                 <p className="text-yellow-400 font-bold">¡No volverás a ver este precio!</p>
               </motion.div>
 
-              {/* Oferta brutal */}
+              {/* Oferta especial */}
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -116,20 +113,13 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                 className="mb-6"
               >
                 <div className="bg-gradient-to-r from-green-600 to-green-800 rounded-2xl p-6 border-2 border-green-400">
-                  <div className="flex items-center justify-center gap-4 mb-4">
-                    <div className="text-center">
-                      <p className="text-green-200 text-sm">Precio Normal</p>
-                      <p className="text-2xl font-bold text-white line-through">$25,000</p>
-                    </div>
-                    <Zap className="text-yellow-400" size={32} />
-                    <div className="text-center">
-                      <p className="text-green-200 text-sm">Tu Precio AHORA</p>
-                      <p className="text-4xl font-black text-yellow-400">$2,500</p>
-                    </div>
+                  <div className="text-center">
+                    <p className="text-green-200 text-lg font-bold mb-2">🔥 OFERTA ESPECIAL DE SALIDA 🔥</p>
+                    <p className="text-6xl font-black text-yellow-400 mb-2">$17</p>
+                    <p className="text-green-100 font-bold text-xl">
+                      ¡Tu última oportunidad de cambiar tu vida! 💰
+                    </p>
                   </div>
-                  <p className="text-green-100 font-bold">
-                    ¡Ahorras $22,500 USD! 💰
-                  </p>
                 </div>
               </motion.div>
 
@@ -161,16 +151,30 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                 transition={{ delay: 1, type: "spring" }}
               >
                 <button
-                  onClick={handleStripeClick}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400 mb-4"
+                  onClick={handlePurchaseClick}
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400 mb-4"
                 >
-                  💳 PAGAR CON TARJETA - $17
+                  {loading ? (
+                    <>
+                      <div className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      PROCESANDO...
+                    </>
+                  ) : (
+                    <>
+                      <CreditCard className="inline mr-2" size={20} />
+                      🚨 ¡ESPERA! DAME MI OPORTUNIDAD DE $17 🚨
+                    </>
+                  )}
                 </button>
+                {error && (
+                  <p className="text-red-400 text-sm mb-2">{error}</p>
+                )}
                 <p className="text-yellow-400 text-sm font-bold">
-                  ⚡ Pago seguro con Stripe ⚡
+                  🔒 Pago 100% seguro con Stripe
                 </p>
                 <p className="text-red-400 text-xs mt-2 font-bold animate-pulse">
-                  ⚠️ Oferta por tiempo limitado ⚠️
+                  ⚠️ Solo para los primeros 10 que respondan ⚠️
                 </p>
               </motion.div>
             </div>

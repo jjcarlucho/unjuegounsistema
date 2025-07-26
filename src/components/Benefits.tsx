@@ -16,8 +16,8 @@ const benefits = [
   },
   {
     icon: <TrendingUp className="w-8 h-8 text-yellow-400" />,
-    title: "Resultados en 1 semana promedio",
-    description: "Tiempo típico para ver primeros resultados (depende del caso)"
+    title: "Ganancias pequeñas, repetidas, acumuladas",
+    description: "Crecimiento sostenible y controlado"
   },
   {
     icon: <Target className="w-8 h-8 text-yellow-400" />,
@@ -26,8 +26,8 @@ const benefits = [
   },
   {
     icon: <Shield className="w-8 h-8 text-yellow-400" />,
-    title: "Inversión mínima desde $100 USD",
-    description: "Puedes empezar con el capital que tengas (depende del caso)"
+    title: "Ideal para largo plazo, sin adrenalina",
+    description: "Enfoque disciplinado y metodológico"
   },
   {
     icon: <Zap className="w-8 h-8 text-yellow-400" />,

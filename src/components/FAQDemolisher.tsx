@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Zap, Shield, DollarSign, Clock, Target, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { redirectToCheckout } from '../lib/stripe';
+import { useStripe } from '../hooks/useStripe';
 
 const FAQDemolisher: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
@@ -45,13 +45,10 @@ const FAQDemolisher: React.FC = () => {
     }
   ];
 
-  const handleStripeClick = async () => {
-    try {
-      await redirectToCheckout();
-    } catch (error) {
-      console.error('Error redirecting to checkout:', error);
-      alert('Error procesando el pago. Por favor, intenta de nuevo.');
-    }
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   return (
@@ -145,14 +142,22 @@ const FAQDemolisher: React.FC = () => {
             </p>
             
             <button
-              onClick={handleStripeClick}
-              className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-yellow-400 mb-4"
+              onClick={handlePurchaseClick}
+              disabled={loading}
+              className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-black font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-yellow-400 mb-4"
             >
-              💳 PAGAR CON TARJETA - $17
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
+                  PROCESANDO...
+                </div>
+              ) : (
+                "💰 COMPRAR POR $17 USD 💰"
+              )}
             </button>
-
+            
             <p className="text-green-200 text-sm font-bold">
-              ⚡ Pago seguro y acceso inmediato ⚡
+              ⚡ Sin más excusas, sin más dudas, solo RESULTADOS ⚡
             </p>
           </div>
         </motion.div>

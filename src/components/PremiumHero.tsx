@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Star, Zap, TrendingUp, Shield, Clock, DollarSign, Users, Crown, Sparkles, Target, Award } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
 
 const PremiumHero = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const testimonials = [
-    { text: "Generé $47,300 en 3 semanas", author: "Carlos M.", location: "México", verified: true },
-    { text: "$89,500 en mi primer mes completo", author: "Ana L.", location: "Colombia", verified: true },
-    { text: "Increíble: $156,000 en 2 meses", author: "Roberto S.", location: "España", verified: true }
+    { text: "El método es increíblemente preciso", author: "Carlos M.", location: "México", verified: true },
+    { text: "Cambió completamente mi perspectiva", author: "Ana L.", location: "Colombia", verified: true },
+    { text: "Simple, elegante y efectivo", author: "Roberto S.", location: "España", verified: true }
   ];
 
   useEffect(() => {
@@ -27,9 +28,10 @@ const PremiumHero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🔥 ¡QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA! He visto la página completa y estoy 100% convencido. ¿Cuál es el proceso exacto para asegurar mi cupo y empezar a generar resultados inmediatos?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const { redirectToCheckout, loading, error } = useStripe();
+
+  const handlePurchaseClick = async () => {
+    await redirectToCheckout();
   };
 
   const handleVideoClick = () => {
@@ -249,21 +251,31 @@ const PremiumHero = () => {
               className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-8"
             >
               <motion.button
-                onClick={handleWhatsAppClick}
+                onClick={handlePurchaseClick}
+                disabled={loading}
                 whileHover={{ 
                   scale: 1.05, 
                   boxShadow: "0 25px 50px rgba(16, 185, 129, 0.5)",
                   y: -5
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-400 hover:via-green-400 hover:to-emerald-500 text-white font-black text-2xl py-8 px-12 rounded-3xl transition-all duration-300 shadow-2xl border-2 border-emerald-400 flex items-center justify-center gap-4 relative overflow-hidden group"
+                className="bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-400 hover:via-green-400 hover:to-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-2xl py-8 px-12 rounded-3xl transition-all duration-300 shadow-2xl border-2 border-emerald-400 flex items-center justify-center gap-4 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
-                <Zap size={28} className="relative z-10 animate-pulse" />
-                <span className="relative z-10">ACCEDER AL MÉTODO AHORA</span>
-                <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
-                  HOT
-                </div>
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                    <span className="relative z-10">PROCESANDO...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap size={28} className="relative z-10 animate-pulse" />
+                    <span className="relative z-10">COMPRAR POR $17</span>
+                    <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+                      HOT
+                    </div>
+                  </>
+                )}
               </motion.button>
               
               <motion.button
@@ -345,9 +357,9 @@ const PremiumHero = () => {
                   className="absolute -top-8 -right-8 bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white px-8 py-6 rounded-2xl font-black text-xl border-3 border-pink-400 shadow-2xl shadow-pink-500/50 transform rotate-12"
                 >
                   <div className="text-center">
-                    <p className="text-sm line-through opacity-75">$844</p>
-                    <p className="text-3xl animate-pulse">$17</p>
-                    <p className="text-sm font-bold text-pink-200 animate-bounce">98% OFF</p>
+                    <p className="text-sm line-through opacity-75">$25,000</p>
+                    <p className="text-3xl animate-pulse">$2,500</p>
+                    <p className="text-sm font-bold text-pink-200 animate-bounce">90% OFF</p>
                   </div>
                   <div className="absolute -top-2 -left-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full animate-spin">
                     HOT

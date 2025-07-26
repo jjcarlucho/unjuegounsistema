@@ -5,38 +5,17 @@ const testimonials = [
   {
     name: 'Alejandro G.',
     avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    quote: 'En mi primera semana gané $1,500. El método es matemático y funciona. No es magia, es disciplina y sistema.',
-    amount: '$1,500',
+    quote: 'Nunca vi un método tan preciso. Mi rentabilidad se disparó y mi mentalidad cambió para siempre. Es realmente exclusivo.',
   },
   {
     name: 'Lucía P.',
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    quote: 'Llevo 3 semanas aplicándolo y ya recuperé mi inversión. $2,360 en ganancias. El sistema realmente funciona.',
-    amount: '$2,360',
+    quote: 'El sistema es simple, elegante y brutalmente efectivo. No es para cualquiera, pero si eres disciplinado, es oro puro.',
   },
   {
     name: 'Kevin T.',
     avatar: 'https://randomuser.me/api/portraits/men/65.jpg',
-    quote: 'Empecé con $100 como dice el método. En 2 semanas tenía $890. Es consistente y predecible.',
-    amount: '$890',
-  },
-  {
-    name: 'María S.',
-    avatar: 'https://randomuser.me/api/portraits/women/25.jpg',
-    quote: 'Al principio era escéptica, pero los números no mienten. $1,200 en mi segundo mes aplicando el sistema.',
-    amount: '$1,200',
-  },
-  {
-    name: 'Carlos R.',
-    avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-    quote: 'Lo mejor es la tranquilidad mental. Sé exactamente qué hacer cada día. $780 en mi primera quincena.',
-    amount: '$780',
-  },
-  {
-    name: 'Ana M.',
-    avatar: 'https://randomuser.me/api/portraits/women/35.jpg',
-    quote: 'Trabajo solo 2 horas al día con el método. $1,850 el mes pasado. Tiempo y dinero, perfecto.',
-    amount: '$1,850',
+    quote: 'He pagado miles por cursos y nunca vi algo tan matemático y real. Esto es lo que usan los grandes.',
   },
 ];
 
@@ -82,7 +61,6 @@ const Testimonials = () => (
             <img src={t.avatar} alt={t.name} loading="lazy" className="w-20 h-20 rounded-full border-4 border-yellow-400 mb-4 object-cover shadow-lg" />
             <p className="text-lg text-gray-200 italic mb-4">“{t.quote}”</p>
             <div className="text-yellow-400 font-bold text-lg">{t.name}</div>
-            <div className="text-green-400 font-bold text-xl mt-2">{t.amount}</div>
           </motion.div>
         ))}
       </motion.div>

@@ -1,3 +1,4 @@
+// Landing page sin videos ni CTA pegajoso - Versión limpia y profesional
 import React from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import UltraHero from '../components/UltraHero';

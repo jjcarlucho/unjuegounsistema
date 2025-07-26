@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, CheckCircle, Play, Quote, Calendar, MapPin, TrendingUp } from 'lucide-react';
+import { Star, CheckCircle, Quote, Calendar, MapPin, TrendingUp } from 'lucide-react';
 
 const testimonials = [
   {
@@ -13,9 +13,7 @@ const testimonials = [
     rating: 5,
     quote: 'Después de 3 años probando diferentes métodos, este es el único que realmente funciona. La precisión matemática es impresionante.',
     result: 'Recuperé mi inversión en 4 días',
-    verified: true,
-    videoThumbnail: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=300&h=200&fit=crop',
-    hasVideo: true
+    verified: true
   },
   {
     id: 2,
@@ -27,9 +25,7 @@ const testimonials = [
     rating: 5,
     quote: 'Como contadora, aprecio los números. Este sistema tiene una lógica matemática sólida que realmente genera resultados consistentes.',
     result: 'Método aplicado con éxito en 12 sesiones',
-    verified: true,
-    videoThumbnail: null,
-    hasVideo: false
+    verified: true
   },
   {
     id: 3,
@@ -41,9 +37,7 @@ const testimonials = [
     rating: 5,
     quote: 'Trabajo en finanzas y puedo confirmar que la metodología es sólida. No es suerte, es matemática pura aplicada correctamente.',
     result: 'Precisión del 94% en mis primeras 20 aplicaciones',
-    verified: true,
-    videoThumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop',
-    hasVideo: true
+    verified: true
   },
   {
     id: 4,
@@ -55,9 +49,7 @@ const testimonials = [
     rating: 5,
     quote: 'Como profesora de matemáticas, quedé fascinada con la elegancia del sistema. Es educativo y efectivo a la vez.',
     result: 'Entendí el sistema en 2 horas de estudio',
-    verified: true,
-    videoThumbnail: null,
-    hasVideo: false
+    verified: true
   },
   {
     id: 5,
@@ -69,9 +61,7 @@ const testimonials = [
     rating: 5,
     quote: 'He invertido en muchos sistemas. Este es diferente: tiene fundamento matemático real y resultados verificables.',
     result: 'ROI positivo desde la primera semana',
-    verified: true,
-    videoThumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300&h=200&fit=crop',
-    hasVideo: true
+    verified: true
   },
   {
     id: 6,
@@ -83,15 +73,12 @@ const testimonials = [
     rating: 5,
     quote: 'Analicé los datos del sistema durante semanas antes de comprarlo. Los patrones matemáticos son consistentes y replicables.',
     result: 'Validé la efectividad con 50+ pruebas',
-    verified: true,
-    videoThumbnail: null,
-    hasVideo: false
+    verified: true
   }
 ];
 
 const ImprovedTestimonials = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(0);
-  const [showVideoModal, setShowVideoModal] = useState(false);
 
   const nextTestimonial = () => {
     setSelectedTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -207,33 +194,15 @@ const ImprovedTestimonials = () => {
               </AnimatePresence>
             </div>
 
-            {/* Video o imagen */}
+            {/* Imagen decorativa */}
             <div className="relative">
-              {currentTestimonial.hasVideo ? (
-                <div className="relative group cursor-pointer" onClick={() => setShowVideoModal(true)}>
-                  <img
-                    src={currentTestimonial.videoThumbnail}
-                    alt="Video testimonial"
-                    className="w-full h-64 object-cover rounded-2xl"
-                  />
-                  <div className="absolute inset-0 bg-black/40 rounded-2xl flex items-center justify-center group-hover:bg-black/60 transition-all duration-300">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="text-white" size={32} />
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
-                    VIDEO TESTIMONIAL
-                  </div>
+              <div className="bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 rounded-2xl p-8 h-64 flex items-center justify-center border border-emerald-500/30">
+                <div className="text-center">
+                  <CheckCircle className="text-emerald-400 mx-auto mb-4" size={48} />
+                  <p className="text-emerald-300 font-bold text-lg">Testimonial Verificado</p>
+                  <p className="text-gray-400 text-sm mt-2">Usuario real del sistema</p>
                 </div>
-              ) : (
-                <div className="bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 rounded-2xl p-8 h-64 flex items-center justify-center border border-emerald-500/30">
-                  <div className="text-center">
-                    <CheckCircle className="text-emerald-400 mx-auto mb-4" size={48} />
-                    <p className="text-emerald-300 font-bold text-lg">Testimonial Verificado</p>
-                    <p className="text-gray-400 text-sm mt-2">Usuario real del sistema</p>
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           </div>
 

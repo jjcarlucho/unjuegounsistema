@@ -12,7 +12,7 @@ import Bonuses from '../components/Bonuses';
 import UltraFAQ from '../components/UltraFAQ';
 
 import Footer from '../components/Footer';
-import UltraStickyCTA from '../components/UltraStickyCTA';
+
 import StickyNavigation from '../components/StickyNavigation';
 import PerformanceOptimizer from '../components/PerformanceOptimizer';
 import ExitIntentPopup from '../components/ExitIntentPopup';

@@ -9,8 +9,7 @@ const STATIC_ASSETS = [
   '/index.html',
   '/analytics.js',
   '/WhatsApp Image 2025-07-08 at 11.49.39 PM.jpeg',
-  '/favicon-32x32.png',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'
+  '/favicon-32x32.png'
 ];
 
 // Resources to cache on demand

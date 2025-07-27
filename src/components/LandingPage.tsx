@@ -5,10 +5,9 @@ import Benefits from './Benefits';
 import WhatYouGet from './WhatYouGet';
 import StrategicBonuses from './StrategicBonuses';
 import PremiumComparison from './PremiumComparison';
-import Testimonials from './Testimonials';
+import ImprovedTestimonials from './ImprovedTestimonials';
 import UltraFAQ from './UltraFAQ';
-import ScarcitySection from './ScarcitySection';
-import UltraFinalCTA from './UltraFinalCTA';
+import FinalCTA from './FinalCTA';
 import Footer from './Footer';
 import ExitIntentPopup from './ExitIntentPopup';
 import LeadCapturePopup from './LeadCapturePopup';
@@ -26,10 +25,9 @@ const LandingPage: React.FC = () => {
       <StrategicBonuses />
       <WhatYouGet />
       <PremiumComparison onCTAClick={() => setShowLeadPopup(true)} />
-      <Testimonials />
+      <ImprovedTestimonials />
       <UltraFAQ onCTAClick={() => setShowLeadPopup(true)} />
-      <ScarcitySection />
-      <UltraFinalCTA onCTAClick={() => setShowLeadPopup(true)} />
+      <FinalCTA />
       <Footer />
       <ExitIntentPopup
         isOpen={showExitPopup}

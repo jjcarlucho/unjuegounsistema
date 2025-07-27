@@ -1,18 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gift, ShieldCheck, Calculator, Zap } from 'lucide-react';
+import { Gift, ShieldCheck, Zap } from 'lucide-react';
 
 const bonuses = [
   {
-    icon: <Gift className="w-8 h-8 text-purple-400" />,
+    icon: <Gift className="w-10 h-10 text-purple-400" />,
     title: "Bono Exclusivo #1: Su Deseo Es Su Mandato",
-    description: "El legendario entrenamiento de la élite para manifestar riqueza y alinear tu mente con el éxito financiero en el juego.",
+    description: "Este entrenamiento de élite, valorado en $500, te enseñará a alinear tu mentalidad para el éxito financiero. Descubre cómo manifestar tus objetivos y superar las barreras mentales que te impiden alcanzar la riqueza. Es la clave para transformar tu enfoque no solo en el juego, sino en todas las áreas de tu vida.",
     value: "$500"
   },
   {
-    icon: <ShieldCheck className="w-8 h-8 text-emerald-400" />,
-    title: "Bono Exclusivo #2: Tapping (TFT/EFT) para Jugadores",
-    description: "La técnica de liberación emocional para eliminar el miedo, la ansiedad y el estrés al jugar. Mantén una mente clara y enfocada.",
+    icon: <ShieldCheck className="w-10 h-10 text-emerald-400" />,
+    title: "Bono Exclusivo #2: Tapping (TFT/EFT) para Jugadores de Alto Rendimiento",
+    description: "Valorado en $297, esta poderosa técnica de liberación emocional te permitirá eliminar el miedo, la ansiedad y el estrés que a menudo acompañan al juego. Aprende a mantener la calma bajo presión, a tomar decisiones claras y a operar con una mente enfocada y libre de bloqueos emocionales. Indispensable para cualquier jugador serio.",
     value: "$297"
   }
 ];
@@ -21,7 +21,7 @@ const Bonuses = () => {
   return (
     <section id="bonuses" className="py-28 bg-gradient-to-br from-slate-950 via-gray-900 to-black relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-emerald-500/5"></div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,40 +32,42 @@ const Bonuses = () => {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
             BONOS EXCLUSIVOS DE PREVENTA
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-              Recibe 2 Bonos de Acción Rápida (Valor $797)
+              ¡Valor Total de $797, GRATIS Hoy!
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Al acceder hoy al sistema por solo $17, te llevas completamente GRATIS este paquete de herramientas para acelerar tus resultados y tu mentalidad.
+            Al acceder hoy al sistema matemático de Baccarat, te llevas completamente GRATIS estos dos bonos transformadores que potenciarán tus resultados y tu mentalidad.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16 justify-items-center"> {/* Changed to grid-cols-2 and added justify-items-center */}
+        <div className="space-y-12 mb-16"> {/* Changed to space-y-12 for vertical layout */}
           {bonuses.map((bonus, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="premium-glass flex flex-col text-center p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300 max-w-md"
+              transition={{ duration: 0.7, delay: i * 0.2 }}
+              className="premium-glass flex flex-col md:flex-row items-center md:items-start gap-8 p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300"
             >
-              <div className="mx-auto bg-gray-800/50 p-4 rounded-full border border-gray-700 mb-6">
+              <div className="flex-shrink-0 bg-gray-800/50 p-5 rounded-full border border-gray-700">
                 {bonus.icon}
               </div>
-              <h3 className="text-2xl font-bold text-white font-serif mb-3">
-                {bonus.title}
-              </h3>
-              <p className="text-gray-400 flex-grow mb-4">
-                {bonus.description}
-              </p>
-              <div className="mt-auto">
-                <span className="text-xl font-bold text-yellow-400 bg-yellow-900/50 py-2 px-4 rounded-lg border border-yellow-700/50">
-                  Valor: {bonus.value}
-                </span>
-                <span className="block text-green-400 font-bold mt-3 text-lg">
-                  GRATIS HOY
-                </span>
+              <div className="text-center md:text-left flex-1">
+                <h3 className="text-3xl font-bold text-white font-serif mb-3">
+                  {bonus.title}
+                </h3>
+                <p className="text-gray-400 text-lg mb-4">
+                  {bonus.description}
+                </p>
+                <div className="mt-auto">
+                  <span className="text-xl font-bold text-yellow-400 bg-yellow-900/50 py-2 px-4 rounded-lg border border-yellow-700/50">
+                    Valor: {bonus.value}
+                  </span>
+                  <span className="block text-green-400 font-bold mt-3 text-lg">
+                    GRATIS HOY
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}

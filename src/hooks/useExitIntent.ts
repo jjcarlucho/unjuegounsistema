@@ -26,7 +26,7 @@ export const useExitIntent = () => {
     const timer = setTimeout(() => {
       document.addEventListener('mouseleave', handleMouseLeave);
       document.addEventListener('keydown', handleKeyDown);
-    }, 30000);
+    }, 120000); // 2 minutos
 
     return () => {
       clearTimeout(timer);

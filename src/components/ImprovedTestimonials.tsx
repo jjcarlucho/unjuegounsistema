@@ -20,7 +20,7 @@ const testimonials = [
     id: 2,
     name: 'Ana Lucía Rodríguez',
     location: 'Bogotá, Colombia',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     role: 'Contadora Pública',
     date: '8 de Febrero, 2024',
     rating: 5,

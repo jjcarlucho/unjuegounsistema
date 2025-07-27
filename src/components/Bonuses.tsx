@@ -4,15 +4,15 @@ import { Gift, ShieldCheck, Zap } from 'lucide-react';
 
 const bonuses = [
   {
-    icon: <Gift className="w-10 h-10 text-purple-400" />,
+    icon: <img src="https://www.thegamechangerbooks.com/images/yourwishisyourcommand.avif" alt="Your Wish Is Your Command" className="w-10 h-10" />,
     title: "Bono Exclusivo #1: Su Deseo Es Su Mandato",
-    description: "Este entrenamiento de élite, valorado en $500, te enseñará a alinear tu mentalidad para el éxito financiero. Descubre cómo manifestar tus objetivos y superar las barreras mentales que te impiden alcanzar la riqueza. Es la clave para transformar tu enfoque no solo en el juego, sino en todas las áreas de tu vida.",
+    description: "Una legendaria serie de audios sobre mentalidad, manifestación y la Ley de Atracción aplicada a los negocios. Esta colección exclusiva te entrena para pensar como un creador de realidad, no como un esclavo de proyectos. Imagina transformar tu mentalidad para manifestar el éxito en los negocios. Estos audios te guían en la aplicación de la Ley de Atracción a tus esfuerzos empresariales, enseñándote a crear la realidad que deseas. Imagínate pasando de un lugar de limitación a uno de potencial ilimitado. A medida que integres estos principios, comenzarás a ver oportunidades que antes no notabas, atraerás colaboradores afines y te alinearás naturalmente con tus objetivos comerciales, haciendo que el camino hacia el éxito sea más intuitivo y menos estresante.",
     value: "$500"
   },
   {
-    icon: <ShieldCheck className="w-10 h-10 text-emerald-400" />,
-    title: "Bono Exclusivo #2: Tapping (TFT/EFT) para Jugadores de Alto Rendimiento",
-    description: "Valorado en $297, esta poderosa técnica de liberación emocional te permitirá eliminar el miedo, la ansiedad y el estrés que a menudo acompañan al juego. Aprende a mantener la calma bajo presión, a tomar decisiones claras y a operar con una mente enfocada y libre de bloqueos emocionales. Indispensable para cualquier jugador serio.",
+    icon: <img src="https://www.thegamechangerbooks.com/images/Gemini_Generated_Image_nyf0pqnyf0pqnyf0.jpeg" alt="TFT Course" className="w-10 h-10" />,
+    title: "Bono Exclusivo #2: Curso TFT (Thought Field Therapy)",
+    description: "Aprende a liberar bloqueos subconscientes y emociones que sabotean tu progreso con esta poderosa técnica de transformación personal. Perfecto para emprendedores conscientes que quieren vender desde su centro, sin miedo ni autosabotaje. Imagina poder eliminar los obstáculos mentales y emocionales que te frenan. Este curso te equipa con técnicas para identificar y liberar bloqueos subconscientes, permitiéndote abordar los negocios desde un lugar de confianza y autenticidad. Visualiza la libertad de operar sin miedo ni autosabotaje, permitiendo que tu verdadera pasión y propósito brillen en tus ofertas. A medida que estos bloqueos se disuelvan, encontrarás una mayor alineación en tus acciones, lo que te llevará a conexiones más genuinas con tus clientes y un mayor éxito en tus esfuerzos.",
     value: "$297"
   }
 ];

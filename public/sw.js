@@ -8,7 +8,6 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/analytics.js',
-  '/WhatsApp Image 2025-07-08 at 11.49.39 PM.jpeg',
   '/favicon-32x32.png'
 ];
 

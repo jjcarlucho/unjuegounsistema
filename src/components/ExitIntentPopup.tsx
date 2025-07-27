@@ -53,7 +53,7 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative max-w-2xl w-full bg-gradient-to-br from-slate-900 via-gray-900 to-black rounded-3xl p-8 border-4 border-emerald-400 shadow-2xl overflow-hidden"
+            className="relative max-w-lg w-full bg-gradient-to-br from-slate-900 via-gray-900 to-black rounded-3xl p-8 border-4 border-emerald-400 shadow-2xl overflow-hidden"
           >
             {/* Efectos de fondo */}
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-cyan-400/10 to-purple-500/10 animate-pulse"></div>
@@ -62,7 +62,7 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
             {/* Botón cerrar */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors z-10"
+              className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors z-50"
             >
               <X size={24} />
             </button>
@@ -82,7 +82,7 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                   🔥 ÚLTIMA OPORTUNIDAD 🔥
                 </p>
                 <div className="bg-gradient-to-r from-emerald-400 to-cyan-500 text-black px-6 py-3 rounded-full inline-block font-black text-xl">
-                  90% DE DESCUENTO EXCLUSIVO
+                  OFERTA DE PREVENTA
                 </div>
               </motion.div>
 
@@ -114,16 +114,16 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="text-center">
                       <p className="text-green-200 text-sm">Precio Normal</p>
-                      <p className="text-2xl font-bold text-white line-through">$25,000</p>
+                      <p className="text-2xl font-bold text-white line-through">$299</p> {/* Changed price */}
                     </div>
                     <Zap className="text-yellow-400" size={32} />
                     <div className="text-center">
                       <p className="text-green-200 text-sm">Tu Precio AHORA</p>
-                      <p className="text-4xl font-black text-yellow-400">$2,500</p>
+                      <p className="text-4xl font-black text-yellow-400">$17</p> {/* Changed price */}
                     </div>
                   </div>
                   <p className="text-green-100 font-bold">
-                    ¡Ahorras $22,500 USD! 💰
+                    ¡Ahorras $282 USD! 💰
                   </p>
                 </div>
               </motion.div>
@@ -156,13 +156,13 @@ const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({ isOpen, onClose }) =>
                 transition={{ delay: 1, type: "spring" }}
               >
                 <button
-                  onClick={handleWhatsAppClick}
+                  onClick={handlePurchaseClick}
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400 mb-4"
                 >
-                  🔥 SÍ, QUIERO MI 90% DE DESCUENTO 🔥
+                  ¡QUIERO ACCESO INSTANTÁNEO!
                 </button>
                 <p className="text-yellow-400 text-sm font-bold">
-                  ⚡ Respuesta inmediata por WhatsApp ⚡
+                  🔒 Pago 100% seguro con Stripe
                 </p>
                 <p className="text-red-400 text-xs mt-2 font-bold animate-pulse">
                   ⚠️ Solo para los primeros 10 que respondan ⚠️

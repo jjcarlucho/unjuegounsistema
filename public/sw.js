@@ -7,7 +7,6 @@ const DYNAMIC_CACHE_NAME = 'dynamic-v1.0.0';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/analytics.js',
   '/favicon-32x32.png'
 ];
 

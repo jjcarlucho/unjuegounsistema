@@ -7,8 +7,6 @@ const DYNAMIC_CACHE_NAME = 'dynamic-v1.0.0';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/src/main.tsx',
-  '/src/index.css',
   '/analytics.js',
   '/WhatsApp Image 2025-07-08 at 11.49.39 PM.jpeg',
   '/favicon-32x32.png',

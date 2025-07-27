@@ -2,45 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
-  const footerLinks = [
-    { name: "Beneficios", href: "#benefits" },
-    { name: "Testimonios", href: "#testimonials" },
-    { name: "Contenido", href: "#what-is" },
-    { name: "Bonos", href: "#bonuses" },
-    { name: "FAQ", href: "#faq" },
-  ];
-
   return (
     <footer className="bg-black py-16 border-t-2 border-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-          {/* Columna 1: Logo y Misión */}
+        <div className="grid md:grid-cols-1 gap-8 text-center md:text-left">
+          {/* Columna 1: Logo, Misión, Contacto y Legal */}
           <div className="md:col-span-1">
             <h3 className="text-2xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-3">
               UN JUEGO. UN SISTEMA.
             </h3>
-            <p className="text-gray-400">
+            <p className="text-gray-400 mb-6">
               Democratizando el acceso a estrategias financieras de élite a través de un sistema matemático simple y poderoso.
             </p>
-          </div>
-
-          {/* Columna 2: Enlaces Rápidos */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Navegación</h4>
-            <ul className="space-y-2">
-              {footerLinks.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-gray-400 hover:text-yellow-400 transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Columna 3: Contacto y Legal */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Soporte y Legal</h4>
             <ul className="space-y-2">
               <li>
                 <a href="mailto:soporte@unjuegounsistema.com" className="text-gray-400 hover:text-yellow-400 transition-colors">

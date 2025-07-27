@@ -10,12 +10,12 @@ const Storytelling = () => {
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 px-6 py-3 rounded-full border border-yellow-500/30 mb-8">
             <Lock className="w-5 h-5 text-yellow-400" />
-            <span className="text-yellow-400 font-semibold">LA HISTORIA PROHIBIDA</span>
+            <span className="text-yellow-400 font-semibold">EL ORIGEN DEL MÉTODO</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
-            La Venganza del Matemático:
+            El Origen del Sistema:
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-              El Sistema que Wall Street Quiso Enterrar
+              Cómo un Analista Descifró el Baccarat
             </span>
           </h2>
         </div>
@@ -29,7 +29,7 @@ const Storytelling = () => {
           >
             <Eye className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
             <span>
-              Creado por un matemático disidente de un fondo de cobertura de élite. Cansado de ver cómo solo los multimillonarios se beneficiaban de modelos predictivos, diseñó su propia arma: un sistema simple, basado en una anomalía matemática que el mercado ignora, para generar ganancias consistentes y silenciosas.
+              Desarrollado por un analista de datos apasionado por la probabilidad y el Baccarat. Tras años de estudio intensivo de miles de manos, descubrió patrones y anomalías estadísticas que la mayoría de los jugadores ignoran, creando un sistema para obtener una ventaja consistente.
             </span>
           </motion.div>
           <motion.div
@@ -41,15 +41,15 @@ const Storytelling = () => {
           >
             <Crown className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
             <span>
-              Este sistema fue su 'venganza silenciosa'. Durante años, lo usó para su propio beneficio. Ahora, ha decidido liberarlo para democratizar la riqueza y darle a la gente común la misma ventaja que tienen los titanes de las finanzas. Es su forma de nivelar el campo de juego.
+              Su objetivo no era solo ganar, sino demostrar que el Baccarat podía ser abordado con lógica y estrategia, no solo con intuición. Ahora, comparte este conocimiento para que otros jugadores puedan transformar su enfoque y sus resultados, jugando con una ventaja real.
             </span>
           </motion.div>
           <div className="premium-glass bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-8 rounded-2xl border border-yellow-500/20 mt-12">
             <p className="text-2xl font-light text-yellow-400 mb-4 italic">
-              "No estás comprando un curso. Estás uniéndote a una revolución silenciosa."
+              "No estás comprando un ebook. Estás adquiriendo una ventaja estratégica en el Baccarat."
             </p>
             <p className="text-yellow-400 font-bold">
-              Esta es tu única oportunidad de acceder a una herramienta que, hasta ahora, era el secreto mejor guardado de un genio de las finanzas.
+              Esta es tu oportunidad de acceder a un conocimiento que te permitirá jugar Baccarat con una ventaja estadística real.
             </p>
           </div>
         </div>

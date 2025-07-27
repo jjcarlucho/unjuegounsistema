@@ -7,15 +7,15 @@ const Hero = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
-    { text: "El método es increíblemente preciso", author: "Carlos M." },
-    { text: "Cambió completamente mi perspectiva", author: "Ana L." },
-    { text: "Simple, elegante y efectivo", author: "Roberto S." }
+    { text: "Este sistema me ha ayudado a entender mejor el Baccarat y a tomar decisiones más informadas. He notado una mejora en mis resultados.", author: "Carlos M." },
+    { text: "La lógica detrás del sistema es muy sólida. Me ha dado una nueva perspectiva sobre cómo abordar el juego.", author: "Ana L." },
+    { text: "Es un enfoque práctico y bien explicado. Siento que tengo una herramienta valiosa para mi juego.", author: "Roberto S." }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
+    }, 5000); // Increased from 3000 to 5000 for better readability
     return () => clearInterval(interval);
   }, []);
 

@@ -56,10 +56,10 @@ const Benefits = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-            ¿Por qué este método <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">transforma vidas?</span>
+            ¿Por qué el Sistema Matemático de Baccarat es tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Mejor Jugada?</span>
           </h2>
           <p className="text-xl text-yellow-400 max-w-3xl mx-auto font-semibold">
-            Estos no son simples beneficios, son los pilares de tu nueva realidad financiera. Esto es lo que obtienes al unirte:
+            Descubre los pilares que te darán una ventaja real y transformarán tu experiencia en el Baccarat:
           </p>
         </div>
         <motion.div

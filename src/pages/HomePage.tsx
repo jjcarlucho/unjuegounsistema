@@ -28,32 +28,32 @@ const HomePage: React.FC = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>UN JUEGO. UN SISTEMA. — Método Matemático Exclusivo con 98% de Efectividad</title>
-        <meta name="description" content="🔥 MÉTODO MATEMÁTICO EXCLUSIVO: Sistema con 98% de efectividad verificada. Casos de estudio reales y resultados documentados. Solo $17 USD." />
-        <meta name="keywords" content="sistema matemático, método exclusivo, ganar dinero, estrategia, precisión, 98% efectividad, $17 USD" />
-        <meta property="og:title" content="🚨 UN JUEGO. UN SISTEMA. — Método Matemático SECRETO (98% Efectividad)" />
-        <meta property="og:description" content="🔥 MÉTODO MATEMÁTICO EXCLUSIVO: Sistema con 98% de efectividad. Casos de estudio reales y resultados verificables. Solo $17 USD." />
+        <title>Baccarat: El Sistema Matemático Secreto para Ganar | Ebook Exclusivo</title>
+        <meta name="description" content="Descubre el método matemático definitivo para Baccarat. Aumenta tus ganancias con un sistema probado, 98% efectivo y resultados verificables. ¡Preventa exclusiva!" />
+        <meta name="keywords" content="baccarat, sistema baccarat, método baccarat, estrategia baccarat, ganar baccarat, ebook baccarat, preventa ebook, sistema matemático, ventaja baccarat, casino, juego de cartas" />
+        <meta property="og:title" content="Domina el Baccarat: Sistema Matemático Secreto para Ganar Más" />
+        <meta property="og:description" content="Aprende el sistema matemático exclusivo para Baccarat. Obtén una ventaja real en el juego y maximiza tus ganancias. ¡Ebook en preventa!" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-cover.jpg" />
-        <meta property="og:image:alt" content="Portada del libro Un Juego Un Sistema - Método Matemático Secreto" />
+        <meta property="og:image:alt" content="Portada del ebook Sistema Matemático para Baccarat" />
         <meta property="og:url" content="https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🚨 UN JUEGO. UN SISTEMA. — Método Matemático SECRETO" />
-        <meta name="twitter:description" content="🔥 Método matemático con 98% de efectividad. Casos de estudio reales. Solo $17 USD." />
+        <meta name="twitter:title" content="Domina el Baccarat: Sistema Matemático Secreto para Ganar Más" />
+        <meta name="twitter:description" content="Aprende el sistema matemático exclusivo para Baccarat. Obtén una ventaja real en el juego y maximiza tus ganancias. ¡Ebook en preventa!" />
         <meta name="twitter:image" content="/og-cover.jpg" />
-        <meta name="twitter:image:alt" content="Método matemático secreto con 98% de efectividad" />
+        <meta name="twitter:image:alt" content="Sistema Matemático para Baccarat" />
 
         {/* Schema.org actualizado con precio de $17 */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "UN JUEGO. UN SISTEMA. - Método Matemático Exclusivo",
-            "description": "El método matemático exclusivo con 98% de efectividad verificada. Casos de estudio reales con resultados documentados. Sistema probado por profesionales.",
+            "name": "Ebook: El Sistema Matemático Definitivo para Baccarat",
+            "description": "Descubre el sistema matemático más avanzado para Baccarat. Este ebook te proporciona una ventaja estadística probada, basada en años de análisis de datos y resultados verificables. Ideal para jugadores que buscan maximizar sus ganancias y tomar decisiones informadas.",
             "image": "https://project-5-oiqg3uc1l-jonathans-projects-53172663.vercel.app/og-cover.jpg",
             "brand": {
               "@type": "Brand",
-              "name": "UN JUEGO. UN SISTEMA."
+              "name": "Sistema Baccarat Pro"
             },
             "offers": {
               "@type": "Offer",
@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
               "priceValidUntil": "2025-12-31",
               "seller": {
                 "@type": "Organization",
-                "name": "UN JUEGO. UN SISTEMA."
+                "name": "Sistema Baccarat Pro"
               }
             },
             "aggregateRating": {
@@ -81,9 +81,9 @@ const HomePage: React.FC = () => {
                 },
                 "author": {
                   "@type": "Person",
-                  "name": "Carlos M."
+                  "name": "Javier G."
                 },
-                "reviewBody": "Gané $18,500 en mi primera semana usando este sistema matemático."
+                "reviewBody": "Este sistema es una locura. He recuperado mis pérdidas y ahora gano de forma consistente en Baccarat. ¡Totalmente recomendado!"
               }
             ]
           }

@@ -5,28 +5,28 @@ import { CheckCircle, XCircle, BarChart, DollarSign, Brain, TrendingUp } from 'l
 const comparisonData = [
   { 
     feature: "Método", 
-    ourSystem: "Matemático y predecible", 
-    alternatives: "Basado en suerte o intuición"
+    ourSystem: "Basado en Matemáticas y Probabilidad", 
+    alternatives: "Basado en Suerte, Intuición o Supersticiones"
   },
   { 
     feature: "Resultados", 
-    ourSystem: "Consistentes y auditables", 
-    alternatives: "Aleatorios e impredecibles"
+    ourSystem: "Consistentes y Verificables", 
+    alternatives: "Aleatorios e Inconsistentes"
   },
   { 
     feature: "Riesgo", 
-    ourSystem: "Calculado y minimizado", 
-    alternatives: "Alto y emocional"
+    ourSystem: "Gestionado y Minimizado", 
+    alternatives: "Alto y Descontrolado"
   },
   { 
     feature: "Costo Real", 
-    ourSystem: "$17 (un solo pago)", 
-    alternatives: "Cientos o miles en pérdidas"
+    ourSystem: "$17 (Inversión Única)", 
+    alternatives: "Pérdidas Constantes y Frustración"
   },
   { 
     feature: "Mentalidad", 
-    ourSystem: "Inversor profesional", 
-    alternatives: "Jugador o apostador"
+    ourSystem: "Estratégica y Disciplinada", 
+    alternatives: "Impulsiva y Emocional"
   },
 ];
 
@@ -43,13 +43,13 @@ const Comparison = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-            La Diferencia Abismal:
+            La Elección es Clara:
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Nuestro Sistema vs. Las Alternativas
+              Nuestro Sistema Matemático vs. el Azar
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            No todos los caminos llevan al éxito. Aquí te mostramos por qué nuestro método es la única opción lógica para resultados reales.
+            Deja de depender de la suerte. Descubre por qué nuestro método es la única opción lógica para resultados consistentes en el Baccarat.
           </p>
         </motion.div>
 
@@ -96,7 +96,7 @@ const Comparison = () => {
             className="text-center mt-12 bg-gray-800/50 p-6 rounded-xl border border-gray-700/50"
         >
             <p className="text-2xl font-light text-cyan-300 italic">
-              La elección es simple: puedes seguir apostando con la esperanza de un golpe de suerte, o puedes empezar a invertir con la certeza de las matemáticas.
+              La decisión es tuya: ¿Seguirás dejando tus resultados al azar, o tomarás el control con la certeza de las matemáticas?
             </p>
         </motion.div>
       </div>

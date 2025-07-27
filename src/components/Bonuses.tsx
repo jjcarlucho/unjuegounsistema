@@ -5,21 +5,15 @@ import { Gift, ShieldCheck, Calculator, Zap } from 'lucide-react';
 const bonuses = [
   {
     icon: <Gift className="w-8 h-8 text-purple-400" />,
-    title: "Bono #1: Su Deseo Es Su Mandato",
-    description: "El legendario entrenamiento de la élite para manifestar riqueza. Un curso completo sobre cómo alinear tu mente con el éxito financiero.",
+    title: "Bono Exclusivo #1: Su Deseo Es Su Mandato",
+    description: "El legendario entrenamiento de la élite para manifestar riqueza y alinear tu mente con el éxito financiero en el juego.",
     value: "$500"
   },
   {
     icon: <ShieldCheck className="w-8 h-8 text-emerald-400" />,
-    title: "Bono #2: Tapping (TFT/EFT) para Traders",
-    description: "La técnica de liberación emocional para eliminar el miedo y la ansiedad al invertir. Opera con una mente clara y enfocada.",
+    title: "Bono Exclusivo #2: Tapping (TFT/EFT) para Jugadores",
+    description: "La técnica de liberación emocional para eliminar el miedo, la ansiedad y el estrés al jugar. Mantén una mente clara y enfocada.",
     value: "$297"
-  },
-  {
-    icon: <Calculator className="w-8 h-8 text-yellow-400" />,
-    title: "Bono #3: Calculadora de Riesgo y Potencial",
-    description: "Nuestra herramienta interna para calcular el potencial de ganancia y el riesgo exacto en segundos. La forma más segura de aplicar el sistema.",
-    value: "$97"
   }
 ];
 
@@ -36,17 +30,17 @@ const Bonuses = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-            OFERTA POR TIEMPO LIMITADO
+            BONOS EXCLUSIVOS DE PREVENTA
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-              Recibe 3 Bonos de Acción Rápida (Valor $894)
+              Recibe 2 Bonos de Acción Rápida (Valor $797)
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Al acceder hoy al sistema por solo $17, te llevas completamente GRATIS este paquete de herramientas para acelerar tus resultados.
+            Al acceder hoy al sistema por solo $17, te llevas completamente GRATIS este paquete de herramientas para acelerar tus resultados y tu mentalidad.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16 justify-items-center"> {/* Changed to grid-cols-2 and added justify-items-center */}
           {bonuses.map((bonus, i) => (
             <motion.div
               key={i}
@@ -54,7 +48,7 @@ const Bonuses = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="premium-glass flex flex-col text-center p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300"
+              className="premium-glass flex flex-col text-center p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300 max-w-md"
             >
               <div className="mx-auto bg-gray-800/50 p-4 rounded-full border border-gray-700 mb-6">
                 {bonus.icon}
@@ -86,7 +80,7 @@ const Bonuses = () => {
         >
           <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white/10 opacity-50 rounded-full filter blur-3xl"></div>
           <div className="relative z-10">
-            <p className="text-white text-2xl mb-2">Accede a todo el sistema + los 3 bonos (valor total de $911)</p>
+            <p className="text-white text-2xl mb-2">Accede a todo el sistema + los 2 bonos (valor total de $797)</p>
             <div className="flex items-center justify-center gap-4">
                 <p className="text-5xl font-black text-white">Hoy por solo</p>
                 <p className="text-6xl font-black text-yellow-300 animate-pulse">$17</p>

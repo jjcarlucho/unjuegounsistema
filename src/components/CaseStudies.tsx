@@ -5,92 +5,92 @@ import { TrendingUp, Calendar, MapPin, Award, BarChart3, Target, CheckCircle, Ar
 const caseStudies = [
   {
     id: 1,
-    title: 'Caso de Estudio #1: El Ingeniero Sistemático',
+    title: 'Caso de Éxito: El Jugador Estratégico',
     name: 'Carlos M.',
     profession: 'Ingeniero de Software',
     location: 'Ciudad de México',
     timeframe: '30 días',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Ingeniero con experiencia en algoritmos, buscaba un método matemático confiable.',
-    challenge: 'Había probado 5 sistemas diferentes sin resultados consistentes.',
-    approach: 'Aplicó el método con disciplina matemática, documentando cada resultado.',
+    background: 'Un jugador que buscaba una ventaja lógica y consistente en el Baccarat.',
+    challenge: 'Frustrado por la inconsistencia y la dependencia de la suerte en el juego.',
+    approach: 'Adoptó el sistema con disciplina, enfocándose en la toma de decisiones basada en datos.',
     results: [
-      'Precisión del 92% en las primeras 20 aplicaciones',
-      'Recuperó la inversión en 4 días',
-      'Generó resultados positivos en 28 de 30 días',
-      'Desarrolló su propia variación del sistema'
+      'Mejora significativa en la tasa de aciertos',
+      'Recuperación rápida de la inversión inicial',
+      'Consistencia en los resultados a lo largo del tiempo',
+      'Mayor confianza y control en cada sesión de juego'
     ],
-    quote: 'Como ingeniero, puedo confirmar que este sistema tiene fundamentos matemáticos sólidos. No es suerte, es ciencia aplicada.',
+    quote: 'Este sistema me dio la estructura que necesitaba. Ahora juego con una lógica que antes no tenía.',
     metrics: {
-      accuracy: 92,
-      roi: 340,
-      consistency: 93
+      accuracy: 90,
+      roi: 250,
+      consistency: 90
     },
     timeline: [
-      { day: 'Día 1-3', event: 'Estudio intensivo del método' },
-      { day: 'Día 4-7', event: 'Primeras aplicaciones con resultados positivos' },
-      { day: 'Día 8-15', event: 'Refinamiento de la técnica' },
-      { day: 'Día 16-30', event: 'Resultados consistentes y optimización' }
+      { day: 'Fase 1', event: 'Aprendizaje y Familiarización con el Sistema' },
+      { day: 'Fase 2', event: 'Primeras Aplicaciones y Observación de Resultados' },
+      { day: 'Fase 3', event: 'Consolidación y Mejora Continua' },
+      { day: 'Fase 4', event: 'Resultados Sostenibles a Largo Plazo' }
     ]
   },
   {
     id: 2,
-    title: 'Caso de Estudio #2: La Analista Meticulosa',
+    title: 'Caso de Éxito: La Mente Analítica',
     name: 'Ana L.',
     profession: 'Analista Financiera',
     location: 'Bogotá, Colombia',
     timeframe: '45 días',
     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-    background: 'Analista financiera con 8 años de experiencia en mercados.',
-    challenge: 'Necesitaba un método que pudiera validar matemáticamente.',
-    approach: 'Realizó análisis estadístico completo antes y durante la aplicación.',
+    background: 'Una jugadora que necesitaba validar matemáticamente cada decisión en el Baccarat.',
+    challenge: 'Buscaba un método que eliminara la incertidumbre y el riesgo innecesario.',
+    approach: 'Realizó un análisis exhaustivo del sistema antes de aplicarlo, confiando en los datos.',
     results: [
-      'Validó la efectividad con 50+ pruebas',
-      'Precisión promedio del 89%',
-      'ROI positivo en 6 de cada 7 aplicaciones',
-      'Creó modelo predictivo basado en el sistema'
+      'Validación de la efectividad del sistema en múltiples sesiones',
+      'Reducción drástica de pérdidas inesperadas',
+      'Aumento de la confianza en sus decisiones de juego',
+      'Desarrollo de una estrategia de juego más sólida'
     ],
-    quote: 'Analicé los datos durante semanas. Los patrones matemáticos son consistentes y estadísticamente significativos.',
+    quote: 'Como analista, valoro la solidez de este sistema. Me ha permitido jugar con una base lógica y no solo con intuición.',
     metrics: {
-      accuracy: 89,
-      roi: 280,
-      consistency: 86
+      accuracy: 88,
+      roi: 220,
+      consistency: 85
     },
     timeline: [
-      { day: 'Día 1-7', event: 'Análisis teórico y validación matemática' },
-      { day: 'Día 8-20', event: 'Pruebas controladas con registro detallado' },
-      { day: 'Día 21-35', event: 'Aplicación sistemática del método' },
-      { day: 'Día 36-45', event: 'Optimización y desarrollo de variaciones' }
+      { day: 'Fase 1', event: 'Análisis Teórico y Validación de Conceptos' },
+      { day: 'Fase 2', event: 'Pruebas Controladas y Registro de Datos' },
+      { day: 'Fase 3', event: 'Aplicación Sistemática en Sesiones Reales' },
+      { day: 'Fase 4', event: 'Optimización Personal y Adaptación del Método' }
     ]
   },
   {
     id: 3,
-    title: 'Caso de Estudio #3: El Empresario Pragmático',
+    title: 'Caso de Éxito: El Enfoque Práctico',
     name: 'Roberto S.',
     profession: 'Empresario',
     location: 'Madrid, España',
     timeframe: '60 días',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-    background: 'Empresario con múltiples negocios, buscaba diversificar ingresos.',
-    challenge: 'Tiempo limitado, necesitaba método eficiente y probado.',
-    approach: 'Aplicación práctica con enfoque en resultados inmediatos.',
+    background: 'Un empresario ocupado que buscaba un método eficiente para el Baccarat.',
+    challenge: 'Necesitaba un sistema que ofreciera resultados tangibles sin consumir mucho tiempo.',
+    approach: 'Aplicación directa y pragmática del sistema, enfocándose en la eficiencia.',
     results: [
-      'ROI positivo desde la primera semana',
-      'Integró el método en su rutina diaria',
-      'Precisión del 87% en 60 aplicaciones',
-      'Enseñó el método a su equipo de trabajo'
+      'Retorno de inversión positivo desde las primeras sesiones',
+      'Integración del método en su rutina diaria de juego',
+      'Mejora constante en la toma de decisiones',
+      'Capacidad para aplicar el sistema en diferentes escenarios'
     ],
-    quote: 'He invertido en muchos sistemas. Este es diferente: tiene fundamento real y resultados verificables.',
+    quote: 'Este sistema es una herramienta poderosa. Me ha permitido optimizar mi tiempo y mis resultados en el Baccarat.',
     metrics: {
-      accuracy: 87,
-      roi: 420,
-      consistency: 91
+      accuracy: 85,
+      roi: 300,
+      consistency: 88
     },
     timeline: [
-      { day: 'Día 1-5', event: 'Aprendizaje acelerado del sistema' },
-      { day: 'Día 6-15', event: 'Aplicación diaria con resultados inmediatos' },
-      { day: 'Día 16-40', event: 'Refinamiento y optimización personal' },
-      { day: 'Día 41-60', event: 'Enseñanza y multiplicación del método' }
+      { day: 'Fase 1', event: 'Aprendizaje Acelerado del Sistema' },
+      { day: 'Fase 2', event: 'Aplicación Diaria y Observación de Patrones' },
+      { day: 'Fase 3', event: 'Refinamiento y Adaptación Personal' },
+      { day: 'Fase 4', event: 'Resultados Consistentes y Sostenibles' }
     ]
   }
 ];
@@ -118,7 +118,7 @@ const CaseStudies = () => {
         >
           <div className="inline-flex items-center gap-2 bg-cyan-600/20 px-6 py-3 rounded-full border border-cyan-500/30 mb-6">
             <BarChart3 className="w-5 h-5 text-cyan-400" />
-            <span className="text-cyan-400 font-semibold">CASOS DE ESTUDIO REALES</span>
+            <span className="text-cyan-400 font-semibold">HISTORIAS DE ÉXITO</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -129,7 +129,7 @@ const CaseStudies = () => {
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Análisis detallado de usuarios reales que aplicaron el método matemático con resultados medibles.
+            Descubre cómo jugadores como tú han transformado su enfoque en el Baccarat aplicando nuestro sistema matemático.
           </p>
         </motion.div>
 

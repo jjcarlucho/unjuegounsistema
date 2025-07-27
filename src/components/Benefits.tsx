@@ -6,33 +6,33 @@ import SectionTitle from './SectionTitle';
 const benefits = [
   {
     icon: <Calculator className="w-8 h-8 text-yellow-400" />,
-    title: "98% de precisión matemática",
-    description: "Resultados consistentes basados en datos verificados"
+    title: "Precisión Matemática del 98%",
+    description: "Opera con la confianza de un sistema probado y verificado, que acierta 98 de cada 100 veces."
   },
   {
     icon: <Brain className="w-8 h-8 text-yellow-400" />,
-    title: "Jugar sin emoción, solo con estructura",
-    description: "Elimina el factor emocional de la ecuación"
+    title: "Decisiones 100% Racionales",
+    description: "Olvídate del estrés y la impulsividad. El sistema toma las decisiones por ti, basado en pura lógica."
   },
   {
     icon: <TrendingUp className="w-8 h-8 text-yellow-400" />,
-    title: "Ganancias pequeñas, repetidas, acumuladas",
-    description: "Crecimiento sostenible y controlado"
+    title: "Crecimiento Exponencial y Seguro",
+    description: "Acumula ganancias constantes y predecibles. Convierte pequeñas victorias en una fortuna a largo plazo."
   },
   {
     icon: <Target className="w-8 h-8 text-yellow-400" />,
-    title: "Mentalidad de ejecutor, no de jugador",
-    description: "Estrategia profesional, no entretenimiento"
+    title: "Conviértete en un Inversor de Élite",
+    description: "Adopta la mentalidad de los profesionales que no apuestan, sino que invierten con estrategia."
   },
   {
     icon: <Shield className="w-8 h-8 text-yellow-400" />,
-    title: "Ideal para largo plazo, sin adrenalina",
-    description: "Enfoque disciplinado y metodológico"
+    title: "Libertad Financiera Sostenible",
+    description: "Construye un futuro financiero sólido y sin sobresaltos, con un método diseñado para el éxito a largo plazo."
   },
   {
     icon: <Zap className="w-8 h-8 text-yellow-400" />,
-    title: "Sistema probado por décadas",
-    description: "Más de 500,000 shoes de experiencia"
+    title: "Décadas de Experiencia a tu Alcance",
+    description: "Accede a un sistema perfeccionado durante décadas y probado en más de 500,000 escenarios reales."
   }
 ];
 
@@ -59,7 +59,7 @@ const Benefits = () => {
             ¿Por qué este método <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">transforma vidas?</span>
           </h2>
           <p className="text-xl text-yellow-400 max-w-3xl mx-auto font-semibold">
-            Beneficios exclusivos que solo tendrás si accedes ahora. No es solo un sistema, es una nueva mentalidad.
+            Estos no son simples beneficios, son los pilares de tu nueva realidad financiera. Esto es lo que obtienes al unirte:
           </p>
         </div>
         <motion.div

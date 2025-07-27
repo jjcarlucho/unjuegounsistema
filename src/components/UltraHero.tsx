@@ -7,9 +7,9 @@ const UltraHero = () => {
   const [loading, setLoading] = useState(false);
 
   const socialProofs = [
-    { amount: "$47,300", time: "3 semanas", name: "Carlos M." },
-    { amount: "$89,500", time: "1 mes", name: "Ana L." },
-    { amount: "$156,000", time: "2 meses", name: "Roberto S." }
+    { amount: "$47,300", time: "3 semanas", name: "Carlos M.", details: "operando en el mercado de divisas" },
+    { amount: "$89,500", time: "1 mes", name: "Ana L.", details: "siguiendo el sistema paso a paso" },
+    { amount: "$156,000", time: "2 meses", name: "Roberto S.", details: "con una inversión inicial de $1,000" }
   ];
 
   useEffect(() => {
@@ -72,10 +72,9 @@ const UltraHero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-2xl md:text-3xl text-white font-bold mb-8"
             >
-              El método matemático <span className="text-emerald-400">SECRETO</span> que está{' '}
-              <span className="text-green-400 font-black">CREANDO MILLONARIOS</span> cada día
+              El Sistema Matemático que <span className="text-emerald-400">Genera Ganancias</span> Diarias
               <br />
-              <span className="text-yellow-400 font-black">¡Solo por $17 en PREVENTA!</span>
+              <span className="text-yellow-400 font-black">¡Acceso Inmediato por Solo $17!</span>
             </motion.p>
 
             {/* Estadísticas clave */}
@@ -122,7 +121,7 @@ const UltraHero = () => {
                 transition={{ duration: 0.5 }}
               >
                 <p className="text-white font-bold text-lg mb-2">
-                  "Generé <span className="text-green-400">{socialProofs[currentProof].amount}</span> en {socialProofs[currentProof].time}"
+                  "Generé <span className="text-green-400">{socialProofs[currentProof].amount}</span> en {socialProofs[currentProof].time} {socialProofs[currentProof].details}"
                 </p>
                 <p className="text-gray-400">- {socialProofs[currentProof].name}</p>
               </motion.div>
@@ -148,7 +147,7 @@ const UltraHero = () => {
                 ) : (
                   <>
                     <CreditCard size={28} className="group-hover:animate-pulse" />
-                    🔥 ¡QUIERO CAMBIAR MI VIDA POR $17! 🔥
+                    OBTENER ACCESO INSTANTÁNEO por $17
                   </>
                 )}
               </button>

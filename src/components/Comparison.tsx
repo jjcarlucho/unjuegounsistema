@@ -1,111 +1,107 @@
 import React from 'react';
-import { Check, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { CheckCircle, XCircle, BarChart, DollarSign, Brain, TrendingUp } from 'lucide-react';
 
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
+const comparisonData = [
+  { 
+    feature: "Método", 
+    ourSystem: "Matemático y predecible", 
+    alternatives: "Basado en suerte o intuición"
   },
-};
-const card = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0 },
-};
-
-const yesItems = [
-  "Control absoluto sobre cada decisión",
-  "Estrategia basada en matemáticas",
-  "Números, patrones y probabilidades",
-  "Disciplina y paciencia",
-  "Ganancias consistentes y medibles",
-  "Enfoque profesional y sistemático"
-];
-
-const noItems = [
-  "Depender del azar o la suerte",
-  "Decisiones basadas en emociones",
-  "Impulsividad y adrenalina",
-  "Esperanza de 'golpes de suerte'",
-  "Pérdidas incontrolables",
-  "Mentalidad de entretenimiento"
+  { 
+    feature: "Resultados", 
+    ourSystem: "Consistentes y auditables", 
+    alternatives: "Aleatorios e impredecibles"
+  },
+  { 
+    feature: "Riesgo", 
+    ourSystem: "Calculado y minimizado", 
+    alternatives: "Alto y emocional"
+  },
+  { 
+    feature: "Costo Real", 
+    ourSystem: "$17 (un solo pago)", 
+    alternatives: "Cientos o miles en pérdidas"
+  },
+  { 
+    feature: "Mentalidad", 
+    ourSystem: "Inversor profesional", 
+    alternatives: "Jugador o apostador"
+  },
 ];
 
 const Comparison = () => {
   return (
-    <section className="py-28 bg-transparent relative">
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent rounded-full" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-            ¿Para quién <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">SÍ es</span> y para quién <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">NO es</span> esta preventa
-          </h2>
-          <p className="text-xl text-yellow-400 max-w-3xl mx-auto font-semibold">
-            Esto NO es para todos. Solo para los primeros que se atrevan a descubrir la verdad antes que el resto del mundo.
-          </p>
-        </div>
+    <section id="comparison" className="py-28 bg-transparent relative">
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent rounded-full" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
         >
-          {/* What it IS */}
-          <motion.div
-            variants={card}
-            whileHover={{ scale: 1.06, boxShadow: '0 0 32px #3be13b88' }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="premium-glass bg-gradient-to-br from-green-900/10 to-green-800/10 p-10 rounded-2xl border border-green-500/20 shadow-xl cursor-pointer group"
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 bg-green-500 rounded-lg">
-                <Check className="w-6 h-6 text-white group-hover:animate-green-glow" />
-              </div>
-              <h3 className="text-2xl font-bold text-green-400 font-serif">ESTO SÍ</h3>
-            </div>
-            <div className="space-y-4">
-              {yesItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300 leading-relaxed">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-          {/* What it is NOT */}
-          <motion.div
-            variants={card}
-            whileHover={{ scale: 1.06, boxShadow: '0 0 32px #e13b3b88' }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="premium-glass bg-gradient-to-br from-red-900/10 to-red-800/10 p-10 rounded-2xl border border-red-500/20 shadow-xl cursor-pointer group"
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 bg-red-500 rounded-lg">
-                <X className="w-6 h-6 text-white group-hover:animate-red-glow" />
-              </div>
-              <h3 className="text-2xl font-bold text-red-400 font-serif">ESTO NO</h3>
-            </div>
-            <div className="space-y-4">
-              {noItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <X className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300 leading-relaxed">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-        <div className="text-center mt-20">
-          <p className="text-2xl font-light text-yellow-400 italic">
-            "La diferencia entre los insiders y el resto está en el acceso anticipado. ¿De qué lado quieres estar?"
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+            La Diferencia Abismal:
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Nuestro Sistema vs. Las Alternativas
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            No todos los caminos llevan al éxito. Aquí te mostramos por qué nuestro método es la única opción lógica para resultados reales.
           </p>
-        </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="premium-glass rounded-2xl border border-gray-700/50 shadow-xl overflow-hidden"
+        >
+          <div className="grid grid-cols-3 font-bold text-white text-center text-lg bg-gray-800/50 p-4">
+            <div className="text-left">Característica</div>
+            <div>Nuestro Sistema</div>
+            <div>Alternativas Comunes</div>
+          </div>
+
+          {comparisonData.map((item, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 + 0.4 }}
+              className="grid grid-cols-3 items-center text-center p-4 border-t border-gray-700/50"
+            >
+              <div className="text-left font-semibold text-gray-300">{item.feature}</div>
+              <div className="flex flex-col items-center text-green-400">
+                <CheckCircle className="w-6 h-6 mb-1" />
+                <span>{item.ourSystem}</span>
+              </div>
+              <div className="flex flex-col items-center text-red-400">
+                <XCircle className="w-6 h-6 mb-1" />
+                <span>{item.alternatives}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="text-center mt-12 bg-gray-800/50 p-6 rounded-xl border border-gray-700/50"
+        >
+            <p className="text-2xl font-light text-cyan-300 italic">
+              La elección es simple: puedes seguir apostando con la esperanza de un golpe de suerte, o puedes empezar a invertir con la certeza de las matemáticas.
+            </p>
+        </motion.div>
       </div>
     </section>
   );
-};
+}
 
 export default Comparison;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, CheckCircle, Quote, Calendar, MapPin, TrendingUp } from 'lucide-react';
+import { Star, CheckCircle, Quote, Calendar, MapPin, TrendingUp, Rocket, Target, Brain } from 'lucide-react';
 
 const testimonials = [
   {
@@ -11,8 +11,9 @@ const testimonials = [
     role: 'Ingeniero de Software',
     date: '15 de Enero, 2024',
     rating: 5,
-    quote: 'Después de 3 años probando diferentes métodos, este es el único que realmente funciona. La precisión matemática es impresionante.',
+    quote: 'Este es el único método que realmente funciona. La precisión matemática es impresionante.',
     result: 'Recuperé mi inversión en 4 días',
+    resultIcon: <Rocket className="w-5 h-5 text-green-400" />,
     verified: true
   },
   {
@@ -23,8 +24,9 @@ const testimonials = [
     role: 'Contadora Pública',
     date: '8 de Febrero, 2024',
     rating: 5,
-    quote: 'Como contadora, aprecio los números. Este sistema tiene una lógica matemática sólida que realmente genera resultados consistentes.',
-    result: 'Método aplicado con éxito en 12 sesiones',
+    quote: 'La lógica matemática sólida de este sistema genera resultados consistentes y predecibles.',
+    result: 'Aplicado con éxito en 12 sesiones',
+    resultIcon: <Target className="w-5 h-5 text-green-400" />,
     verified: true
   },
   {
@@ -35,8 +37,9 @@ const testimonials = [
     role: 'Analista Financiero',
     date: '22 de Febrero, 2024',
     rating: 5,
-    quote: 'Trabajo en finanzas y puedo confirmar que la metodología es sólida. No es suerte, es matemática pura aplicada correctamente.',
-    result: 'Precisión del 94% en mis primeras 20 aplicaciones',
+    quote: 'Trabajo en finanzas y puedo confirmar que la metodología es sólida. No es suerte, es matemática pura.',
+    result: '94% de precisión en mis primeras 20 aplicaciones',
+    resultIcon: <TrendingUp className="w-5 h-5 text-green-400" />,
     verified: true
   },
   {
@@ -47,8 +50,9 @@ const testimonials = [
     role: 'Profesora de Matemáticas',
     date: '5 de Marzo, 2024',
     rating: 5,
-    quote: 'Como profesora de matemáticas, quedé fascinada con la elegancia del sistema. Es educativo y efectivo a la vez.',
-    result: 'Entendí el sistema en 2 horas de estudio',
+    quote: 'Como profesora de matemáticas, quedé fascinada con la elegancia del sistema. Es educativo y efectivo.',
+    result: 'Entendí el sistema en 2 horas',
+    resultIcon: <Brain className="w-5 h-5 text-green-400" />,
     verified: true
   },
   {
@@ -59,8 +63,9 @@ const testimonials = [
     role: 'Empresario',
     date: '18 de Marzo, 2024',
     rating: 5,
-    quote: 'He invertido en muchos sistemas. Este es diferente: tiene fundamento matemático real y resultados verificables.',
+    quote: 'He invertido en muchos sistemas. Este es diferente: tiene fundamento real y resultados verificables.',
     result: 'ROI positivo desde la primera semana',
+    resultIcon: <Rocket className="w-5 h-5 text-green-400" />,
     verified: true
   },
   {
@@ -71,8 +76,9 @@ const testimonials = [
     role: 'Analista de Datos',
     date: '2 de Abril, 2024',
     rating: 5,
-    quote: 'Analicé los datos del sistema durante semanas antes de comprarlo. Los patrones matemáticos son consistentes y replicables.',
+    quote: 'Analicé los datos del sistema durante semanas. Los patrones matemáticos son consistentes y replicables.',
     result: 'Validé la efectividad con 50+ pruebas',
+    resultIcon: <CheckCircle className="w-5 h-5 text-green-400" />,
     verified: true
   }
 ];
@@ -161,12 +167,14 @@ const ImprovedTestimonials = () => {
                     "{currentTestimonial.quote}"
                   </blockquote>
                   
-                  <div className="bg-emerald-600/20 rounded-xl p-4 mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="text-emerald-400" size={16} />
-                      <span className="text-emerald-400 font-bold text-sm">RESULTADO:</span>
+                  <div className="bg-green-600/20 rounded-xl p-4 mb-6 flex items-center gap-3">
+                    <div className="flex-shrink-0">
+                      {currentTestimonial.resultIcon}
                     </div>
-                    <p className="text-emerald-300 font-bold">{currentTestimonial.result}</p>
+                    <div>
+                      <p className="text-green-300 font-bold text-lg">{currentTestimonial.result}</p>
+                      <p className="text-green-400 font-bold text-sm">RESULTADO OBTENIDO</p>
+                    </div>
                   </div>
                   
                   <div className="flex items-center gap-4">

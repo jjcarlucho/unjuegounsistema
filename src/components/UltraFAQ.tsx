@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, DollarSign, Clock, Shield, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const UltraFAQ = () => {
+interface UltraFAQProps {
+  onCTAClick?: () => void;
+}
+
+const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
   const faqs = [
@@ -19,23 +23,23 @@ const UltraFAQ = () => {
     {
       icon: Shield,
       question: "¿Qué pasa si no funciona para mí?",
-      answer: "IMPOSIBLE que no funcione si sigues las instrucciones. Pero si por alguna razón no obtienes resultados en 30 días, te devolvemos tu dinero completo + $500 USD adicionales por las molestias.",
+      answer: "Si sigues las instrucciones correctamente, deberías ver resultados. Si por alguna razón no obtienes resultados en 30 días, te devolvemos tu dinero completo.",
     },
     {
       icon: Zap,
       question: "¿Cuándo veré mis primeros resultados?",
-      answer: "Los primeros resultados los verás en las primeras 24-48 horas. El 89% de nuestros usuarios recupera su inversión en la primera semana. El sistema está diseñado para generar resultados INMEDIATOS.",
+      answer: "Los primeros resultados típicamente se ven en la primera semana si aplicas el método correctamente. El tiempo puede variar según cada caso y la dedicación que le pongas.",
     }
   ];
 
-  const [loading, setLoading] = useState(false);
-
-  const handlePurchaseClick = async () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert('¡Funcionalidad de pago próximamente!');
-    }, 2000);
+  const handleCTAClick = () => {
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("💡 He leído las FAQ y estoy convencido. Quiero acceder al sistema matemático AHORA y empezar a generar resultados inmediatos.");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   return (
@@ -128,18 +132,10 @@ const UltraFAQ = () => {
             </p>
             
             <button
-              onClick={handlePurchaseClick}
-              disabled={loading}
-              className="bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
+              onClick={handleCTAClick}
+              className="bg-white hover:bg-gray-100 text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
             >
-              {loading ? (
-                <div className="flex items-center gap-2">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-emerald-700"></div>
-                  PROCESANDO...
-                </div>
-              ) : (
-                "💰 COMPRAR POR $17 USD"
-              )}
+              💰 ACCEDE A LA PREVENTA HOY
             </button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

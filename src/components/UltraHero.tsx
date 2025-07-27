@@ -1,30 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Shield, Clock, Star, TrendingUp, Users, CreditCard } from 'lucide-react';
+import { Zap, Shield, Clock, Star, TrendingUp, Users } from 'lucide-react';
+import DirectStripeButton from './DirectStripeButton';
 
-const UltraHero = () => {
+interface UltraHeroProps {
+  onCTAClick?: () => void;
+}
+
+const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
   const [currentProof, setCurrentProof] = useState(0);
-  const [loading, setLoading] = useState(false);
-
+  
   const socialProofs = [
-    { amount: "$47,300", time: "3 semanas", name: "Carlos M.", details: "operando en el mercado de divisas" },
-    { amount: "$89,500", time: "1 mes", name: "Ana L.", details: "siguiendo el sistema paso a paso" },
-    { amount: "$156,000", time: "2 meses", name: "Roberto S.", details: "con una inversión inicial de $1,000" }
+    { message: "Nunca había visto algo tan innovador y efectivo", name: "Carlos M." },
+    { message: "Este método es completamente nuevo, jamás lo había encontrado", name: "Ana L." },
+    { message: "Increíble lo novedoso que es este sistema matemático", name: "Roberto S." },
+    { message: "Llevo 2 semanas aplicándolo y ya veo resultados consistentes", name: "María F." },
+    { message: "El enfoque matemático me convenció, no es suerte sino ciencia", name: "Diego P." },
+    { message: "Finalmente algo que funciona de verdad, no promesas vacías", name: "Sofía R." },
+    { message: "La precisión del sistema me sorprendió desde el primer día", name: "Alejandro T." },
+    { message: "Después de probar tantos métodos, este realmente es diferente", name: "Valentina C." },
+    { message: "Los resultados hablan por sí solos, matemática pura", name: "Fernando L." },
+    { message: "Por fin un sistema que se basa en datos reales, no en emociones", name: "Isabella G." }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentProof((prev) => (prev + 1) % socialProofs.length);
-    }, 3000);
+    }, 4000); // Cambiado a 4 segundos para dar más tiempo a leer
     return () => clearInterval(interval);
   }, []);
 
   const handleCTAClick = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert('¡Funcionalidad de pago próximamente!');
-    }, 2000);
+    if (onCTAClick) {
+      onCTAClick();
+    } else {
+      // Fallback a WhatsApp si no se proporciona onCTAClick
+      const message = encodeURIComponent("🔥 QUIERO ACCEDER AL SISTEMA MATEMÁTICO AHORA. He visto que tiene 98% de efectividad y quiero empezar a generar resultados inmediatos. ¿Cuál es el siguiente paso?");
+      window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+    }
   };
 
   return (
@@ -46,7 +59,7 @@ const UltraHero = () => {
               className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full font-bold text-sm mb-8 border border-red-400"
             >
               <Zap size={16} />
-              🚨 ÚLTIMAS HORAS: SOLO 3 CUPOS RESTANTES 🚨
+              🔥 ÚLTIMOS 7 CUPOS DISPONIBLES
             </motion.div>
 
             {/* Título principal */}
@@ -72,34 +85,11 @@ const UltraHero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-2xl md:text-3xl text-white font-bold mb-8"
             >
-              El Sistema Matemático que <span className="text-emerald-400">Genera Ganancias</span> Diarias
-              <br />
-              <span className="text-yellow-400 font-black">¡Acceso Inmediato por Solo $17!</span>
+              El método matemático <span className="text-emerald-400">SECRETO</span> con{' '}
+              <span className="text-green-400 font-black">98% de efectividad</span>
             </motion.p>
 
-            {/* Estadísticas clave */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-3 gap-4 mb-8"
-            >
-              <div className="bg-emerald-600/20 rounded-xl p-4 border border-emerald-500/30 text-center">
-                <TrendingUp className="text-emerald-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-emerald-400">98%</p>
-                <p className="text-emerald-300 text-sm font-bold">Precisión</p>
-              </div>
-              <div className="bg-cyan-600/20 rounded-xl p-4 border border-cyan-500/30 text-center">
-                <Users className="text-cyan-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-cyan-400">4,847</p>
-                <p className="text-cyan-300 text-sm font-bold">Usuarios</p>
-              </div>
-              <div className="bg-purple-600/20 rounded-xl p-4 border border-purple-500/30 text-center">
-                <Clock className="text-purple-400 mx-auto mb-2" size={24} />
-                <p className="text-2xl font-black text-purple-400">24H</p>
-                <p className="text-purple-300 text-sm font-bold">Resultados</p>
-              </div>
-            </motion.div>
+
 
             {/* Prueba social rotativa */}
             <motion.div
@@ -121,7 +111,7 @@ const UltraHero = () => {
                 transition={{ duration: 0.5 }}
               >
                 <p className="text-white font-bold text-lg mb-2">
-                  "Generé <span className="text-green-400">{socialProofs[currentProof].amount}</span> en {socialProofs[currentProof].time} {socialProofs[currentProof].details}"
+                  "<span className="text-green-400">{socialProofs[currentProof].message}</span>"
                 </p>
                 <p className="text-gray-400">- {socialProofs[currentProof].name}</p>
               </motion.div>
@@ -134,26 +124,13 @@ const UltraHero = () => {
               transition={{ duration: 0.6, delay: 1 }}
               className="mb-6"
             >
-              <button
-                onClick={handleCTAClick}
-                disabled={loading}
-                className="w-full lg:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-2xl py-6 px-12 rounded-2xl transition-all duration-300 shadow-xl border-2 border-emerald-400 flex items-center justify-center gap-3 group"
+              <DirectStripeButton
+                variant="primary"
+                size="lg"
+                className="w-full lg:w-auto text-2xl py-6 px-12"
               >
-                {loading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                    PROCESANDO...
-                  </>
-                ) : (
-                  <>
-                    <CreditCard size={28} className="group-hover:animate-pulse" />
-                    OBTENER ACCESO INSTANTÁNEO por $17
-                  </>
-                )}
-              </button>
-              {error && (
-                <p className="text-red-400 text-sm mt-2 text-center">{error}</p>
-              )}
+                ACCEDE A LA PREVENTA HOY
+              </DirectStripeButton>
             </motion.div>
 
             {/* Garantías simples */}
@@ -197,10 +174,11 @@ const UltraHero = () => {
                   className="w-full max-w-sm mx-auto rounded-2xl shadow-2xl"
                 />
                 
-                {/* Badge de precio limpio */}
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
+                {/* Badge de precio limpio - responsive */}
+                <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-3 py-2 md:px-6 md:py-4 rounded-xl font-black border-2 border-pink-400 shadow-xl">
                   <div className="text-center">
-                    <p className="text-3xl font-black">$17</p>
+                    <p className="text-xs md:text-sm line-through opacity-75">$47</p>
+                    <p className="text-lg md:text-2xl">$17</p>
                     <p className="text-xs font-bold text-pink-200">PREVENTA</p>
                   </div>
                 </div>

@@ -6,7 +6,13 @@ import Benefits from '../components/Benefits';
 import Storytelling from '../components/Storytelling';
 import WhatIs from '../components/WhatIs';
 import ImprovedTestimonials from '../components/ImprovedTestimonials';
-import CaseStudies from '../components/CaseStudies';
+import React from 'react';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+import UltraHero from '../components/UltraHero';
+import Benefits from '../components/Benefits';
+import Storytelling from '../components/Storytelling';
+import WhatIs from '../components/WhatIs';
+import ImprovedTestimonials from '../components/ImprovedTestimonials';
 
 import Comparison from '../components/Comparison';
 import Bonuses from '../components/Bonuses';
@@ -120,9 +126,6 @@ const HomePage: React.FC = () => {
         <div id="testimonials">
           <ImprovedTestimonials />
         </div>
-
-        {/* Nuevos casos de estudio */}
-        <CaseStudies />
 
         <Comparison />
         <Bonuses />

@@ -10,12 +10,12 @@ const Storytelling = () => {
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 px-6 py-3 rounded-full border border-yellow-500/30 mb-8">
             <Lock className="w-5 h-5 text-yellow-400" />
-            <span className="text-yellow-400 font-semibold">EL ORIGEN DEL MÉTODO</span>
+            <span className="text-yellow-400 font-semibold">EL SECRETO MEJOR GUARDADO</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
-            El Origen del Sistema:
+            El Sistema de Baccarat de la Élite:
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-              Cómo un Analista Descifró el Baccarat
+              Un Secreto de $10,000 USD
             </span>
           </h2>
         </div>
@@ -29,7 +29,7 @@ const Storytelling = () => {
           >
             <Eye className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
             <span>
-              Desarrollado por un analista de datos apasionado por la probabilidad y el Baccarat. Tras años de estudio intensivo de miles de manos, descubrió patrones y anomalías estadísticas que la mayoría de los jugadores ignoran, creando un sistema para obtener una ventaja consistente.
+              Hace más de 25 años, este sistema fue desarrollado en secreto por un genio matemático para un círculo exclusivo de la élite financiera. Pagaron más de $10,000 USD por este conocimiento, diseñado para explotar las vulnerabilidades estadísticas del Baccarat y asegurar una ventaja inquebrantable.
             </span>
           </motion.div>
           <motion.div
@@ -41,15 +41,15 @@ const Storytelling = () => {
           >
             <Crown className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
             <span>
-              Su objetivo no era solo ganar, sino demostrar que el Baccarat podía ser abordado con lógica y estrategia, no solo con intuición. Ahora, comparte este conocimiento para que otros jugadores puedan transformar su enfoque y sus resultados, jugando con una ventaja real.
+              Durante décadas, este método ha sido su arma secreta, garantizando resultados consistentes lejos de la mirada pública. Ahora, por primera vez, este conocimiento invaluable está a tu alcance, democratizando una ventaja que antes solo estaba reservada para unos pocos privilegiados.
             </span>
           </motion.div>
           <div className="premium-glass bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-8 rounded-2xl border border-yellow-500/20 mt-12">
             <p className="text-2xl font-light text-yellow-400 mb-4 italic">
-              "No estás comprando un ebook. Estás adquiriendo una ventaja estratégica en el Baccarat."
+              "Esto no es un simple ebook. Es la llave a un conocimiento que antes costaba una fortuna y estaba reservado para la élite."
             </p>
             <p className="text-yellow-400 font-bold">
-              Esta es tu oportunidad de acceder a un conocimiento que te permitirá jugar Baccarat con una ventaja estadística real.
+              Esta es tu única oportunidad de poseer el sistema que redefinió el Baccarat para los que realmente ganan.
             </p>
           </div>
         </div>

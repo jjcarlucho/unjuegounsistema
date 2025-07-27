@@ -1,18 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gift, ShieldCheck, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react'; // Eliminamos Gift y ShieldCheck ya que usaremos <img>
 
 const bonuses = [
   {
-    icon: <img src="https://www.thegamechangerbooks.com/images/yourwishisyourcommand.avif" alt="Your Wish Is Your Command" className="w-10 h-10" />,
+    image: "https://www.thegamechangerbooks.com/images/yourwishisyourcommand.avif",
     title: "Bono Exclusivo #1: Su Deseo Es Su Mandato",
     description: "Una legendaria serie de audios sobre mentalidad, manifestación y la Ley de Atracción aplicada a los negocios. Esta colección exclusiva te entrena para pensar como un creador de realidad, no como un esclavo de proyectos. Imagina transformar tu mentalidad para manifestar el éxito en los negocios. Estos audios te guían en la aplicación de la Ley de Atracción a tus esfuerzos empresariales, enseñándote a crear la realidad que deseas. Imagínate pasando de un lugar de limitación a uno de potencial ilimitado. A medida que integres estos principios, comenzarás a ver oportunidades que antes no notabas, atraerás colaboradores afines y te alinearás naturalmente con tus objetivos comerciales, haciendo que el camino hacia el éxito sea más intuitivo y menos estresante.",
     value: "$500"
   },
   {
-    icon: <img src="https://www.thegamechangerbooks.com/images/Gemini_Generated_Image_nyf0pqnyf0pqnyf0.jpeg" alt="TFT Course" className="w-10 h-10" />,
+    image: "https://www.thegamechangerbooks.com/images/Gemini_Generated_Image_nyf0pqnyf0pqnyf0.jpeg",
     title: "Bono Exclusivo #2: Curso TFT (Thought Field Therapy)",
-    description: "Aprende a liberar bloqueos subconscientes y emociones que sabotean tu progreso con esta poderosa técnica de transformación personal. Perfecto para emprendedores conscientes que quieren vender desde su centro, sin miedo ni autosabotaje. Imagina poder eliminar los obstáculos mentales y emocionales que te frenan. Este curso te equipa con técnicas para identificar y liberar bloqueos subconscientes, permitiéndote abordar los negocios desde un lugar de confianza y autenticidad. Visualiza la libertad de operar sin miedo ni autosabotaje, permitiendo que tu verdadera pasión y propósito brillen en tus ofertas. A medida que estos bloqueos se disuelvan, encontrarás una mayor alineación en tus acciones, lo que te llevará a conexiones más genuinas con tus clientes y un mayor éxito en tus esfuerzos.",
+    description: "Aprende a liberar bloqueos subconscientes y emociones que sabotean tu progreso con esta poderosa técnica de transformación personal. Perfecto para emprendedores conscientes que quieren vender desde su centro, sin miedo ni autosabotaje. Imagina poder eliminar los obstáculos mentales y emocionales que te frenan. Este curso te equipa con técnicas para identificar y liberar bloqueos subconscientes, permitiéndote abordar los negocios desde un lugar de confianza y autenticidad. Visualiza la libertad de operar sin miedo ni autosabotaje, permitiendo que tu verdadera pasión y propósito brillen en tus ofertas. A medida que estos bloques se disuelvan, encontrarás una mayor alineación en tus acciones, lo que te llevará a conexiones más genuinas con tus clientes y un mayor éxito en tus esfuerzos.",
     value: "$297"
   }
 ];
@@ -48,26 +48,22 @@ const Bonuses = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.2 }}
-              className="premium-glass flex flex-col md:flex-row items-center md:items-start gap-8 p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300"
+              className="premium-glass flex flex-col items-center text-center p-8 rounded-3xl border border-gray-700/50 shadow-lg hover:border-yellow-500/50 transition-all duration-300"
             >
-              <div className="flex-shrink-0 bg-gray-800/50 p-5 rounded-full border border-gray-700">
-                {bonus.icon}
-              </div>
-              <div className="text-center md:text-left flex-1">
-                <h3 className="text-3xl font-bold text-white font-serif mb-3">
-                  {bonus.title}
-                </h3>
-                <p className="text-gray-400 text-lg mb-4">
-                  {bonus.description}
-                </p>
-                <div className="mt-auto">
-                  <span className="text-xl font-bold text-yellow-400 bg-yellow-900/50 py-2 px-4 rounded-lg border border-yellow-700/50">
-                    Valor: {bonus.value}
-                  </span>
-                  <span className="block text-green-400 font-bold mt-3 text-lg">
-                    GRATIS HOY
-                  </span>
-                </div>
+              <img src={bonus.image} alt={bonus.title} className="w-48 h-48 object-contain mb-6" /> {/* Increased image size and used img tag */}
+              <h3 className="text-3xl font-bold text-white font-serif mb-3">
+                {bonus.title}
+              </h3>
+              <p className="text-gray-400 text-lg mb-4">
+                {bonus.description}
+              </p>
+              <div className="mt-auto">
+                <span className="text-xl font-bold text-yellow-400 bg-yellow-900/50 py-2 px-4 rounded-lg border border-yellow-700/50">
+                  Valor: {bonus.value}
+                </span>
+                <span className="block text-green-400 font-bold mt-3 text-lg">
+                  GRATIS HOY
+                </span>
               </div>
             </motion.div>
           ))}

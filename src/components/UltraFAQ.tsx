@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, DollarSign, Clock, Shield, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useStripe } from '../hooks/useStripe';
 
 const UltraFAQ = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
@@ -29,10 +28,14 @@ const UltraFAQ = () => {
     }
   ];
 
-  const { redirectToCheckout, loading, error } = useStripe();
+  const [loading, setLoading] = useState(false);
 
   const handlePurchaseClick = async () => {
-    await redirectToCheckout();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert('¡Funcionalidad de pago próximamente!');
+    }, 2000);
   };
 
   return (

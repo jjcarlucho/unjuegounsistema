@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Zap, Clock, DollarSign, Shield, AlertTriangle, TrendingUp } from 'lucide-react';
-import { useStripe } from '../hooks/useStripe';
 
 const FinalCTA = () => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
@@ -28,10 +27,15 @@ const FinalCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const { redirectToCheckout, loading, error } = useStripe();
+  const [loading, setLoading] = useState(false);
 
   const handlePurchaseClick = async () => {
-    await redirectToCheckout();
+    setLoading(true);
+    // Simular acción de compra
+    setTimeout(() => {
+      setLoading(false);
+      alert('¡Funcionalidad de pago próximamente!');
+    }, 2000);
   };
 
   return (

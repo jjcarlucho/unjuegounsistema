@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Clock, Star, TrendingUp, Users, CreditCard } from 'lucide-react';
-import { useStripe } from '../hooks/useStripe';
 
 const UltraHero = () => {
   const [currentProof, setCurrentProof] = useState(0);
-  const { redirectToCheckout, loading, error } = useStripe();
+  const [loading, setLoading] = useState(false);
 
   const socialProofs = [
     { amount: "$47,300", time: "3 semanas", name: "Carlos M." },
@@ -21,7 +20,11 @@ const UltraHero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    redirectToCheckout();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert('¡Funcionalidad de pago próximamente!');
+    }, 2000);
   };
 
   return (

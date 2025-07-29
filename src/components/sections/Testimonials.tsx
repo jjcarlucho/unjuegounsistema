@@ -126,23 +126,7 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
           
-          {/* Estadísticas */}
-          <div className="mt-16 text-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="quantum-card p-6">
-                <div className="text-3xl font-bold text-quantum-green-cta mb-2">847</div>
-                <div className="text-quantum-text-dim">Usuarios Activos</div>
-              </div>
-              <div className="quantum-card p-6">
-                <div className="text-3xl font-bold text-quantum-green-cta mb-2">89%</div>
-                <div className="text-quantum-text-dim">Satisfacción</div>
-              </div>
-              <div className="quantum-card p-6">
-                <div className="text-3xl font-bold text-quantum-green-cta mb-2">6.2</div>
-                <div className="text-quantum-text-dim">Promedio de Sesiones</div>
-              </div>
-            </div>
-          </div>
+
         </AnimatedSection>
       </Container>
     </section>

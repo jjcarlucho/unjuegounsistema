@@ -9,7 +9,7 @@ const Offer: React.FC = () => {
   const offerItems = [
     {
       name: "El Ebook 'Un Juego, Un Sistema'",
-      originalPrice: "47 USD",
+      originalPrice: "499 USD",
       description: "El manual de operaciones completo"
     },
     {
@@ -62,7 +62,7 @@ const Offer: React.FC = () => {
                     <Star className="w-6 h-6 text-quantum-green-cta" />
                     <span className="text-quantum-text-bright font-bold text-lg">VALOR TOTAL DEL PAQUETE</span>
                   </div>
-                  <span className="text-quantum-green-cta font-bold text-xl">$844 USD</span>
+                  <span className="text-quantum-green-cta font-bold text-xl">$1,296 USD</span>
                 </div>
               </div>
               
@@ -71,9 +71,9 @@ const Offer: React.FC = () => {
                 <p className="text-quantum-text-dim mb-2">Tu Inversión Hoy</p>
                 <div className="flex items-center justify-center gap-4">
                   <span className="text-quantum-text-dim line-through text-lg">$499</span>
-                  <span className="text-quantum-green-cta font-bold text-5xl cta-button">$97</span>
+                  <span className="text-quantum-green-cta font-bold text-5xl cta-button">$47</span>
                 </div>
-                <p className="text-quantum-green-cta font-semibold mt-2">🎉 AHORRO DEL 81%</p>
+                <p className="text-quantum-green-cta font-semibold mt-2">🎉 AHORRO DEL 91%</p>
               </div>
               
               {/* CTA */}

@@ -149,13 +149,13 @@ const StrategicBonuses = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 bg-gradient-to-r from-yellow-600 to-orange-700 rounded-3xl p-8 border-2 border-yellow-400 text-center"
+          className="mt-16 bg-gradient-to-r from-yellow-600 to-orange-700 rounded-3xl p-10 border-2 border-yellow-400 text-center"
         >
-          <h3 className="text-3xl font-black text-white mb-4">
+          <h3 className="text-4xl md:text-5xl font-black text-white mb-6">
             🎁 VALOR TOTAL DE LOS BONOS: $797 USD
           </h3>
-          <p className="text-xl text-yellow-100 font-bold mb-6">
-            Pero hoy los recibes <span className="text-4xl text-white">COMPLETAMENTE GRATIS</span>
+          <p className="text-2xl md:text-3xl text-yellow-100 font-bold mb-8">
+            Pero hoy los recibes <span className="text-5xl md:text-6xl text-white">COMPLETAMENTE GRATIS</span>
           </p>
           <div className="bg-white/20 rounded-2xl p-4 inline-block">
             <p className="text-white font-bold text-lg">

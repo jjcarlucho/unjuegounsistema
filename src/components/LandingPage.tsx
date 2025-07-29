@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UltraHero from './UltraHero';
 import WhatIs from './WhatIs';
 import Benefits from './Benefits';
+import VisualProof from './VisualProof';
 import WhatYouGet from './WhatYouGet';
 import StrategicBonuses from './StrategicBonuses';
 import PremiumComparison from './PremiumComparison';
@@ -22,6 +23,7 @@ const LandingPage: React.FC = () => {
       <UltraHero onCTAClick={() => setShowLeadPopup(true)} />
       <WhatIs />
       <Benefits />
+      <VisualProof />
       <StrategicBonuses />
       <WhatYouGet />
       <PremiumComparison onCTAClick={() => setShowLeadPopup(true)} />

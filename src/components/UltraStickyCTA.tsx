@@ -89,7 +89,7 @@ const UltraStickyCTA = () => {
                 className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-sm md:text-lg py-2 px-4 md:py-3 md:px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
                 <Zap size={16} />
-                <span className="hidden sm:inline">ACCEDE A LA PREVENTA HOY</span>
+                <span className="hidden sm:inline">ACCEDE HOY</span>
                 <span className="sm:hidden">PREVENTA HOY</span>
               </button>
             </div>

@@ -129,7 +129,7 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
                 size="lg"
                 className="w-full lg:w-auto text-2xl py-6 px-12"
               >
-                ACCEDE A LA PREVENTA HOY
+                ACCEDE HOY
               </DirectStripeButton>
             </motion.div>
 

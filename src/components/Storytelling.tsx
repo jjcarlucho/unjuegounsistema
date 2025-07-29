@@ -15,7 +15,7 @@ const Storytelling = () => {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
             El Sistema de Baccarat de la Élite:
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-              Un Secreto de $10,000 USD
+              Un Secreto de $47 USD
             </span>
           </h2>
         </div>
@@ -29,7 +29,7 @@ const Storytelling = () => {
           >
             <Eye className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
             <span>
-              Hace más de 25 años, este sistema fue desarrollado en secreto por un genio matemático para un círculo exclusivo de la élite financiera. Pagaron más de $10,000 USD por este conocimiento, diseñado para explotar las vulnerabilidades estadísticas del Baccarat y asegurar una ventaja inquebrantable.
+              Hace más de 25 años, este sistema fue desarrollado en secreto por un genio matemático para un círculo exclusivo de la élite financiera. Pagaron más de $47 USD por este conocimiento, diseñado para explotar las vulnerabilidades estadísticas del Baccarat y asegurar una ventaja inquebrantable.
             </span>
           </motion.div>
           <motion.div

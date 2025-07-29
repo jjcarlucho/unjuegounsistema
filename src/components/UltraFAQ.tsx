@@ -135,7 +135,7 @@ const UltraFAQ: React.FC<UltraFAQProps> = ({ onCTAClick }) => {
               onClick={handleCTAClick}
               className="bg-white hover:bg-gray-100 text-emerald-700 font-black text-xl py-4 px-8 rounded-xl transition-all duration-300 shadow-xl"
             >
-              💰 ACCEDE A LA PREVENTA HOY
+                              💰 ACCEDE HOY
             </button>
             
             <p className="text-emerald-200 text-sm font-bold mt-4">

@@ -1,8 +1,9 @@
 import React from 'react';
 import Container from '../layout/Container';
 import AnimatedSection from '../AnimatedSection';
-import CTAButton from '../CTAButton';
 import InteractiveCard from '../InteractiveCard';
+import StripePaymentButton from '../StripePaymentButton';
+import PaymentSecurityInfo from '../PaymentSecurityInfo';
 import { CheckCircle, Star } from 'lucide-react';
 
 const Offer: React.FC = () => {
@@ -82,33 +83,16 @@ const Offer: React.FC = () => {
               
               {/* CTA */}
               <div className="text-center">
-                <CTAButton 
-                  onClick={() => {
-                    // Aquí podrías abrir el checkout de Stripe o redirigir a la página de pago
-                    console.log('Redirecting to checkout...');
-                    // window.open('https://tu-checkout-url.com', '_blank');
-                  }}
-                  className="text-2xl px-12 py-6 bg-quantum-green-cta text-white shadow-quantum-cta hover:scale-105 cta-button" 
-                  showArrow={true}
+                <StripePaymentButton 
+                  className="text-2xl px-12 py-6 cta-button" 
+                  size="lg"
+                  variant="primary"
                 >
                   ACCEDER A LA PREVENTA HOY ⚡️
-                </CTAButton>
+                </StripePaymentButton>
                 
-                {/* Garantías */}
-                <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-quantum-text-dim">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-quantum-green-cta" />
-                    <span>Garantía 30 días</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-quantum-green-cta" />
-                    <span>Acceso Inmediato</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-quantum-green-cta" />
-                    <span>Soporte 24/7</span>
-                  </div>
-                </div>
+                {/* Información de seguridad */}
+                <PaymentSecurityInfo />
               </div>
             </div>
           </InteractiveCard>

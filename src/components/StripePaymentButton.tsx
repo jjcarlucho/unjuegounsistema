@@ -1,139 +1,125 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CreditCard, Lock, Zap, Shield } from 'lucide-react';
+import { Zap, CreditCard, Shield, CheckCircle } from 'lucide-react';
 import { redirectToCheckout } from '../lib/stripe';
 
 interface StripePaymentButtonProps {
   className?: string;
+  children?: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'sticky';
+  showIcon?: boolean;
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'primary' | 'secondary';
-  customerEmail?: string;
-  onPaymentStart?: () => void;
-  onPaymentError?: (error: string) => void;
 }
 
 const StripePaymentButton: React.FC<StripePaymentButtonProps> = ({
   className = '',
-  size = 'lg',
+  children,
   variant = 'primary',
-  customerEmail,
-  onPaymentStart,
-  onPaymentError
+  showIcon = true,
+  size = 'md'
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handlePayment = async () => {
+    setIsLoading(true);
+    setError(null);
+
     try {
-      setIsLoading(true);
-      onPaymentStart?.();
+      // Mostrar indicador de carga
+      const loadingToast = document.createElement('div');
+      loadingToast.className = 'fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      loadingToast.innerHTML = `
+        <div class="flex items-center gap-2">
+          <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+          <span>Preparando tu pago seguro...</span>
+        </div>
+      `;
+      document.body.appendChild(loadingToast);
 
-      // Verificar que Stripe esté configurado
-      if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
-        throw new Error('Stripe no está configurado correctamente');
-      }
+      // Redirigir a Stripe
+      await redirectToCheckout();
 
-      await redirectToCheckout(customerEmail);
+      // Remover toast de carga
+      document.body.removeChild(loadingToast);
+
     } catch (error) {
-      console.error('Payment error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Error procesando el pago';
-      onPaymentError?.(errorMessage);
+      console.error('Error en el pago:', error);
+      setError('Error al procesar el pago. Por favor, intenta de nuevo.');
+      
+      // Mostrar error toast
+      const errorToast = document.createElement('div');
+      errorToast.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      errorToast.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span>❌ Error al procesar el pago</span>
+        </div>
+      `;
+      document.body.appendChild(errorToast);
+      
+      setTimeout(() => {
+        if (document.body.contains(errorToast)) {
+          document.body.removeChild(errorToast);
+        }
+      }, 5000);
+    } finally {
       setIsLoading(false);
-
-      // Mostrar alerta al usuario
-      alert(`Error: ${errorMessage}\n\nPor favor, intenta de nuevo o contacta soporte.`);
     }
   };
 
-  const sizeClasses = {
-    sm: 'py-3 px-6 text-lg',
-    md: 'py-4 px-8 text-xl',
-    lg: 'py-6 px-12 text-2xl'
-  };
+  const getButtonClasses = () => {
+    const baseClasses = 'font-bold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed';
+    
+    const sizeClasses = {
+      sm: 'px-4 py-2 text-sm',
+      md: 'px-6 py-3 text-base',
+      lg: 'px-8 py-4 text-lg'
+    };
 
-  const variantClasses = {
-    primary: 'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 border-emerald-400',
-    secondary: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 border-blue-400'
+    const variantClasses = {
+      primary: 'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg shadow-emerald-500/25 focus:ring-emerald-400',
+      secondary: 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg shadow-blue-500/25 focus:ring-blue-400',
+      sticky: 'bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white shadow-lg shadow-red-500/25 focus:ring-red-400'
+    };
+
+    return `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
   };
 
   return (
     <motion.button
       onClick={handlePayment}
       disabled={isLoading}
-      whileHover={{ scale: isLoading ? 1 : 1.05 }}
-      whileTap={{ scale: isLoading ? 1 : 0.95 }}
-      className={`
-        ${variantClasses[variant]}
-        ${sizeClasses[size]}
-        text-white font-black rounded-2xl transition-all duration-300 
-        shadow-xl border-2 flex items-center justify-center gap-3 
-        relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed
-        ${className}
-      `}
+      className={getButtonClasses()}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
-      {/* Efecto de brillo */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
-      {/* Contenido del botón */}
-      <div className="relative z-10 flex items-center gap-3">
+      <div className="flex items-center justify-center gap-2">
+        {showIcon && (
+          <div className="flex items-center gap-1">
+            <CreditCard className="w-4 h-4" />
+            <Shield className="w-4 h-4" />
+          </div>
+        )}
+        
         {isLoading ? (
           <>
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
             <span>Procesando...</span>
           </>
         ) : (
           <>
-            <CreditCard size={24} className="animate-pulse" />
-            <span>PAGAR CON TARJETA</span>
-            <Zap size={24} className="animate-pulse" />
+            {showIcon && <Zap className="w-4 h-4" />}
+            <span>{children || 'PAGAR AHORA $47'}</span>
+            {showIcon && <CheckCircle className="w-4 h-4" />}
           </>
         )}
       </div>
+
+      {/* Badge de seguridad */}
+      <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+        🔒 SSL
+      </div>
     </motion.button>
-  );
-};
-
-// Componente de información de seguridad
-export const PaymentSecurityBadges: React.FC = () => {
-  return (
-    <div className="flex flex-col items-center gap-4 mt-6">
-      {/* Badges de seguridad */}
-      <div className="flex items-center gap-6 text-sm text-gray-400">
-        <div className="flex items-center gap-2">
-          <Lock size={16} className="text-green-400" />
-          <span>Pago 100% Seguro</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Shield size={16} className="text-blue-400" />
-          <span>SSL Encriptado</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <CreditCard size={16} className="text-purple-400" />
-          <span>Stripe Certified</span>
-        </div>
-      </div>
-
-      {/* Métodos de pago aceptados */}
-      <div className="text-center">
-        <p className="text-gray-400 text-sm mb-2">Métodos de pago aceptados:</p>
-        <div className="flex items-center justify-center gap-3">
-          <div className="bg-white rounded px-2 py-1 text-xs font-bold text-gray-800">VISA</div>
-          <div className="bg-white rounded px-2 py-1 text-xs font-bold text-gray-800">MASTERCARD</div>
-          <div className="bg-white rounded px-2 py-1 text-xs font-bold text-gray-800">AMEX</div>
-          <div className="bg-white rounded px-2 py-1 text-xs font-bold text-gray-800">DISCOVER</div>
-        </div>
-      </div>
-
-      {/* Garantía */}
-      <div className="bg-green-600/20 rounded-xl p-4 border border-green-500/30 text-center">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <Shield className="text-green-400" size={20} />
-          <span className="text-green-400 font-bold">GARANTÍA DE 30 DÍAS</span>
-        </div>
-        <p className="text-green-300 text-sm">
-          Si no estás satisfecho, te devolvemos tu dinero completo
-        </p>
-      </div>
-    </div>
   );
 };
 

@@ -1,134 +1,159 @@
-# 🚀 CONFIGURACIÓN DE STRIPE - GUÍA COMPLETA
+# 🚀 Configuración Completa de Stripe
 
-## 📋 PASOS PARA CONFIGURAR STRIPE
+## 📋 Pasos para Configurar Stripe
 
-### **1. CREAR CUENTA EN STRIPE**
+### 1. Crear Cuenta en Stripe
 1. Ve a [stripe.com](https://stripe.com)
-2. Crea tu cuenta
+2. Crea una cuenta gratuita
 3. Completa la verificación de identidad
-4. Activa tu cuenta para pagos en vivo
 
-### **2. OBTENER CLAVES API**
-1. Ve a **Dashboard > Developers > API keys**
-2. Copia las siguientes claves:
-   - **Publishable key** (pk_test_... o pk_live_...)
-   - **Secret key** (sk_test_... o sk_live_...)
+### 2. Obtener las Claves API
 
-### **3. CONFIGURAR VARIABLES DE ENTORNO**
-Crea un archivo `.env` en la raíz del proyecto:
+#### Clave Pública (Frontend)
+1. Ve a Dashboard > Developers > API Keys
+2. Copia la **Publishable key** (empieza con `pk_test_` o `pk_live_`)
 
+#### Clave Secreta (Backend)
+1. En la misma página, copia la **Secret key** (empieza con `sk_test_` o `sk_live_`)
+2. ⚠️ **NUNCA** compartas esta clave
+
+### 3. Configurar Variables de Entorno
+
+#### Para Desarrollo Local (.env.local)
 ```bash
-# Stripe Configuration
-VITE_STRIPE_PUBLISHABLE_KEY=pk_test_51QKrOhP8nKjGzQhO...
-STRIPE_SECRET_KEY=sk_test_51QKrOhP8nKjGzQhO...
-STRIPE_WEBHOOK_SECRET=whsec_...
-
-# App Configuration
-VITE_APP_URL=http://localhost:3000
-VERCEL_URL=https://tu-dominio.vercel.app
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_tu_clave_publica
+STRIPE_SECRET_KEY=sk_test_tu_clave_secreta
+STRIPE_WEBHOOK_SECRET=whsec_tu_webhook_secret
 ```
 
-### **4. CONFIGURAR WEBHOOK**
-1. Ve a **Dashboard > Developers > Webhooks**
-2. Clic en **"Add endpoint"**
-3. URL del endpoint: `https://tu-dominio.vercel.app/api/stripe-webhook`
-4. Selecciona estos eventos:
+#### Para Vercel
+1. Ve a tu proyecto en Vercel
+2. Settings > Environment Variables
+3. Agrega las mismas variables
+
+### 4. Configurar Webhook
+
+#### En Stripe Dashboard
+1. Ve a Developers > Webhooks
+2. Click en "Add endpoint"
+3. URL: `https://tu-dominio.vercel.app/api/stripe-webhook`
+4. Eventos a escuchar:
    - `checkout.session.completed`
    - `payment_intent.succeeded`
    - `payment_intent.payment_failed`
-5. Copia el **Webhook secret** (whsec_...)
 
-### **5. CONFIGURAR PRODUCTO EN STRIPE**
-1. Ve a **Dashboard > Products**
-2. Clic en **"Add product"**
-3. Configura:
-   - **Nombre:** UN JUEGO. UN SISTEMA.
-   - **Descripción:** Sistema matemático completo + bonos
-   - **Precio:** $17.00 USD
-   - **Tipo:** One-time payment
+#### Obtener Webhook Secret
+1. Después de crear el webhook
+2. Click en el endpoint creado
+3. Copia el "Signing secret" (empieza con `whsec_`)
 
-### **6. DESPLEGAR EN VERCEL**
-1. Conecta tu repositorio a Vercel
-2. Agrega las variables de entorno en Vercel:
-   - Ve a **Project Settings > Environment Variables**
-   - Agrega todas las variables del archivo `.env`
-3. Redeploy el proyecto
+### 5. Configurar Producto en Stripe
 
-## 🔧 CONFIGURACIÓN AVANZADA
+#### Crear Producto
+1. Dashboard > Products
+2. Click en "Add product"
+3. Nombre: "UN JUEGO. UN SISTEMA."
+4. Precio: $47.00 USD
+5. Currency: USD
 
-### **EMAILS AUTOMÁTICOS**
-Para enviar emails automáticos después del pago, puedes usar:
+#### Configurar Checkout
+1. Dashboard > Settings > Checkout
+2. Configurar:
+   - Success page URL: `https://tu-dominio.vercel.app/success`
+   - Cancel page URL: `https://tu-dominio.vercel.app/`
 
-1. **Resend** (recomendado)
-2. **SendGrid**
-3. **Mailgun**
+### 6. Configurar Email (Opcional)
 
-### **BASE DE DATOS (OPCIONAL)**
-Para guardar órdenes, puedes usar:
+#### Con SendGrid
+1. Crea cuenta en [sendgrid.com](https://sendgrid.com)
+2. Obtén API Key
+3. Agrega variable: `SENDGRID_API_KEY=tu_api_key`
 
-1. **Supabase** (gratis)
-2. **PlanetScale**
-3. **MongoDB Atlas**
+#### Con Resend
+1. Crea cuenta en [resend.com](https://resend.com)
+2. Obtén API Key
+3. Agrega variable: `RESEND_API_KEY=tu_api_key`
 
-## 🧪 TESTING
+### 7. Configurar Base de Datos (Opcional)
 
-### **TARJETAS DE PRUEBA**
-Usa estas tarjetas para probar:
+#### Con Supabase
+1. Crea proyecto en [supabase.com](https://supabase.com)
+2. Obtén DATABASE_URL
+3. Agrega variable: `DATABASE_URL=tu_database_url`
 
-- **Visa:** 4242 4242 4242 4242
-- **Visa (declined):** 4000 0000 0000 0002
-- **Mastercard:** 5555 5555 5555 4444
-- **American Express:** 3782 822463 10005
+### 8. Probar el Sistema
 
-**Fecha:** Cualquier fecha futura
-**CVC:** Cualquier 3 dígitos
-**ZIP:** Cualquier código postal
+#### Modo Test
+1. Usa las claves que empiecen con `pk_test_` y `sk_test_`
+2. Usa tarjetas de prueba de Stripe:
+   - Visa: `4242424242424242`
+   - Mastercard: `5555555555554444`
+   - CVC: cualquier 3 dígitos
+   - Fecha: cualquier fecha futura
 
-## 🚨 IMPORTANTE
+#### Modo Live
+1. Cambia a claves que empiecen con `pk_live_` y `sk_live_`
+2. Configura webhook con URL de producción
+3. Usa tarjetas reales
 
-### **ANTES DE IR A PRODUCCIÓN:**
-1. ✅ Cambia a claves LIVE de Stripe
-2. ✅ Configura webhook en producción
-3. ✅ Prueba todo el flujo completo
-4. ✅ Configura emails automáticos
-5. ✅ Verifica que los archivos se entreguen correctamente
+## 🔧 Funcionalidades Implementadas
 
-### **SEGURIDAD:**
-- ❌ NUNCA expongas tu SECRET KEY en el frontend
-- ✅ Siempre valida pagos en el backend
-- ✅ Usa HTTPS en producción
-- ✅ Configura webhooks correctamente
+### ✅ Sistema Completo
+- [x] Checkout de Stripe integrado
+- [x] Webhook para procesar pagos
+- [x] Email automático con producto
+- [x] Página de éxito
+- [x] Manejo de errores
+- [x] Información de seguridad
+- [x] Garantía de 30 días
+- [x] Métodos de pago múltiples
 
-## 📊 MONITOREO
+### 🎨 Componentes Profesionales
+- [x] Botón de pago con animaciones
+- [x] Indicadores de carga
+- [x] Toasts de notificación
+- [x] Badges de seguridad
+- [x] Información de garantía
 
-### **DASHBOARD DE STRIPE:**
-- Ve todas las transacciones en tiempo real
-- Analiza métricas de conversión
-- Gestiona reembolsos
-- Ve intentos de pago fallidos
+### 🔒 Seguridad
+- [x] Encriptación SSL
+- [x] Verificación de webhook
+- [x] Manejo seguro de errores
+- [x] Validación de datos
 
-### **WEBHOOKS:**
-- Monitorea que los webhooks se ejecuten correctamente
-- Revisa logs en caso de errores
-- Configura reintentos automáticos
+## 🚀 Despliegue
 
-## 🆘 SOPORTE
+### Vercel
+```bash
+# Instalar dependencias
+npm install
+
+# Construir proyecto
+npm run build
+
+# Desplegar
+vercel --prod
+```
+
+### Variables de Entorno en Vercel
+```bash
+vercel env add VITE_STRIPE_PUBLISHABLE_KEY
+vercel env add STRIPE_SECRET_KEY
+vercel env add STRIPE_WEBHOOK_SECRET
+```
+
+## 📞 Soporte
 
 Si tienes problemas:
-1. Revisa los logs de Vercel
+1. Revisa los logs en Vercel
 2. Verifica las variables de entorno
-3. Prueba con tarjetas de test
-4. Contacta soporte de Stripe si es necesario
+3. Confirma que el webhook esté configurado
+4. Prueba con tarjetas de test
 
-## 💰 COSTOS
+## 🎯 Próximos Pasos
 
-**Stripe cobra:**
-- 2.9% + $0.30 por transacción exitosa
-- Sin costos mensuales
-- Sin costos de configuración
-
-**Para una venta de $17:**
-- Comisión Stripe: $0.79
-- Tu ganancia: $16.21
-- **VS Hotmart (10%): $15.30**
-- **AHORRO: $0.91 por venta**
+1. **Configurar dominio personalizado**
+2. **Implementar analytics**
+3. **Agregar más métodos de pago**
+4. **Configurar notificaciones push**
+5. **Implementar sistema de afiliados**

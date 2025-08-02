@@ -13,15 +13,17 @@ export const stripePromise = loadStripe(stripePublishableKey);
 // Configuración del producto
 export const PRODUCT_CONFIG = {
   name: 'UN JUEGO. UN SISTEMA. - Método Matemático Secreto',
-  description: 'Sistema matemático completo + Bonos valorados en $797 USD',
-  price: 1700, // $17.00 en centavos
+  description: 'Sistema matemático completo + Bonos valorados en $1,296 USD',
+  price: 4700, // $47.00 en centavos
   currency: 'usd',
-  images: ['/WhatsApp Image 2025-07-08 at 11.49.39 PM.jpeg'],
+  images: ['/cover.jpeg'],
   metadata: {
     product_type: 'digital_book',
     includes_bonuses: 'true',
-    bonus_value: '797',
-    total_value: '844'
+    bonus_value: '1296',
+    total_value: '1296',
+    preventa: 'true',
+    cupos_restantes: '23'
   }
 };
 

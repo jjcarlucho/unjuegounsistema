@@ -30,7 +30,12 @@ export const PRODUCT_CONFIG = {
 // Función para crear sesión de checkout
 export const createCheckoutSession = async (customerEmail?: string) => {
   try {
-    const response = await fetch('/api/create-checkout-session', {
+    // Determinar la URL base según el entorno
+    const baseUrl = import.meta.env.DEV 
+      ? 'https://project55-1-eta.vercel.app' 
+      : window.location.origin;
+
+    const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,13 +49,14 @@ export const createCheckoutSession = async (customerEmail?: string) => {
     });
 
     if (!response.ok) {
-      throw new Error('Error creating checkout session');
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
     }
 
     const session = await response.json();
     return session;
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error creating checkout session:', error);
     throw error;
   }
 };

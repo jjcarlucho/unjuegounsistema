@@ -34,7 +34,7 @@ const Offer: React.FC = () => {
             </h2>
             <div className="inline-block bg-red-500/10 px-4 py-2 rounded-full border border-red-500/20 mb-6">
               <span className="text-red-400 font-semibold text-sm">
-                🚨 OFERTA LIMITADA
+                🚨 PREVENTA EXCLUSIVA - SOLO 50 CUPOS
               </span>
             </div>
           </div>
@@ -68,12 +68,16 @@ const Offer: React.FC = () => {
               
               {/* Precio Final */}
               <div className="text-center py-8 bg-gradient-to-r from-quantum-green-cta/10 to-quantum-amber-accent/10 rounded-xl border border-quantum-green-cta/20">
-                <p className="text-quantum-text-dim mb-2">Tu Inversión Hoy</p>
+                <p className="text-quantum-text-dim mb-2">Tu Inversión en Preventa</p>
                 <div className="flex items-center justify-center gap-4">
                   <span className="text-quantum-text-dim line-through text-lg">$499</span>
                   <span className="text-quantum-green-cta font-bold text-5xl cta-button">$47</span>
                 </div>
                 <p className="text-quantum-green-cta font-semibold mt-2">🎉 AHORRO DEL 91%</p>
+                <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <p className="text-red-400 font-bold text-sm">🔥 SOLO 23 CUPOS DISPONIBLES</p>
+                  <p className="text-quantum-text-dim text-xs mt-1">Una vez agotados, el precio subirá a $197</p>
+                </div>
               </div>
               
               {/* CTA */}

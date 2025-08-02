@@ -51,14 +51,25 @@ const UltraHero: React.FC<UltraHeroProps> = ({ onCTAClick }) => {
           {/* Columna izquierda - Contenido */}
           <div className="text-center lg:text-left">
             
-            {/* Badge de urgencia simple */}
+            {/* Badge de preventa */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full font-bold text-sm mb-8 border border-red-400"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-full font-bold text-sm mb-4 border border-orange-400"
             >
               <Zap size={16} />
+              🚨 PREVENTA EXCLUSIVA - SOLO 23 CUPOS
+            </motion.div>
+
+            {/* Badge de urgencia */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full font-bold text-sm mb-8 border border-red-400"
+            >
+              <Clock size={16} />
               🔥 ÚLTIMOS 7 CUPOS DISPONIBLES
             </motion.div>
 

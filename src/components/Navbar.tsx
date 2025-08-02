@@ -32,6 +32,12 @@ const Navbar: React.FC = () => {
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-quantum-dark/80 backdrop-blur-lg border-b border-quantum-border' : 'bg-transparent'
     }`}>
+      {/* Banner de Preventa */}
+      <div className="bg-gradient-to-r from-orange-500 to-red-600 text-white text-center py-2 px-4">
+        <p className="text-sm font-bold">
+          🚨 PREVENTA EXCLUSIVA - SOLO 23 CUPOS DISPONIBLES - PRECIO SUBIRÁ A $197
+        </p>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Título */}

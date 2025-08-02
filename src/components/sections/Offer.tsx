@@ -87,7 +87,7 @@ const Offer: React.FC = () => {
                   className="text-2xl px-12 py-6 bg-quantum-green-cta text-white shadow-quantum-cta hover:scale-105 cta-button" 
                   showArrow={true}
                 >
-                  ACCEDE HOY ⚡️
+                  ACCEDER A LA PREVENTA HOY ⚡️
                 </CTAButton>
                 
                 {/* Garantías */}

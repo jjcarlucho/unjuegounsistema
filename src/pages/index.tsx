@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
             "description": "El método que transforma el impulso en disciplina y el azar en una ventaja estadística",
             "offers": {
               "@type": "Offer",
-              "price": "97.00",
+              "price": "47.00",
               "priceCurrency": "USD",
               "availability": "https://schema.org/LimitedAvailability"
             }

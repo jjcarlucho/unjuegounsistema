@@ -135,7 +135,7 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Zap className="relative z-10 animate-pulse" size={20} />
                   <span className="relative z-10 text-center">
-                    <span className="hidden sm:inline">ACCEDE HOY</span>
+                    <span className="hidden sm:inline">ACCEDER A LA PREVENTA HOY</span>
                     <span className="sm:hidden">PREVENTA HOY</span>
                   </span>
                   <Zap className="relative z-10 animate-pulse" size={20} />

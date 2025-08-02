@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
               onClick={handleCTAClick}
               className="bg-quantum-green-cta text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-200 shadow-quantum-cta cta-button"
             >
-              COMPRAR AHORA $97
+                              COMPRAR AHORA $47
             </button>
           </div>
 
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                 onClick={handleCTAClick}
                 className="w-full bg-quantum-green-cta text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-200 shadow-quantum-cta cta-button"
               >
-                COMPRAR AHORA $97
+                COMPRAR AHORA $47
               </button>
             </div>
           </div>

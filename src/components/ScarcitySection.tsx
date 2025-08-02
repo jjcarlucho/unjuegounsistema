@@ -219,7 +219,7 @@ const ScarcitySection: React.FC = () => {
               onClick={handleWhatsAppClick}
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl py-6 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-400"
             >
-                              🚨 ACCEDE HOY 🚨
+                              🚨 ACCEDER A LA PREVENTA HOY 🚨
             </button>
             
             <p className="text-yellow-400 text-sm font-bold mt-4">

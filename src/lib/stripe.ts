@@ -30,8 +30,8 @@ export const PRODUCT_CONFIG = {
 // Función para redirigir a Stripe Checkout usando enlace directo
 export const redirectToCheckout = async (customerEmail?: string) => {
   try {
-    // URL directa de Stripe Checkout (necesitas crear esto en tu dashboard de Stripe)
-    const checkoutUrl = 'https://buy.stripe.com/test_28o5kC8Xj2Kj8wU6EF';
+    // URL directa de Stripe Checkout con tu producto
+    const checkoutUrl = 'https://buy.stripe.com/test_aFa9AS44Ue3w1qH8De5wI00';
     
     // Agregar parámetros de éxito y cancelación
     const successUrl = encodeURIComponent(`${window.location.origin}/success`);

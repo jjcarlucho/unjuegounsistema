@@ -1,54 +1,94 @@
-<header>
+# UN JUEGO. UN SISTEMA.
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+Una landing page moderna y profesional para el sistema matemático de Baccarat, construida con React, TypeScript y Tailwind CSS.
 
-# GitHub Pages
+## 🚀 Características
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+- **Diseño Moderno:** Interfaz elegante y responsiva
+- **Sistema de Pagos:** Integración completa con Stripe
+- **Elementos de Preventa:** Contadores, urgencia y cupos limitados
+- **Optimización SEO:** Meta tags y estructura semántica
+- **Animaciones:** Transiciones suaves con Framer Motion
+- **Seguridad:** SSL y certificaciones Stripe
 
-</header>
+## 🛠️ Tecnologías
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+- **Frontend:** React 18, TypeScript, Vite
+- **Styling:** Tailwind CSS
+- **Animaciones:** Framer Motion
+- **Pagos:** Stripe Checkout
+- **Deploy:** Vercel
 
-## Step 1: Enable GitHub Pages
+## 📦 Instalación
 
-_Welcome to GitHub Pages and Jekyll :tada:!_
+```bash
+# Clonar el repositorio
+git clone https://github.com/jjcarlucho/unjuegounsistema.git
 
-The first step is to enable GitHub Pages on this [repository](https://docs.github.com/en/get-started/quickstart/github-glossary#repository). When you enable GitHub Pages on a repository, GitHub takes the content that's on the main branch and publishes a website based on its contents.
+# Instalar dependencias
+npm install
 
-### :keyboard: Activity: Enable GitHub Pages
+# Configurar variables de entorno
+cp .env.example .env.local
+# Editar .env.local con tus claves de Stripe
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Under your repository name, click **Settings**.
-1. Click **Pages** in the **Code and automation** section.
-1. Ensure "Deploy from a branch" is selected from the **Source** drop-down menu, and then select `main` from the **Branch** drop-down menu.
-1. Click the **Save** button.
-1. Wait about _one minute_ then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-   > Turning on GitHub Pages creates a deployment of your repository. GitHub Actions may take up to a minute to respond while waiting for the deployment. Future steps will be about 20 seconds; this step is slower.
-   > **Note**: In the **Pages** of **Settings**, the **Visit site** button will appear at the top. Click the button to see your GitHub Pages site.
+# Ejecutar en desarrollo
+npm run dev
+```
 
-<footer>
+## 🔧 Configuración
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+### Variables de Entorno
 
----
+```bash
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_tu_clave_publica
+STRIPE_SECRET_KEY=sk_test_tu_clave_secreta
+STRIPE_WEBHOOK_SECRET=whsec_tu_webhook_secret
+```
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+### Stripe Setup
 
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+1. Crear cuenta en [stripe.com](https://stripe.com)
+2. Obtener claves API desde el dashboard
+3. Configurar webhook para procesar pagos
+4. Crear enlace de pago en Stripe
 
-</footer>
+## 🎯 Funcionalidades
+
+- ✅ Landing page completa
+- ✅ Sistema de pagos con Stripe
+- ✅ Elementos de preventa
+- ✅ Testimonios dinámicos
+- ✅ Información de seguridad
+- ✅ Garantía de 30 días
+- ✅ Responsive design
+
+## 📱 Páginas
+
+- **Home:** Landing principal con toda la información
+- **Success:** Página de éxito después del pago
+- **Cancel:** Página de cancelación
+
+## 🚀 Deploy
+
+El proyecto está configurado para deploy automático en Vercel:
+
+1. Conectar repositorio a Vercel
+2. Configurar variables de entorno
+3. Deploy automático en cada push
+
+## 📄 Licencia
+
+MIT License - ver [LICENSE](LICENSE) para más detalles.
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crear feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push al branch (`git push origin feature/AmazingFeature`)
+5. Abrir Pull Request
+
+## 📞 Soporte
+
+Para soporte técnico o preguntas sobre el proyecto, contacta a través de GitHub Issues.

@@ -8,13 +8,6 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    proxy: {
-      '/api': {
-        target: 'https://project55-1-eta.vercel.app',
-        changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/api/, '/api'),
-      },
-    },
+    // Sin proxy - las llamadas van directamente a Vercel
   },
 });

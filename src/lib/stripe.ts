@@ -30,10 +30,8 @@ export const PRODUCT_CONFIG = {
 // Función para crear sesión de checkout
 export const createCheckoutSession = async (customerEmail?: string) => {
   try {
-    // Determinar la URL base según el entorno
-    const baseUrl = import.meta.env.DEV 
-      ? 'https://project55-1-eta.vercel.app' 
-      : window.location.origin;
+    // Usar directamente la URL de Vercel para desarrollo y producción
+    const baseUrl = 'https://project55-1-eta.vercel.app';
 
     const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
       method: 'POST',

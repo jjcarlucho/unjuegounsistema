@@ -30,29 +30,50 @@ export const PRODUCT_CONFIG = {
 // Función para crear sesión de checkout
 export const createCheckoutSession = async (customerEmail?: string) => {
   try {
-    // Usar directamente la URL de Vercel para desarrollo y producción
-    const baseUrl = 'https://project55.vercel.app';
+    // Intentar diferentes URLs
+    const urls = [
+      'https://project55.vercel.app',
+      'https://project55-6vtestfjp-jonathans-projects-53172663.vercel.app',
+      window.location.origin
+    ];
 
-    const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...PRODUCT_CONFIG,
-        customer_email: customerEmail,
-        success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${window.location.origin}/?canceled=true`,
-      }),
-    });
+    let lastError;
+    
+    for (const baseUrl of urls) {
+      try {
+        console.log(`Intentando conectar a: ${baseUrl}`);
+        
+        const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...PRODUCT_CONFIG,
+            customer_email: customerEmail,
+            success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${window.location.origin}/?canceled=true`,
+          }),
+        });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        if (response.ok) {
+          const session = await response.json();
+          console.log('✅ Sesión creada exitosamente');
+          return session;
+        } else {
+          const errorData = await response.json().catch(() => ({}));
+          lastError = new Error(errorData.message || `HTTP error! status: ${response.status}`);
+          console.log(`❌ Error con ${baseUrl}:`, lastError.message);
+        }
+      } catch (error) {
+        lastError = error;
+        console.log(`❌ Error de conexión con ${baseUrl}:`, error.message);
+      }
     }
 
-    const session = await response.json();
-    return session;
+    // Si todas las URLs fallan, mostrar error
+    throw lastError || new Error('No se pudo conectar a ningún servidor');
+
   } catch (error) {
     console.error('Error creating checkout session:', error);
     throw error;

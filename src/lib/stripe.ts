@@ -27,74 +27,21 @@ export const PRODUCT_CONFIG = {
   }
 };
 
-// Función para crear sesión de checkout
-export const createCheckoutSession = async (customerEmail?: string) => {
-  try {
-    // Intentar diferentes URLs
-    const urls = [
-      'https://project55.vercel.app',
-      'https://project55-6vtestfjp-jonathans-projects-53172663.vercel.app',
-      window.location.origin
-    ];
-
-    let lastError;
-    
-    for (const baseUrl of urls) {
-      try {
-        console.log(`Intentando conectar a: ${baseUrl}`);
-        
-        const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...PRODUCT_CONFIG,
-            customer_email: customerEmail,
-            success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${window.location.origin}/?canceled=true`,
-          }),
-        });
-
-        if (response.ok) {
-          const session = await response.json();
-          console.log('✅ Sesión creada exitosamente');
-          return session;
-        } else {
-          const errorData = await response.json().catch(() => ({}));
-          lastError = new Error(errorData.message || `HTTP error! status: ${response.status}`);
-          console.log(`❌ Error con ${baseUrl}:`, lastError.message);
-        }
-      } catch (error) {
-        lastError = error;
-        console.log(`❌ Error de conexión con ${baseUrl}:`, error.message);
-      }
-    }
-
-    // Si todas las URLs fallan, mostrar error
-    throw lastError || new Error('No se pudo conectar a ningún servidor');
-
-  } catch (error) {
-    console.error('Error creating checkout session:', error);
-    throw error;
-  }
-};
-
-// Función para redirigir a Stripe Checkout
+// Función para redirigir a Stripe Checkout usando enlace directo
 export const redirectToCheckout = async (customerEmail?: string) => {
   try {
-    const stripe = await stripePromise;
-    if (!stripe) throw new Error('Stripe not loaded');
-
-    const session = await createCheckoutSession(customerEmail);
+    // URL directa de Stripe Checkout (necesitas crear esto en tu dashboard de Stripe)
+    const checkoutUrl = 'https://buy.stripe.com/test_28o5kC8Xj2Kj8wU6EF';
     
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      throw new Error(result.error.message);
-    }
+    // Agregar parámetros de éxito y cancelación
+    const successUrl = encodeURIComponent(`${window.location.origin}/success`);
+    const cancelUrl = encodeURIComponent(`${window.location.origin}/?canceled=true`);
+    
+    const finalUrl = `${checkoutUrl}?success_url=${successUrl}&cancel_url=${cancelUrl}`;
+    
+    // Redirigir al usuario
+    window.location.href = finalUrl;
+    
   } catch (error) {
     console.error('Error redirecting to checkout:', error);
     throw error;

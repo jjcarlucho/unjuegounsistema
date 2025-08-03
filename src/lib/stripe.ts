@@ -31,7 +31,7 @@ export const PRODUCT_CONFIG = {
 export const createCheckoutSession = async (customerEmail?: string) => {
   try {
     // Usar directamente la URL de Vercel para desarrollo y producción
-    const baseUrl = 'https://project55-1-eta.vercel.app';
+    const baseUrl = 'https://project55-6vtestfjp-jonathans-projects-53172663.vercel.app';
 
     const response = await fetch(`${baseUrl}/api/create-checkout-session`, {
       method: 'POST',

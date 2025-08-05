@@ -32,7 +32,7 @@ const FinalCTA: React.FC = () => {
                 }}
                 className="text-4xl px-20 py-10 bg-quantum-green-cta text-white shadow-quantum-cta hover:scale-105 font-bold cta-button"
               >
-                OBTENER ACCESO INMEDIATO POR $47
+                OBTENER ACCESO INMEDIATO POR $17
               </CTAButton>
             </div>
             

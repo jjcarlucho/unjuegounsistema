@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
       {/* Banner de Preventa */}
       <div className="bg-gradient-to-r from-orange-500 to-red-600 text-white text-center py-2 px-4">
         <p className="text-sm font-bold">
-          🚨 PREVENTA EXCLUSIVA - SOLO 23 CUPOS DISPONIBLES - PRECIO SUBIRÁ A $197
+          🚨 PREVENTA EXCLUSIVA - SOLO 23 CUPOS DISPONIBLES - PRECIO SUBIRÁ A $47
         </p>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
               onClick={handleCTAClick}
               className="bg-quantum-green-cta text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-200 shadow-quantum-cta cta-button"
             >
-                              COMPRAR AHORA $47
+                              COMPRAR AHORA $17
             </button>
           </div>
 
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
                 onClick={handleCTAClick}
                 className="w-full bg-quantum-green-cta text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-200 shadow-quantum-cta cta-button"
               >
-                COMPRAR AHORA $47
+                COMPRAR AHORA $17
               </button>
             </div>
           </div>

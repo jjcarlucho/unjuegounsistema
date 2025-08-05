@@ -72,12 +72,12 @@ const Offer: React.FC = () => {
                 <p className="text-quantum-text-dim mb-2">Tu Inversión en Preventa</p>
                 <div className="flex items-center justify-center gap-4">
                   <span className="text-quantum-text-dim line-through text-lg">$499</span>
-                  <span className="text-quantum-green-cta font-bold text-5xl cta-button">$47</span>
-                </div>
-                <p className="text-quantum-green-cta font-semibold mt-2">🎉 AHORRO DEL 91%</p>
+                                       <span className="text-quantum-green-cta font-bold text-5xl cta-button">$17</span>
+                   </div>
+                   <p className="text-quantum-green-cta font-semibold mt-2">🎉 AHORRO DEL 96%</p>
                 <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
                   <p className="text-red-400 font-bold text-sm">🔥 SOLO 23 CUPOS DISPONIBLES</p>
-                  <p className="text-quantum-text-dim text-xs mt-1">Una vez agotados, el precio subirá a $197</p>
+                                       <p className="text-quantum-text-dim text-xs mt-1">Una vez agotados, el precio subirá a $47</p>
                 </div>
               </div>
               

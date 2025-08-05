@@ -2,8 +2,7 @@ import React from 'react';
 import Container from '../layout/Container';
 import AnimatedSection from '../AnimatedSection';
 import InteractiveCard from '../InteractiveCard';
-import StripePaymentButton from '../StripePaymentButton';
-import PaymentSecurityInfo from '../PaymentSecurityInfo';
+import HotmartButton from '../HotmartButton';
 import { CheckCircle, Star } from 'lucide-react';
 
 const Offer: React.FC = () => {
@@ -83,16 +82,20 @@ const Offer: React.FC = () => {
               
               {/* CTA */}
               <div className="text-center">
-                <StripePaymentButton 
-                  className="text-2xl px-12 py-6 cta-button" 
-                  size="lg"
-                  variant="primary"
-                >
-                  ACCEDER A LA PREVENTA HOY ⚡️
-                </StripePaymentButton>
-                
-                {/* Información de seguridad */}
-                <PaymentSecurityInfo />
+                           <HotmartButton 
+             className="text-2xl px-12 py-6 cta-button" 
+             size="lg"
+             variant="primary"
+           >
+             ACCEDER A LA PREVENTA HOY ⚡️
+           </HotmartButton>
+           
+           {/* Información de seguridad */}
+           <div className="mt-6 text-center">
+             <p className="text-gray-500 text-sm">
+               🔒 Pago 100% seguro con Hotmart • SSL encriptado • Garantía de 30 días
+             </p>
+           </div>
               </div>
             </div>
           </InteractiveCard>

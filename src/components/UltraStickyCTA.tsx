@@ -35,9 +35,8 @@ const UltraStickyCTA = () => {
     return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("🚨 ¡QUIERO ASEGURAR MI CUPO AHORA! He visto toda la información y estoy completamente convencido. ¿Cuál es el proceso exacto para acceder al sistema matemático inmediatamente?");
-    window.open(`https://wa.me/+17862623985?text=${message}`, '_blank');
+  const handleHotmartClick = () => {
+    window.open('https://pay.hotmart.com/X101172705D', '_blank');
   };
 
   const handleClose = () => {
@@ -86,7 +85,7 @@ const UltraStickyCTA = () => {
 
               {/* CTA principal */}
               <button
-                onClick={handleWhatsAppClick}
+                onClick={handleHotmartClick}
                 className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-black text-sm md:text-lg py-2 px-4 md:py-3 md:px-6 rounded-xl transition-all duration-300 shadow-xl border border-emerald-400 flex items-center gap-2"
               >
                 <Zap size={16} />

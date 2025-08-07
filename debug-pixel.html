@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Meta Pixel</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        button { padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .test-btn { background-color: #007bff; color: white; }
+        .success-btn { background-color: #28a745; color: white; }
+        .error-btn { background-color: #dc3545; color: white; }
+        #log { background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin-top: 20px; max-height: 300px; overflow-y: auto; }
+    </style>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2238118589923921');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <h1>🔍 Debug Meta Pixel</h1>
+    <p>Esta página te ayudará a diagnosticar problemas con el Meta Pixel.</p>
+    
+    <div id="status"></div>
+    
+    <h2>Pruebas:</h2>
+    <button class="test-btn" onclick="checkPixel()">🔍 Verificar Pixel</button>
+    <button class="test-btn" onclick="testPageView()">📊 Probar PageView</button>
+    <button class="test-btn" onclick="testInitiateCheckout()">🛒 Probar InitiateCheckout</button>
+    <button class="test-btn" onclick="testPurchase()">💰 Probar Purchase</button>
+    <button class="test-btn" onclick="clearLog()">🗑️ Limpiar Log</button>
+    
+    <h2>Log de Eventos:</h2>
+    <div id="log"></div>
+    
+    <script>
+        let logElement = document.getElementById('log');
+        let statusElement = document.getElementById('status');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`;
+            logEntry.style.color = type === 'error' ? 'red' : type === 'success' ? 'green' : 'black';
+            logElement.appendChild(logEntry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function updateStatus(message, type) {
+            statusElement.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function checkPixel() {
+            log('🔍 Verificando Meta Pixel...');
+            
+            if (typeof window.fbq === 'undefined') {
+                log('❌ ERROR: fbq no está definido', 'error');
+                updateStatus('❌ Meta Pixel NO está cargado', 'error');
+                return false;
+            }
+            
+            if (typeof window.fbq !== 'function') {
+                log('❌ ERROR: fbq no es una función', 'error');
+                updateStatus('❌ Meta Pixel NO está funcionando correctamente', 'error');
+                return false;
+            }
+            
+            log('✅ fbq está disponible y es una función', 'success');
+            
+            // Verificar si el pixel está inicializado
+            if (window.fbq.loaded) {
+                log('✅ Meta Pixel está cargado correctamente', 'success');
+                updateStatus('✅ Meta Pixel está funcionando correctamente', 'success');
+                return true;
+            } else {
+                log('⚠️ Meta Pixel está cargando...', 'warning');
+                updateStatus('⚠️ Meta Pixel está cargando...', 'warning');
+                return false;
+            }
+        }
+        
+        function testPageView() {
+            log('📊 Enviando evento PageView...');
+            if (window.fbq) {
+                fbq('track', 'PageView');
+                log('✅ Evento PageView enviado', 'success');
+            } else {
+                log('❌ No se puede enviar PageView - fbq no disponible', 'error');
+            }
+        }
+        
+        function testInitiateCheckout() {
+            log('🛒 Enviando evento InitiateCheckout...');
+            if (window.fbq) {
+                fbq('track', 'InitiateCheckout', {
+                    value: 17.00,
+                    currency: 'USD',
+                    content_name: 'Sistema Matemático Premium',
+                    content_category: 'ebook'
+                });
+                log('✅ Evento InitiateCheckout enviado', 'success');
+            } else {
+                log('❌ No se puede enviar InitiateCheckout - fbq no disponible', 'error');
+            }
+        }
+        
+        function testPurchase() {
+            log('💰 Enviando evento Purchase...');
+            if (window.fbq) {
+                fbq('track', 'Purchase', {
+                    value: 17.00,
+                    currency: 'USD',
+                    content_name: 'Sistema Matemático Premium',
+                    content_category: 'ebook',
+                    order_id: 'test-' + Date.now()
+                });
+                log('✅ Evento Purchase enviado', 'success');
+            } else {
+                log('❌ No se puede enviar Purchase - fbq no disponible', 'error');
+            }
+        }
+        
+        function clearLog() {
+            logElement.innerHTML = '';
+            log('🗑️ Log limpiado');
+        }
+        
+        // Verificación automática al cargar
+        window.addEventListener('load', function() {
+            log('🚀 Página cargada, verificando Meta Pixel...');
+            setTimeout(() => {
+                checkPixel();
+            }, 1000);
+        });
+        
+        // Verificar cada 5 segundos si el pixel se carga
+        let checkCount = 0;
+        const checkInterval = setInterval(() => {
+            checkCount++;
+            if (checkCount > 10) {
+                clearInterval(checkInterval);
+                log('⏰ Tiempo de espera agotado', 'warning');
+                return;
+            }
+            
+            if (window.fbq && window.fbq.loaded) {
+                clearInterval(checkInterval);
+                log('✅ Meta Pixel cargado después de ' + checkCount + ' intentos', 'success');
+                updateStatus('✅ Meta Pixel cargado correctamente', 'success');
+            }
+        }, 1000);
+    </script>
+    
+    <!-- Meta Pixel Noscript Fallback -->
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=2238118589923921&ev=PageView&noscript=1"
+        />
+    </noscript>
+</body>
+</html> 

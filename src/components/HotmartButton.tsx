@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, ExternalLink } from 'lucide-react';
 import HotmartModal from './HotmartModal';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 interface HotmartButtonProps {
   className?: string;
@@ -17,6 +18,7 @@ const HotmartButton: React.FC<HotmartButtonProps> = ({
   children 
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   const sizeClasses = {
     sm: 'px-4 py-2 text-sm',
@@ -30,6 +32,10 @@ const HotmartButton: React.FC<HotmartButtonProps> = ({
   };
 
   const handleClick = () => {
+    // Rastrear eventos del Meta Pixel
+    trackInitiateCheckout(17.00, 'USD');
+    trackButtonClick('hotmart_button');
+    
     setIsModalOpen(true);
   };
 

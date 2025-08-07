@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import MasterLayout from '../components/MasterLayout';
 import Navbar from '../components/Navbar';
@@ -12,8 +12,16 @@ import Testimonials from '../components/sections/Testimonials';
 import Offer from '../components/sections/Offer';
 import FAQ from '../components/sections/FAQ';
 import FinalCTA from '../components/sections/FinalCTA';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 const HomePage: React.FC = () => {
+  const { trackViewContent } = useMetaPixel();
+
+  useEffect(() => {
+    // Rastrear vista de contenido cuando se carga la página
+    trackViewContent('Sistema Matemático Premium - Página Principal');
+  }, [trackViewContent]);
+
   return (
     <>
       <Helmet>

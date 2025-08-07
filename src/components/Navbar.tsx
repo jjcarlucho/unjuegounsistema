@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,10 @@ const Navbar: React.FC = () => {
   ];
 
   const handleCTAClick = () => {
+    // Rastrear eventos del Meta Pixel
+    trackInitiateCheckout(17.00, 'USD');
+    trackButtonClick('navbar_cta');
+    
     // Scroll to the offer section
     const offerSection = document.getElementById('oferta');
     if (offerSection) {

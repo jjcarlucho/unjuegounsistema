@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Clock, X } from 'lucide-react';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 const UltraStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +38,10 @@ const UltraStickyCTA = () => {
   };
 
   const handleHotmartClick = () => {
+    // Rastrear eventos del Meta Pixel
+    trackInitiateCheckout(17.00, 'USD');
+    trackButtonClick('ultra_sticky_cta');
+    
     window.open('https://pay.hotmart.com/X101172705D', '_blank');
   };
 

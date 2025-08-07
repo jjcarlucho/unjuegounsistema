@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, CheckCircle } from 'lucide-react';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 interface HotmartModalProps {
   isOpen: boolean;
@@ -11,8 +12,12 @@ interface HotmartModalProps {
 const HotmartModal: React.FC<HotmartModalProps> = ({ isOpen, onClose, onSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const { trackPurchase, trackButtonClick } = useMetaPixel();
 
   const handlePaymentSuccess = () => {
+    // Rastrear compra exitosa con Meta Pixel
+    trackPurchase(17.00, 'USD', `hotmart_${Date.now()}`);
+    
     setShowSuccess(true);
     setTimeout(() => {
       setShowSuccess(false);
@@ -22,6 +27,9 @@ const HotmartModal: React.FC<HotmartModalProps> = ({ isOpen, onClose, onSuccess 
   };
 
   const handleExternalClick = () => {
+    // Rastrear clic en botón de pago
+    trackButtonClick('hotmart_modal_payment_button');
+    
     setIsLoading(true);
     window.open('https://pay.hotmart.com/X101172705D', '_blank');
     // Simular éxito después de un tiempo (en producción esto vendría de webhook)

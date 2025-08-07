@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, CreditCard, Shield, CheckCircle } from 'lucide-react';
 import { redirectToCheckout } from '../lib/stripe';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 interface StripePaymentButtonProps {
   className?: string;
@@ -20,10 +21,15 @@ const StripePaymentButton: React.FC<StripePaymentButtonProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   const handlePayment = async () => {
     setIsLoading(true);
     setError(null);
+
+    // Rastrear eventos del Meta Pixel
+    trackInitiateCheckout(17.00, 'USD');
+    trackButtonClick('stripe_payment_button');
 
     try {
       // Mostrar indicador de carga

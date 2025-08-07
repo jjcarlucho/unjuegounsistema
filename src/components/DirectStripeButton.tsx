@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, Zap } from 'lucide-react';
 import { redirectToCheckout } from '../lib/stripe';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 interface DirectStripeButtonProps {
   className?: string;
@@ -17,10 +18,15 @@ const DirectStripeButton: React.FC<DirectStripeButtonProps> = ({
   variant = 'primary'
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   const handlePayment = async () => {
     try {
       setIsLoading(true);
+
+      // Rastrear eventos del Meta Pixel
+      trackInitiateCheckout(17.00, 'USD');
+      trackButtonClick('direct_stripe_button');
 
       // Verificar que Stripe esté configurado
       if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {

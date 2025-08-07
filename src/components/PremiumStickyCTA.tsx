@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Clock, Users, TrendingUp, X, Crown } from 'lucide-react';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 interface PremiumStickyCTAProps {
   onCTAClick?: () => void;
@@ -11,6 +12,7 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
   const [spotsLeft, setSpotsLeft] = useState(7);
   const [currentViewers, setCurrentViewers] = useState(247);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hora
+  const { trackInitiateCheckout, trackButtonClick } = useMetaPixel();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +56,10 @@ const PremiumStickyCTA: React.FC<PremiumStickyCTAProps> = ({ onCTAClick }) => {
   };
 
   const handleCTAClick = () => {
+    // Rastrear eventos del Meta Pixel
+    trackInitiateCheckout(17.00, 'USD');
+    trackButtonClick('premium_sticky_cta');
+    
     if (onCTAClick) {
       onCTAClick();
     } else {

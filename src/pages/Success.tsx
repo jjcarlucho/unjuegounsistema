@@ -2,19 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Download, Mail, Star, Gift, ArrowRight } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
+import { useMetaPixel } from '../hooks/useMetaPixel';
 
 const Success: React.FC = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('session_id');
   const [sessionData, setSessionData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const { trackPurchase } = useMetaPixel();
 
   useEffect(() => {
     if (sessionId) {
       // Verificar la sesión de pago
       fetchSessionData(sessionId);
+      
+      // Rastrear compra exitosa con Meta Pixel
+      trackPurchase(17.00, 'USD', sessionId);
     }
-  }, [sessionId]);
+  }, [sessionId, trackPurchase]);
 
   const fetchSessionData = async (sessionId: string) => {
     try {

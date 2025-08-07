@@ -1,9 +1,10 @@
 {
-  "name": "stripe-api",
+  "name": "api",
+  "private": true,
+  "type": "module",
   "version": "1.0.0",
-  "description": "Stripe API functions for Vercel",
-  "main": "index.js",
-  "dependencies": {
-    "stripe": "^14.21.0"
+  "description": "API endpoints for the landing page",
+  "engines": {
+    "node": "22.x"
   }
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Meta Pixel</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2238118589923921');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <h1>Test Meta Pixel</h1>
+    <p>Esta página es para probar que el Meta Pixel funciona correctamente.</p>
+    
+    <button onclick="testPixel()">Probar Pixel</button>
+    <button onclick="testPurchase()">Simular Compra</button>
+    
+    <script>
+        function testPixel() {
+            console.log('Probando Meta Pixel...');
+            if (window.fbq) {
+                fbq('track', 'InitiateCheckout', {
+                    value: 17.00,
+                    currency: 'USD',
+                    content_name: 'Sistema Matemático Premium'
+                });
+                alert('Evento InitiateCheckout enviado!');
+            } else {
+                alert('Meta Pixel no está cargado!');
+            }
+        }
+        
+        function testPurchase() {
+            console.log('Simulando compra...');
+            if (window.fbq) {
+                fbq('track', 'Purchase', {
+                    value: 17.00,
+                    currency: 'USD',
+                    content_name: 'Sistema Matemático Premium',
+                    order_id: 'test-' + Date.now()
+                });
+                alert('Evento Purchase enviado!');
+            } else {
+                alert('Meta Pixel no está cargado!');
+            }
+        }
+        
+        // Verificar que fbq está disponible
+        window.addEventListener('load', function() {
+            if (window.fbq) {
+                console.log('✅ Meta Pixel cargado correctamente');
+                document.body.style.backgroundColor = '#e8f5e8';
+            } else {
+                console.log('❌ Meta Pixel no está disponible');
+                document.body.style.backgroundColor = '#ffe8e8';
+            }
+        });
+    </script>
+    
+    <!-- Meta Pixel Noscript Fallback -->
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2238118589923921&ev=PageView&noscript=1"
+    /></noscript>
+</body>
+</html> 

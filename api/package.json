@@ -5,6 +5,6 @@
   "version": "1.0.0",
   "description": "API endpoints for the landing page",
   "engines": {
-    "node": "22.x"
+    "node": "18.x"
   }
 }
